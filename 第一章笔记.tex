@@ -1,0 +1,2300 @@
+\chapter{波动方程}
+\section{弦振动方程的建立}
+\begin{definition}[弦振动方程]
+    
+
+\begin{equation}
+T \frac{\partial^2 u(x,t)}{\partial x^2} - \rho \frac{\partial^2 u(x,t)}{\partial t^2} = -F(x,t) \tag{1.13}
+\end{equation}
+
+
+或
+\begin{equation}
+\frac{\partial^2 u}{\partial t^2} - a^2 \frac{\partial^2 u}{\partial x^2} = f(x,t). \tag{1.14}
+\end{equation}
+
+这就是外力作用下的弦振动方程，里面的 a 不是加速度，而是一个常数，它的物理意义是波速。其中
+\[
+f(x,t) = \frac{F(x,t)}{\rho}
+\]
+表示单位质量在 $x$ 点处所受的外力。
+\end{definition}
+\begin{dxtips}
+    \begin{itemize}
+  \item 第一项 $T\,u_{xx}$：弦因曲率产生的横向恢复力密度（单位长度上的力，单位 N/m）。在小挠度假设下，曲率 $\kappa \approx u_{xx}$，张力 $T$ 近似为常数，故恢复力密度 $\approx T\,u_{xx}$（方向指向曲率中心）。
+  \item 第二项 $\rho\,u_{tt}$：$\rho$ 为线密度（kg/m），$u_{tt}$ 为横向加速度（m/s$^2$），其乘积 $\rho\,u_{tt}$ 是单位长度上的惯性项（N/m）。式中写作 $-\rho\,u_{tt}$ 是因为把惯性项移到等式左侧；等价地也可写
+  \[
+    \rho\,u_{tt}\;=\;T\,u_{xx}\;-\;F(x,t).
+  \]
+  \item 右端 $F(x,t)$：外加横向力密度（单位 N/m），如分布载荷、风致力、磁致力等。正负号取决于所选的纵向正方向。
+\end{itemize}
+\end{dxtips}
+这就是外力作用下的弦振动方程，其中
+\[
+f(x,t) = \frac{F(x,t)}{\rho}
+\]
+表示单位质量在 $x$ 点处所受的外力。
+
+弦振动方程描述的是弦的振动或波动现象，它也称为\textbf{波动方程}（简称为波方程）。  
+由于弦振动方程只含有两个自变量 $x,t$，其中 $t$ 表示时间，$x$ 表示位置，因此它又称为一维波动方程。  
+
+同样，通过对弹性体振动过程中力学分析还可导出\textbf{二维波动方程}（例如薄膜振动）和\textbf{三维波动方程}（例如电磁波、声波的传播），它们的形式分别为：
+
+\begin{equation}
+\frac{\partial^2 u}{\partial t^2} 
+= a^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) 
++ f(x,y,t), 
+\tag{1.15}
+\end{equation}
+
+\begin{equation}
+\frac{\partial^2 u}{\partial t^2} 
+= a^2 \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right) 
++ f(x,y,z,t).
+\tag{1.16}
+\end{equation}
+	•	$u(x,t)$
+表示弦在位置 $x$、时刻 $t$ 的位移（通常是垂直位移）。
+	•	$x$
+空间变量，表示弦上质点的水平位置。
+	•	$t$
+时间变量。
+\[
+y(x,t) = A \cos \bigl[\omega \bigl(t - \tfrac{x}{u}\bigr) + \varphi_0 \bigr],
+\]
+	•	$\frac{\partial^2 u}{\partial x^2}$
+$u$ 对空间变量 $x$ 的二阶偏导数，描述弦的弯曲程度（曲率）。
+	•	$\frac{\partial^2 u}{\partial t^2}$
+$u$ 对时间变量 $t$ 的二阶偏导数，表示弦的加速度。
+	•	$T$
+弦的张力（单位：牛顿 N）。
+	•	$\rho$
+弦的线密度（单位质量/长度，$\text{kg}/\text{m}$）。
+	•	$F(x,t)$
+外力密度，表示作用在 $x$ 点的单位长度弦上随时间变化的外力（单位：$\text{N}/\text{m}$）。
+	•	$f(x,t) = \dfrac{F(x,t)}{\rho}$
+单位质量在 $x$ 点处所受的外力，加速度形式的外力项。
+	•	$a^2 = \dfrac{T}{\rho}$
+波速平方，其中 $a = \sqrt{T/\rho}$ 是弦上传播的波速（单位：$\text{m}/\text{s}$）。
+\begin{dxtips}[波动方程简单推导]
+    设
+\[
+y(x,t) = A \cos \bigl[\omega \bigl(t - \tfrac{x}{u}\bigr) + \varphi_0 \bigr],
+\]
+
+则
+\[
+\frac{\partial^2 y}{\partial t^2}
+= -A\omega^2 \cos \bigl[\omega \bigl(t - \tfrac{x}{u}\bigr) + \varphi_0 \bigr],
+\]
+\[
+\frac{\partial^2 y}{\partial x^2}
+= \frac{A\omega^2}{u^2} \cos \bigl[\omega \bigl(t - \tfrac{x}{u}\bigr) + \varphi_0 \bigr].
+\]
+
+因此得到波动方程：
+\[
+\frac{\partial^2 y}{\partial x^2}
+= \frac{1}{u^2}\frac{\partial^2 y}{\partial t^2}.
+\]
+
+这一切沿 $x$ 轴方向传播的波动（横波或纵波）都满足。
+
+推广到三维情形，电磁波、热传导等现象也满足：
+\[
+\frac{\partial^2 \xi}{\partial x^2}
++ \frac{\partial^2 \xi}{\partial y^2}
++ \frac{\partial^2 \xi}{\partial z^2}
+= \frac{1}{u^2}\frac{\partial^2 \xi}{\partial t^2}.
+\]
+\end{dxtips}
+\begin{proof}
+\begin{tikzpicture}[>=Latex, scale=1.0]
+  % 坐标轴
+  \draw[->] (-0.5,0) -- (11,0) node[below] {$x$};
+  \draw[->] (0,-0.5) -- (0,2.0) node[left] {$u$};
+  \node at (0,-0.35) {$O$};
+
+  % 两端点
+  \coordinate (A) at (3,0);    % 左端  x
+  \coordinate (B) at (9,0);    % 右端  x+Δx
+
+  % 弦形示意
+  \draw[line width=0.9pt] (A) .. controls (5,0.4) and (7,0.8) .. (B);
+
+  % 投影与标注
+  \draw[dashed] (A) -- (3,-0.2); \node at (3,-0.45) {$x$};
+  \draw[dashed] (B) -- (9,-0.2); \node at (9,-0.45) {$x+\Delta x$};
+
+  %-------------------------------------------------------
+  % 左端
+  \def\alphaone{10}   % α1 角度
+  \draw[black,->,line width=1.1pt] (A) -- ++(170:1.8) node[above left=-2pt] {$T(x)$};
+  \draw[blue,->,line width=1.1pt] (A) -- ++(180:1.4) node[below left=-2pt] {$T_x$};
+  \draw[red,->, line width=1.1pt] (A) -- ++(90:0.5)   node[left] {$T_y$};
+  \draw[gray,->] (A) ++(0:0.55) arc[start angle=0, end angle=\alphaone, radius=0.55];
+  \node[gray] at ($(A)+(0.85,0.32)$) {$\alpha_1$};
+
+  %-------------------------------------------------------
+  % 右端
+  \def\alphatwo{15}   % α2 角度
+  \draw[black,->,line width=1.1pt] (B) -- ++(\alphatwo:1.8) node[above right=-2pt] {$T(x+\Delta x)$};
+  \draw[blue,->,line width=1.1pt] (B) -- ++(0:1.4) node[below right=-2pt] {$T_x$};
+  \draw[red,->, line width=1.1pt] (B) -- ++(90:0.8) node[right] {$T_y$};
+  \draw[gray,->] (B) ++(180:0.55) arc[start angle=180, end angle={180-\alphatwo}, radius=0.55];
+  \node[gray] at ($(B)+(-0.85,0.32)$) {$\alpha_2$};
+
+  % Δx 标注
+  \draw[<->] (3,-0.9) -- (9,-0.9);
+  \node at (6,-1.1) {$\Delta x$};
+\end{tikzpicture}
+
+因为弦只在 $x$ 轴的垂直方向作横振动，所以水平方向的合力为零，即
+\begin{equation}
+  T(x+\Delta x) \cos \alpha_2 - T(x) \cos \alpha_1 = 0. \tag{1.2}
+\end{equation}
+
+由于假设弦仅在平衡位置附近作微小振动，故
+\begin{equation}
+  \cos \alpha_1 = \frac{1}{\sqrt{1+\left(\dfrac{\partial u(x,t)}{\partial x}\right)^2}} \approx 1, \tag{1.3}
+\end{equation}
+\begin{equation}
+  \cos \alpha_2 = \frac{1}{\sqrt{1+\left(\dfrac{\partial u(x+\Delta x,t)}{\partial x}\right)^2}} \approx 1. \tag{1.4}
+\end{equation}
+
+于是，若忽略高阶小量，即有
+\begin{equation}
+  T(x+\Delta x) - T(x) = 0, \tag{1.5}
+\end{equation}
+故 $T(x+\Delta x) = T(x) = T$，也就是说，张力的模长 $T(x)$ 是一个不依赖于 $x$ 的常数 $T$。
+
+又由基本假设 (2) 知
+\begin{equation}
+  \sin \alpha_1 \approx \tan \alpha_1 = \frac{\partial u(x,t)}{\partial x}, \tag{1.6}
+\end{equation}
+\begin{equation}
+  \sin \alpha_2 \approx \tan \alpha_2 = \frac{\partial u(x+\Delta x,t)}{\partial x}. \tag{1.7}
+\end{equation}
+\textcolor{red}{这里就像dy/dx,u垂直位移}
+所以张力在 $x$ 轴的垂直方向的合力为
+\[
+T \sin \alpha_2 - T \sin \alpha_1 
+= T \left[ \frac{\partial u(x+\Delta x,t)}{\partial x} 
+          - \frac{\partial u(x,t)}{\partial x} \right],
+\]
+
+从而在时间段 $(t,t+\Delta t)$ 内该合力产生的冲量为
+\begin{equation}
+  \int_t^{t+\Delta t} 
+  T \left[ \frac{\partial u(x+\Delta x,t)}{\partial x} 
+          - \frac{\partial u(x,t)}{\partial x} \right] dt. 
+  \tag{1.8}
+\end{equation}
+
+另一方面，在时刻 $t$ 弦段 $(x,x+\Delta x)$ 的动量为
+\[
+\int_x^{x+\Delta x} \rho \, \frac{\partial u(x,t)}{\partial t} \, dx,
+\]
+
+在时刻 $t+\Delta t$ 该弦段的动量为
+\[
+\int_x^{x+\Delta x} \rho \, \frac{\partial u(x,t+\Delta t)}{\partial t} \, dx,
+\]
+
+所以从时刻 $t$ 到时刻 $t+\Delta t$，弦段 $(x,x+\Delta x)$ 的动量增加量为
+\begin{equation}
+  \int_x^{x+\Delta x} \rho \left[ 
+    \frac{\partial u(x,t+\Delta t)}{\partial t} 
+    - \frac{\partial u(x,t)}{\partial t} \right] dx.
+  \tag{1.9}
+\end{equation}
+由于在 $(t, t+\Delta t)$ 时间段内作用于该弦段的冲量应等于动量的增加，故
+\[
+\int_t^{t+\Delta t} 
+T \left[ \frac{\partial u(x+\Delta x,t)}{\partial x} 
+       - \frac{\partial u(x,t)}{\partial x} \right] dt
+= \int_x^{x+\Delta x} 
+\rho \left[ \frac{\partial u(x,t+\Delta t)}{\partial t} 
+          - \frac{\partial u(x,t)}{\partial t} \right] dx,
+\]
+
+从而
+\begin{equation}
+\int_t^{t+\Delta t} \int_x^{x+\Delta x} 
+\left[ T \frac{\partial^2 u(x,t)}{\partial x^2} 
+     - \rho \frac{\partial^2 u(x,t)}{\partial t^2} \right] dx \, dt = 0.
+\tag{1.10}
+\end{equation}
+\textcolor{red}{
+由 $\Delta x, \Delta t$ 的任意性可知 (1.10) 式中的被积函数必须为零}，从而得到
+\[
+T \frac{\partial^2 u(x,t)}{\partial x^2} 
+- \rho \frac{\partial^2 u(x,t)}{\partial t^2} = 0.
+\]
+
+记 $\tfrac{T}{\rho} = a^2$，就得到不受外力作用时弦振动所满足的方程
+\begin{equation}
+\frac{\partial^2 u}{\partial t^2} 
+- a^2 \frac{\partial^2 u}{\partial x^2} = 0.
+\tag{1.11}
+\end{equation}
+\end{proof}
+\textcolor{red}{$\rho$dx就是质量}
+\begin{theorem}[胡克定律（Hooke's Law）]
+
+\textbf{1. 弹簧形式（一维最常见形式）}
+\[
+F = -k x
+\]
+\begin{itemize}
+  \item $F$：回复力（方向与位移相反）；
+  \item $k$：弹簧劲度系数（stiffness constant），反映弹簧的“硬度”；
+  \item $x$：形变量（伸长或压缩的位移）。
+\end{itemize}
+
+\textbf{2. 材料力学形式}
+\[
+\sigma = E \, \varepsilon
+\]
+\begin{itemize}
+  \item $\sigma$：应力（单位面积上的力）；
+  \item $\varepsilon$：应变，相对伸长量
+    \[
+    \varepsilon = \frac{\Delta L}{L};
+    \]
+  \item $E$：杨氏模量（Young’s modulus），是材料常数。
+\end{itemize}
+
+\textbf{3. 应变的微分形式}
+
+设杆上某点的位移为 $u(x)$，则相对伸长量为
+\[
+\varepsilon = \frac{\Delta L}{\Delta x}
+= \frac{u(x+\Delta x) - u(x)}{\Delta x}.
+\]
+
+取极限 $\Delta x \to 0$，得局部应变
+\[
+\varepsilon(x) = \frac{\partial u}{\partial x}.
+\]
+
+\end{theorem}
+\begin{proposition}[张力分析]
+一维振动中，张力的来源与作用方式可分为两类典型模型：
+
+\begin{enumerate}[label=\Alph*.]
+  \item \textbf{弦的横向振动（恒张力模型）}  
+
+  弦在安装时两端被拉紧，形成一个基准拉力 $T_0$。小振动时近似认为张力大小恒为 $T_0$，仅方向随弦的切线变化。
+
+  取一小段弦 $[x,x+\Delta x]$，其两端张力大小相同为 $T_0$，但方向分别与切线夹角 $\theta(x)$、$\theta(x+\Delta x)$ 一致。竖直方向上的合力为
+  \[
+  T_0\sin\theta(x+\Delta x)-T_0\sin\theta(x)
+  \;\approx\;T_0\,\frac{\partial}{\partial x}\!\big(\sin\theta\big)\,\Delta x.
+  \]
+  小斜率近似下 $\theta\approx u_x$ 且 $\sin\theta\approx \theta$，于是
+  \[
+  F_y \approx T_0\,u_{xx}\,\Delta x.
+  \]
+  应用牛顿第二定律，质量 $\mu\Delta x$，加速度 $u_{tt}$，有
+  \[
+  \mu\,\Delta x\,u_{tt} = T_0\,u_{xx}\,\Delta x,
+  \]
+  消去 $\Delta x$ 得
+  \[
+  \mu\,u_{tt}=T_0\,u_{xx}.
+  \]
+
+  因此，横向振动中竖直方向回复力的机制是：两端张力方向不同 $\Rightarrow$ 竖直分量不抵消 $\Rightarrow$ 形成回复力。本质上来源于预拉伸恒张力与小斜率几何近似。
+
+  \item \textbf{杆的纵向振动（胡克定律模型）}  
+
+  这里的张力并非预拉紧的常数，而是材料本身弹性产生。应变
+  \[
+  \varepsilon = u_x, \qquad \sigma = E\varepsilon = E u_x,
+  \]
+  张力（轴力）为
+  \[
+  N = \sigma A = EA\,u_x.
+  \]
+  两端轴力差即净力，故平衡方程为
+  \[
+  \rho A\,u_{tt} = (EA\,u_x)_x.
+  \]
+  当 $E,\rho$ 为常数时，化为
+  \[
+  \rho\,u_{tt}=E\,u_{xx}.
+  \]
+\end{enumerate}
+\end{proposition}
+\subsection{ 定解条件}
+
+\begin{definition}[经典解]
+上面所导出的弦振动方程 (1.14) 包含未知函数 $u(x,t)$ 和它的关于自变量的偏导数，所以是 \textbf{偏微分方程}。对于一个偏微分方程来说，如果有一个函数 $u(x,t)$ 具有方程中所需要的各阶连续偏导数，且将它代入方程时能使方程成为恒等式，就称这个函数为该方程的 \textbf{解}（或 \textbf{经典解}）。
+
+列出偏微分方程以后，目的就是要求得该偏微分方程的解或研究解的性质。例如，为了了解弦的振动情况，就应该设法求出相应的弦振动方程的解。
+\end{definition}
+
+我们看到，弦振动方程 (1.14) 描述了弦作微小横振动时位移函数 $u(x,t)$ 所应满足的一般规律，但仅仅利用它还不能完全确定所考察弦的运动状况。这是因为弦的运动还与其初始状态以及边界所处的状况有关，因此还得给出一些其他条件才能完全确定弦的运动。
+
+在上述弦振动问题中，弦的两端被固定在 $x=0$ 及 $x=l$ 两点，因此有
+\[
+u(0,t) = 0, \qquad u(l,t) = 0, \tag{1.17}
+\]
+\begin{dxtips}
+    因为两端都固定了所以两端的点不论什么时刻都是y方向位移都是零。
+\end{dxtips}
+称为 \textbf{边界条件}。
+
+此外，设弦在初始时刻 $t=0$ 时的位置和速度为
+\[
+u(x,0) = \varphi(x), \qquad \frac{\partial u(x,0)}{\partial t} = \psi(x), \qquad (0 \leq x \leq l), \tag{1.18}
+\]
+称为 \textbf{初始条件}（又称初值条件）。
+\begin{dxtips}
+    初始条件描述的是弦在 $t=0$ 这一瞬间的“起始状态”：$\varphi(x)$ 给出弦当时的形状（各点的位置偏移），
+    而 $\psi(x)$ 给出弦当时的运动趋势（各点的速度分布）。
+    PDE 的解从这两条“起跑线”开始演化。
+\end{dxtips}
+边界条件与初始条件总称为 \textbf{定解条件}。把弦振动方程 (1.14) 和定解条件 (1.17)、(1.18) 结合起来，就得到如下的定解问题：
+\begin{equation}
+\left\{
+\begin{aligned}
+  &\frac{\partial^2 u}{\partial t^2} - a^2 \frac{\partial^2 u}{\partial x^2} = f(x,t),
+  && (t > 0,\; 0 < x < l),  \\
+  &t = 0: \quad u = \varphi(x), \quad \frac{\partial u}{\partial t} = \psi(x),
+  && (0 < x < l),  \\
+  &x = 0: \quad u = 0,
+  && (t > 0),  \\
+  &x = l: \quad u = 0,
+  && (t > 0). 
+\end{aligned}
+\right.
+\end{equation}
+\begin{definition}[第一类边界条件]
+一般称形如 (1.17) 的边界条件为 \textbf{第一类边界条件}（又称
+\textbf{狄利克雷 (Dirichlet) 边界条件}）。
+对于弦振动方程的边界条件通常还可以有以下两种：
+\end{definition}
+\begin{definition}[第二类边界条件]
+若弦的一端（例如 $x=0$）处于自由状态，即可以在垂直于 $x$ 轴的直线上自由滑动，
+未受到垂直方向外力。在边界右端的张力的垂直方向分量是 $T \dfrac{\partial u}{\partial x}$，
+由此得出在 $x=0$ 处应成立
+\[
+  \left.\frac{\partial u}{\partial x}\right|_{x=0} = 0.
+\]
+
+更一般地，也可以考虑更普遍的边界条件
+\[
+  \left.\frac{\partial u}{\partial x}\right|_{x=0} = \mu(t),
+\]
+其中 $\mu(t)$ 是 $t$ 的已知函数。
+
+这种边界条件称为 \textbf{第二类边界条件}（又称 \textbf{诺伊曼 (Neumann) 边界条件}）。
+\end{definition}
+\href{https://www.bilibili.com/video/BV1sEpCzzEWr?vd_source=aa3cbf11c6c44a57861db6554a266722}{三种边界条件的直观感受 - Bilibili 视频}
+\begin{dxtips}
+    对于自由端，由于端点在竖直方向上不受外力作用，因此端点处的竖直方向合力必须为零。弦的张力大小记为 $T$，为常数。在端点处，张力在竖直方向的分力可近似写作
+\[
+F_y = T \sin \theta \;\approx\; T \frac{\partial u}{\partial x}.
+\]
+因为 $T$ 为定值，且自由端竖直方向合力为零，所以必须有
+\[
+\frac{\partial u}{\partial x}\Big|_{x=0} = 0,
+\qquad
+\frac{\partial u}{\partial x}\Big|_{x=L} = 0.
+\]
+\end{dxtips}
+\begin{definition}[第三类边界条件]
+在应用中还会遇到另一种情形：将弦的一端固定在弹性支承上，也就是说此时
+支承的伸缩符合胡克定律。如果支承原来的位置为 $u=0$，则 $u$ 在端点的值表示支承在该点的伸长。
+例如在 $x=l$ 的一端，由胡克定律知弦对支承的拉力为 $ku$（方向与 $u$ 的符号一致），
+而据上一小节的分析，弦所受支承拉力的垂直分量为 $T\dfrac{\partial u}{\partial x}$（方向与 $\dfrac{\partial u}{\partial x}$ 的符号相反）。
+这两个力绝对值相等，符号相反，故有
+\[
+  -T \left.\frac{\partial u}{\partial x}\right|_{x=l} = k \left.u\right|_{x=l},
+\]
+其中 $k$ 为弹性系数。因此在弹性支承的情形，边界条件归结为
+\[
+  \left.\left(\frac{\partial u}{\partial x} + \sigma u\right)\right|_{x=l} = 0,
+\]
+其中 $\sigma = \tfrac{k}{T}$ 是已知正数。
+
+同理，当 $x=0$ 一端为弹性支承时，边界条件为
+\[
+  \left.\left(-\frac{\partial u}{\partial x} + \sigma u\right)\right|_{x=0} = 0.
+\]
+
+在数学中还可以考虑更普遍的边界条件
+\[
+  \left.\left(\frac{\partial u}{\partial x} + \sigma u\right)\right|_{x=l} = v(t),
+\]
+其中 $v(t)$ 是 $t$ 的已知函数。
+
+这种边界条件称为 \textbf{第三类边界条件}（又称 \textbf{罗宾 (Robin) 边界条件}）。
+\end{definition}
+\href{https://www.bilibili.com/video/BV1rDpvzyEt8?vd_source=aa3cbf11c6c44a57861db6554a266722}{\textbf{罗宾边界条件} 视频链接}
+
+\begin{dxtips}
+   对于一段固定在弹性支撑上的弦，端点的平衡位置取为 $u=0$。当 $u=0$ 时，弹簧不产生伸长或压缩，因此弹力为零；同时弦在该点的张力竖直分量也为零，所以此时竖直方向合力为零。若端点发生位移 $u \neq 0$，则弹簧会产生回复力
+\[
+F_{\text{spring}} = -k u,
+\]
+而弦的张力竖直分量为
+\[
+F_{\text{string}} = -T \frac{\partial u}{\partial x}.
+\]
+由于端点在竖直方向不能凭空受力，必须满足力的平衡条件
+\[
+F_{\text{spring}} + F_{\text{string}} = 0,
+\]
+从而得到边界条件
+\[
+\frac{\partial u}{\partial x} + \frac{k}{T} u = 0.
+\]
+\end{dxtips}
+\begin{proposition}[常见边界条件及模态函数]
+
+\textbf{1. 固定端（Dirichlet 边界条件）}  
+数学形式：
+\[
+u(0,t)=0,\quad u(L,t)=0
+\]
+物理含义：端点固定不动。  
+模态函数：
+\[
+\sin\!\left(\tfrac{n\pi x}{L}\right),\quad n=1,2,\dots
+\]
+
+\textbf{2. 自由端（Neumann 边界条件）}  
+数学形式：
+\[
+u_x(0,t)=0,\quad u_x(L,t)=0
+\]
+物理含义：端点自由，无竖直力。  
+模态函数：
+\[
+\cos\!\left(\tfrac{n\pi x}{L}\right),\quad n=0,1,2,\dots
+\]
+
+\textbf{3. 弹性支撑（Robin 边界条件）}  
+数学形式：
+\[
+u_x(0,t)+\tfrac{k}{T}u(0,t)=0,\quad
+u_x(L,t)+\tfrac{k}{T}u(L,t)=0
+\]
+物理含义：端点连接弹簧支承，张力与弹力平衡。  
+模态函数：
+\[
+\sin(\lambda_n x)\;\;\text{或}\;\;\cos(\lambda_n x), 
+\]
+其中 $\lambda_n$ 由特征方程
+\[
+\lambda_n \tan(\lambda_n L)=\tfrac{k}{T}
+\]
+决定。
+
+\end{proposition}
+\begin{dxtips}
+    想象一根线上下晃动，两端都固定就是sin方程两端都不固定就是cos方程。固定一段就是
+\end{dxtips}
+
+\subsection{作业}
+\begin{exercise}
+1. 细杆（或弹簧）受某种外界原因而产生纵振动，以 $u(x,t)$ 表示静止时在 $x$ 点处的点在时刻 $t$ 离开原来位置的偏移。假设振动过程中所产生的张力服从胡克定律，试证明 $u(x,t)$ 满足方程
+\[
+\frac{\partial}{\partial t}\left(\rho(x)\frac{\partial u}{\partial t}\right)
+= \frac{\partial}{\partial x}\left(E\frac{\partial u}{\partial x}\right),
+\]
+其中 $\rho$ 为杆的密度，$E$ 为杨氏模量。
+\end{exercise}
+\begin{exercise}
+2. 在杆纵振动时，假设  
+(1) 端点固定；  
+(2) 端点自由；  
+(3) 端点固定在弹性支承上。  
+试分别导出这三种情况下所对应的边界条件。
+\end{exercise}
+
+\begin{exercise}
+3. 试证：圆锥形杆轴的纵振动方程为
+\[
+E \frac{\partial}{\partial x}\left[\left(1-\frac{x}{h}\right)^2 \frac{\partial u}{\partial x}\right]
+= \rho \left(1-\frac{x}{h}\right)^2 \frac{\partial^2 u}{\partial t^2},
+\]
+其中 $h$ 为圆锥的高（见图 1.3）。
+\end{exercise}
+
+\begin{exercise}
+4. 长度为 $l$ 的均匀弹性杆被铅直地放置在自由下落的电梯内，其上端刚性地固定在电梯的天花板上，下端是自由端。设电梯达到速度 $v_0$ 时突然停止，试写出杆的微小纵振动所满足的初边值问题。
+\end{exercise}
+
+\begin{exercise}
+5. 在无阻尼的介质中，一均匀弹性杆的一端刚性地固定着，另一端受到一个与速度成正比的阻力的作用，试写出杆的微小纵振动所满足的初边值问题。
+\end{exercise}
+\begin{exercise}
+绝对柔软而均匀的弦线有一端固定，在它本身重力的作用下，此线处于铅垂的平衡位置，试导出此线的微小横振动方程。
+\end{exercise}
+\begin{exercise}(7)
+一柔软均匀的细弦，一端固定，另一端是弹性支承。设该弦在阻力与速度成正比的介质中作微小的横振动，试写出弦的位移所满足的定解问题。
+\end{exercise}
+\begin{exercise}
+若 $F(\xi),\,G(\xi)$ 均为其变元的二次连续可导函数，验证
+\[
+F(x-at), \qquad G(x+at)
+\]
+均满足弦振动方程 (1.11)。
+\end{exercise}
+
+\begin{exercise}
+验证在锥
+\[
+t^{2}-x^{2}-y^{2} > 0
+\]
+中，函数
+\[
+u(x,y,t) = \frac{1}{\sqrt{t^{2}-x^{2}-y^{2}}}
+\]
+满足波动方程
+\[
+\frac{\partial^{2}u}{\partial t^{2}}
+= \frac{\partial^{2}u}{\partial x^{2}}
++ \frac{\partial^{2}u}{\partial y^{2}}.
+\]
+\end{exercise}
+\section{达朗贝尔公式-波的传播}
+
+\begin{definition}[达朗贝尔公式]
+  
+  \begin{equation}
+u(x,t) = \frac{\varphi(x - at) + \varphi(x + at)}{2}
++ \frac{1}{2a} \int_{x - at}^{x + at} \psi(\alpha)\, \mathrm{d}\alpha.
+\tag{2.19}
+\end{equation}
+这个公式称为 \textbf{达朗贝尔公式}.
+第一项来自初位移的左右传播，第二项把初速度在特征扇形内的贡献累积起来
+\end{definition}
+解决的是以下初值问题
+\begin{equation}
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} - a^2 \dfrac{\partial^2 u}{\partial x^2} = 0, 
+& t > 0,\ -\infty < x < \infty, \\[1.2ex]
+t = 0:\ u(x,0) = \varphi(x),\quad \dfrac{\partial u}{\partial t}(x,0) = \psi(x), 
+& -\infty < x < \infty.
+\end{cases}
+\tag{2.7--2.8}
+\end{equation}
+\begin{remark}[物理解释]
+这是标准的一维波动方程。
+\begin{itemize}
+  \item 没有外力项，所以它描述的是 \textcolor{red}{自由振动的弦（或波动介质）}。
+  \item $a$ 是 \textcolor{red}{波速}。
+  \item $u(x,0) = \varphi(x)$：给定了弦在初始时刻 $t=0$ 的 \textcolor{red}{形状（初位置）}。  
+  例如：把弦拉成一个弧形然后放开。
+  \item $\dfrac{\partial u}{\partial t}(x,0) = \psi(x)$：给定了弦在初始时刻的 \textcolor{red}{速度分布（初速度）}。  
+  例如：如果 $\psi(x)=0$，表示弦一开始是静止的；如果 $\psi(x)\neq 0$，表示在某些位置上弦一开始就被甩动。
+\end{itemize}
+\end{remark}
+\begin{center}[h]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{线性代数} & \textbf{偏微分方程 (PDE)} \\
+\hline
+矩阵 $A$ 作用在向量 $v$ 上： $Av$ & 微分算子作用在解 $u(x,t)$ 上： $u_{tt} - a^2 u_{xx}$ \\
+\hline
+一般向量被扭曲（旋转、缩放、压缩） & 一般方向上，解的演化复杂且相互耦合 \\
+\hline
+\textbf{特征向量}：$Av = \lambda v$，方向保持不变 & \textbf{特征线}：$x - at = \xi$ 或 $x + at = \eta$，解的传播方向保持不变 \\
+\hline
+揭示矩阵的“本征方向” & 揭示 PDE 的“本征传播方向” \\
+\hline
+矩阵在特征向量方向上作用最简单：仅缩放 & PDE 在特征线上最简单：化简为 $U_{\xi \eta} = 0$ \\
+\hline
+本质：\textbf{寻找系统的固有方向} & 本质：\textbf{寻找方程的固有传播轨迹} \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{proposition}[为何引入特征变量 $\xi=x-at,\ \eta=x+at$]
+考虑一维波动方程
+\[
+u_{tt} - a^2 u_{xx} = 0, \qquad (t>0,\ -\infty<x<\infty).
+\]
+
+\textbf{1. 波动方程的本质.}  
+该方程是一个 \textbf{双曲型 PDE}。  
+数学上，双曲型方程的 \textbf{特征曲线} 决定了解的传播方向；  
+物理上，它描述扰动以有限速度 $a$ 向两边传播。
+
+\medskip
+
+\textbf{2. \textcolor{red}{从算子分解的角度}.}  
+注意到
+\[
+\frac{\partial^2}{\partial t^2} - a^2 \frac{\partial^2}{\partial x^2}
+= \Bigl(\frac{\partial}{\partial t} - a \frac{\partial}{\partial x}\Bigr)
+  \Bigl(\frac{\partial}{\partial t} + a \frac{\partial}{\partial x}\Bigr).
+\]
+这意味着波动方程实质上是两个一阶“运输方程”的乘积：
+\[
+\Bigl(\tfrac{\partial}{\partial t} - a\tfrac{\partial}{\partial x}\Bigr) 
+\quad \text{对应右行波 (速度 $a$)}, 
+\qquad
+\Bigl(\tfrac{\partial}{\partial t} + a\tfrac{\partial}{\partial x}\Bigr) 
+\quad \text{对应左行波 (速度 $-a$)}.
+\]
+因此解天然应是“右行波 + 左行波”的叠加。
+
+\medskip
+
+\textbf{3. 特征线的本质.}  
+特征线就是解不变的方向：
+\[
+x - at = \xi = \text{常数}, 
+\qquad 
+x + at = \eta = \text{常数}.
+\]
+换句话说：
+- 在 $\xi=\text{常数}$ 的直线上，解随时间以速度 $a$ 向右传播；
+- 在 $\eta=\text{常数}$ 的直线上，解随时间以速度 $-a$ 向左传播。
+
+\medskip
+
+\textbf{4. PDE 化简.}  
+做变量替换
+\[
+u(x,t) = U(\xi,\eta), 
+\qquad 
+\xi = x - at,\quad \eta = x + at,
+\]
+则原方程化为
+\[
+u_{tt} - a^2 u_{xx} = 0
+\quad \Longrightarrow \quad
+\frac{\partial^2 U}{\partial \xi \,\partial \eta} = 0.
+\]
+因此通解为
+\[
+U(\xi,\eta) = F(\xi) + G(\eta).
+\]
+
+\medskip
+
+\textbf
+\medskip
+
+\textbf{总结.}  
+\begin{itemize}
+  \item 算子分解：波动算子能拆成两个一阶算子 $\to$ 左右行波；
+  \item 特征方向：$\xi,\eta$ 正是这两个方向的特征坐标；
+  \item 对角化思想：换坐标系，把复杂 PDE 化为最简单的 $U_{\xi\eta}=0$；
+  \item 物理图像：解就是“形状不变、有限速度传播的波”，左右叠加。
+\end{itemize}
+
+这正是达朗贝尔公式的理论来源。
+\end{proposition}
+首先，我们考察自由振动情形下的初值问题 (I)，它可以通过自变量变换的方法求解。
+  引入新自变量
+\begin{equation}
+\xi = x - at, \qquad \eta = x + at.
+\tag{2.11}
+\end{equation}  
+
+
+
+利用复合函数求导数的法则，得到
+\[
+\frac{\partial u}{\partial x}
+= \frac{\partial u}{\partial \xi}\frac{\partial \xi}{\partial x}
++ \frac{\partial u}{\partial \eta}\frac{\partial \eta}{\partial x}
+= \frac{\partial u}{\partial \xi} + \frac{\partial u}{\partial \eta},
+\]
+\[
+\frac{\partial^2 u}{\partial x^2}
+= \frac{\partial}{\partial \xi}\!\left(\frac{\partial u}{\partial x}\right)\frac{\partial \xi}{\partial x}
++ \frac{\partial}{\partial \eta}\!\left(\frac{\partial u}{\partial x}\right)\frac{\partial \eta}{\partial x}
+= \frac{\partial^2 u}{\partial \xi^2}
++ 2\frac{\partial^2 u}{\partial \xi \partial \eta}
++ \frac{\partial^2 u}{\partial \eta^2}.
+\]
+
+类似地，
+\[
+\frac{\partial u}{\partial t}
+= a\!\left(\frac{\partial u}{\partial \eta} - \frac{\partial u}{\partial \xi}\right), \qquad
+\frac{\partial^2 u}{\partial t^2}
+= a^2\!\left(\frac{\partial^2 u}{\partial \xi^2}
+- 2\frac{\partial^2 u}{\partial \xi \partial \eta}
++ \frac{\partial^2 u}{\partial \eta^2}\right).
+\]
+
+从而
+\[
+\frac{\partial^2 u}{\partial t^2}
+- a^2 \frac{\partial^2 u}{\partial x^2}
+= -4a^2 \frac{\partial^2 u}{\partial \xi \partial \eta}.
+\]
+由于 $a^2 > 0$，因此，采用 (2.11) 式所示的新自变量，方程 (2.7) 就化为
+\begin{equation}
+    \frac{\partial^2 u}{\partial \xi \, \partial \eta} = 0.
+    \tag{2.12}
+\end{equation}
+
+
+\begin{proposition}[经过变量替换后的公式]
+    由方程 (2.12)，可得通解
+\begin{equation}
+    u(\xi,\eta) = F(\xi) + G(\eta),
+    \tag{2.13}
+\end{equation}
+其中 $F,G$ 为任意可微函数。回到原变量，得
+\begin{equation}
+    u(x,t) = F(x-at) + G(x+at).
+    \tag{2.14}
+\end{equation}
+
+由初始条件 (2.8)，可得
+\begin{align}
+    F(x) + G(x) &= \varphi(x), \tag{2.15}\\
+    a[-F'(x)+G'(x)] &= \psi(x). \tag{2.16}
+\end{align}
+
+对 (2.16) 积分：
+\begin{equation}
+    a[-F(x)+G(x)] + C = \int_{x_0}^x \psi(\alpha)\, d\alpha,
+    \tag{2.17}
+\end{equation}
+其中 $C$ 为常数。
+
+结合 (2.15) 与 (2.17)，解得
+\begin{equation}
+\begin{cases}
+    F(x) = \dfrac{1}{2}\varphi(x) - \dfrac{1}{2a}\displaystyle\int_{x_0}^x \psi(\alpha)\, d\alpha + \dfrac{C}{2a}, \\[1.2em]
+    G(x) = \dfrac{1}{2}\varphi(x) + \dfrac{1}{2a}\displaystyle\int_{x_0}^x \psi(\alpha)\, d\alpha - \dfrac{C}{2a}.
+\end{cases}
+\tag{2.18}
+\end{equation}
+ \begin{equation}
+u(x,t) = \frac{\varphi(x - at) + \varphi(x + at)}{2}
++ \frac{1}{2a} \int_{x - at}^{x + at} \psi(\alpha)\, \mathrm{d}\alpha.
+\tag{2.19}
+\end{equation}
+
+\end{proposition}
+
+\subsection*{依赖区间、决定区域与物理意义}
+
+\textcolor{blue}{1. 依赖区间}\\ 
+对于解 $u(x,t)$，它只依赖于初始时刻 $t=0$ 上区间 $[x-at,\;x+at]$ 的初值 $\varphi(x),\psi(x)$。  
+换句话说，要确定 $(x,t)$ 处的解，只需要知道初始线段 $[x-at,\;x+at]$ 上的数据，其它地方的信息完全无关。  
+达朗贝尔公式中的积分项
+\[
+\frac{1}{2a}\int_{x-at}^{x+at}\psi(\alpha)\,d\alpha
+\]
+正体现了这一点：$(x,t)$ 的解取决于初速度在该区间上的“积分效应”。
+
+\textcolor{blue}{2. 决定区域}\\
+若在初始轴 $t=0$ 上只给定有限区间 $[x_1,x_2]$ 的数据，则该区间所决定的解仅在由两条特征线
+\[
+x = x_1 + at, 
+\quad 
+x = x_2 - at
+\]
+与 $t=0$ 轴围成的三角区域内起作用。  
+在此三角区域外，解与 $[x_1,x_2]$ 上的初始条件无关。  
+这说明扰动不会瞬时传遍全空间，而是以有限速度 $a$ 沿特征线逐步传播。
+
+\textcolor{blue}{3. 物理意义} 
+\begin{itemize}
+  \item 初位形 $\varphi(x)$ 的影响随时间向两侧传播。
+  \item 初速度 $\psi(x)$ 的贡献通过积分项反映出来，但同样仅在 $[x-at,\;x+at]$ 内起作用。
+  \item 超出该区间的初始条件，对 $(x,t)$ 完全没有影响。
+\end{itemize}
+
+综上，这一性质被称为 \textbf{有限传播速度原理}，它是双曲型 PDE 的核心特征。
+
+\begin{figure}[ht]
+\centering
+
+%==================== 左图：给定区间 [x1,x2] 的影响区域 ====================
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.2]
+  % 坐标轴
+  \draw[->] (-0.3,0) -- (4.6,0) node[below]{$x$};
+  \draw[->] (0,-0.3) -- (0,3) node[left]{$t$};
+  \node[below left] at (0,0) {$O$};
+
+  % 区间端点
+  \coordinate (X1) at (1,0);
+  \coordinate (X2) at (3,0);
+  \node[below] at (X1) {$x_1$};
+  \node[below] at (X2) {$x_2$};
+
+  % 先定义两条特征线的“上端点”（方便填充）
+  \coordinate (A) at (0.2,2.0); % 对应 x = x1 - a t
+  \coordinate (B) at (3.8,2.0); % 对应 x = x2 + a t
+
+  % 画特征线
+  \draw[thick] (X1) -- (A) node[pos=0.65, left] {$x=x_1-at$};
+  \draw[thick] (X2) -- (B) node[pos=0.65, right] {$x=x_2+at$};
+
+  % 正确的填充顺序：X1 -> X2 -> B -> A -> 回到 X1
+  \path[fill=gray!30] (X1) -- (X2) -- (B) -- (A) -- cycle;
+
+  % 标签
+  \node at (2.0,1.2) {影响区域};
+\end{tikzpicture}
+\caption{给定区间 $[x_1,x_2]$ 的影响区域}
+\end{minipage}
+\hfill
+%==================== 右图：给定点 x0 的影响区域 ====================
+\begin{minipage}{0.48\textwidth}
+\centering
+\begin{tikzpicture}[>=stealth, scale=1.2]
+  % 坐标轴
+  \draw[->] (-0.3,0) -- (4.6,0) node[below]{$x$};
+  \draw[->] (0,-0.3) -- (0,3) node[left]{$t$};
+  \node[below left] at (0,0) {$O$};
+
+  % 点 x0
+  \coordinate (X0) at (2.2,0);
+  \node[below] at (X0) {$x_0$};
+
+  % 两条特征线的上端点（V 形）
+  \coordinate (C) at (0.6,2.0); % x = x0 - a t
+  \coordinate (D) at (3.8,2.0); % x = x0 + a t
+
+  % 画特征线
+  \draw[thick] (X0) -- (C) node[pos=0.65, left]  {$x=x_0-at$};
+  \draw[thick] (X0) -- (D) node[pos=0.65, right] {$x=x_0+at$};
+
+  % 正确的填充顺序：X0 -> C -> D -> 回到 X0（向上的三角形）
+  \path[fill=gray!30] (X0) -- (C) -- (D) -- cycle;
+
+  % 标签
+  \node at (2.2,1.2) {影响区域};
+\end{tikzpicture}
+\caption{给定点 $x_0$ 的影响区域}
+\end{minipage}
+
+\end{figure}
+在上面的讨论中，我们看到在 $(x,t)$ 平面上斜率为 $\pm \tfrac{1}{a}$ 的直线 
+\[
+x = x_0 \pm at
+\]
+对波动方程的研究起着重要的作用，它们称为波动方程的 \textbf{特征线}。
+
+我们看到，扰动实际上沿特征线传播。扰动以 \textbf{有限速度传播}，这是弦振动方程的一个重要特点。
+
+如图~1.1 与 图~1.2 所示，特征线围成的区域就是解的影响范围。
+
+\begin{theorem}[相容条件]
+考虑波动方程的初始条件
+\[
+u(x,0)=\varphi(x), \qquad u_t(x,0)=\psi(x),
+\]
+若要求解 $u(x,t)$ 在 $(x,t)=(0,0)$ 附近具有二阶连续偏导数，则
+$\varphi(x),\psi(x)$ 必须满足角点相容条件：
+\[
+\varphi(0)=0,\qquad \varphi''(0)=0,\qquad \psi(0)=0.
+\]
+\end{theorem}
+
+\begin{remark}
+这些条件保证了初始条件与边界条件在角点处彼此一致，
+从而使解在 $(0,0)$ 附近具有足够的光滑性。
+\end{remark}
+\section{求解非齐次}
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} - a^2 \dfrac{\partial^2 u}{\partial x^2} = f(x,t), 
+& t>0,\; -\infty<x<\infty, \tag{2.9}\\[1.2em]
+u(x,0)=0,\quad \dfrac{\partial u}{\partial t}(x,0)=0, 
+& -\infty<x<\infty, 
+\end{cases}
+\]
+
+非齐次波动方程。
+
+\medskip
+
+通解 = 齐次解 + 特解。  
+零初始条件 $\;\Rightarrow\;$ 齐次解为 $0$。  
+特解由达朗贝尔积分表示：
+\[
+u(x,t) = \frac{1}{2a}\int_0^t \int_{x-a(t-\tau)}^{\,x+a(t-\tau)} f(\xi,\tau)\, d\xi\, d\tau.
+\]
+\begin{theorem}[齐次化原理（Duhamel 原理）]
+若 $W(x,t;\tau)$ 是初值问题
+\[
+\begin{cases}
+u_{tt} - a^2 u_{xx} = f(x,\tau), & t > 0, \, -\infty < x < \infty, \\
+u(x,0) = 0, \quad u_t(x,0) = 0, & -\infty < x < \infty,
+\end{cases}
+\]
+的解（其中 $\tau$ 为参数也就是$\Delta t_j$的连续化形式），则
+\begin{equation}
+    u(x,t) = \int_0^t W(x,t;\tau)\, d\tau
+    \tag{2.35}
+\end{equation}
+就是初值问题 (II) 的解。\\
+ Duhamel 原理 的思想基础：把整个非齐次问题拆成无数个“小的齐次问题”，每个都从 $t_j$ 开始。
+\end{theorem}
+\begin{proposition}[把$t_0$时间作为启始改成$t_j$作为启始时间]
+    从 §1 中导出弦振动方程的过程中可知，自由项 $f(x,t)$ 表示时刻 $t$ 时在位置 $x$ 处单位质量所受的外力，而 $\dfrac{\partial u}{\partial t}$ 表示速度。  
+把时段 $[0,t]$ 分成若干小的时段 $\Delta t_j = t_{j+1} - t_j \ (j=1,2,\ldots,l)$，在每个小的时段 $\Delta t_j$ 中，$f(x,t)$ 可以看作与 $t$ 无关，从而以 $f(x,t_j)$ 来表示。  
+
+由于
+\[a(x,t_j)=
+f(x,t_j) = \frac{F(x,t_j)}{\rho},
+\]
+而 $F(x,t_j)$ 表示外力，所以在时段 $\Delta t_j$ 中自由项所产生的速度变量为 $f(x,t_j)\Delta t_j$。  
+把这个速度变量看作是在时刻 $t=t_j$ 时的初始速度，它所产生的振动可以由下面的齐次方程带非齐次初始条件的初值问题来描述：
+\[
+\begin{cases}
+\dfrac{\partial^2 \widetilde{W}}{\partial t^2} - a^2 \dfrac{\partial^2 \widetilde{W}}{\partial x^2} = 0, 
+& t > t_j,\ -\infty < x < \infty, \\[1.2em]
+t = t_j : \ \widetilde{W}=0,\quad \dfrac{\partial \widetilde{W}}{\partial t} = f(x,t_j)\Delta t_j, 
+& -\infty < x < \infty.
+\end{cases}
+\tag{2.32}
+\]
+\end{proposition}
+
+\begin{definition}[辅助解]
+$
+\widetilde{W}(x,t)
+$
+其中上标的 $\sim$（tilde）表示这是一个
+\textbf{辅助解}：
+它不是最终解，而是指在时刻 $t=t_j$ 被激活的那一份局部波动解。
+\end{definition}
+\href{https://www.bilibili.com/video/BV1ZTWAzmEUX?vd_source=aa3cbf11c6c44a57861db6554a266722}{【非齐次波动方程的解】}动画演示
+\begin{dxtips}[微小脉冲叠加原理]
+
+\begin{enumerate}
+  \item \textbf{时间切片}  
+  把外力 $f(x,t)$ 看作是由很多个极小时间片 $\Delta t_j$ 上的“脉冲”组成。
+
+  \item \textbf{单个脉冲的作用}  
+  在 $t=t_j$ 的那一刻，这个脉冲相当于给弦施加了一个瞬间的速度分布  
+  $f(x,t_j)\Delta t_j$。  
+  于是会在 $t>t_j$ 时激发出一个小波动解 $\widetilde{W}_j(x,t)$。
+
+  \item \textbf{波的分解}  
+  每个 $\widetilde{W}_j$ 又会按照波动方程的本质，分解成左行波和右行波，分别以速度 $a$ 向两边传播。
+
+  \item \textbf{叠加原理}  
+  由于波动方程是线性的，所有这些小脉冲解 $\widetilde{W}_j$ 可以线性叠加。  
+  把所有时刻的贡献加起来，就得到了最终的非齐次解：
+  \[
+  u(x,t) = \sum_j \widetilde{W}_j(x,t)
+  \quad \Longrightarrow \quad
+  u(x,t) = \frac{1}{2a}\int_0^t \int_{x-a(t-\tau)}^{\,x+a(t-\tau)} f(\xi,\tau)\, d\xi\, d\tau.
+  \]
+\end{enumerate}
+
+\medskip
+
+\[
+\text{总结：}\quad
+\text{非齐次波动解 = 每个时刻的“瞬间小扰动”所激起的左右行波的线性叠加。}
+\]
+\end{dxtips}
+\begin{proof}
+    其解记为 $W(x,t;\,t_j,\Delta t_j)$。按照叠加原理，自由项 $f(x,t)$ 所产生的总效果可以看成是无数个这种瞬时作用所产生的效果的叠加。这样，定解问题 (II) 的解 $u(x,t)$ 应表示成
+\begin{equation}
+    u(x,t) = \lim_{\Delta t_j \to 0} \sum_{j=1}^l \widetilde{W}(x,t;\,t_j,\Delta t_j).
+    \tag{2.33}
+\end{equation}
+
+由于 (2.32) 式为线性方程，所以 $\widetilde{W}$ 与 $\Delta t_j$ 成正比，故如果记 $W(x,t;\tau)$ 为齐次方程的定解问题。\textcolor{blue}{；后面是参数}
+\begin{equation}
+\begin{cases}
+    \dfrac{\partial^2 W}{\partial t^2} - a^2 \dfrac{\partial^2 W}{\partial x^2} = 0, 
+        & (t>\tau,\,-\infty < x < \infty), \\[1.2em]
+    t=\tau:\; W=0,\quad \dfrac{\partial W}{\partial t} = f(x,\tau),
+        & (-\infty < x < \infty),
+\end{cases}
+\tag{2.34}
+\end{equation}
+的解，则
+\[
+    \widetilde{W}(x,t;\,t_j,\Delta t_j) = \Delta t_j\, W(x,t;\,t_j).
+\]
+
+于是定解问题 (II) 的解可表示为
+\begin{align*}
+    u(x,t) &= \lim_{\Delta t_j \to 0} \sum_{j=1}^l \widetilde{W}(x,t;\,t_j,\Delta t_j) \\[0.5em]
+           &= \lim_{\Delta t_j \to 0} \sum_{j=1}^l W(x,t;\,t_j)\,\Delta t_j \\[0.5em]
+           &= \int_0^t W(x,t;\,\tau)\, d\tau.
+\end{align*}
+\end{proof}
+\begin{proposition}[变量 $\tau$ 的由来]
+设 $\widetilde{W}(x,t;t_j,\Delta t_j)$ 表示在时刻 $t_j$ 上施加持续时间 $\Delta t_j$ 的一个小脉冲所产生的解。  
+由于波动方程是线性的，有
+\[
+\widetilde{W}(x,t;t_j,\Delta t_j) \;=\; \Delta t_j \, W(x,t;t_j),
+\]
+其中 $W(x,t;t_j)$ 表示单位脉冲（强度为 $1$）在 $t_j$ 激发出的解。
+
+\begin{itemize}
+  \item $t_j$ 是离散的小时间点；
+  \item $\Delta t_j$ 是对应的时间步长；
+  \item 在极限 $\Delta t_j \to 0$ 下，离散点列 $\{t_j\}$ 变为连续变量 $\tau$；
+  \item 因此
+  \[
+  \sum_j W(x,t;t_j)\,\Delta t_j \;\;\longrightarrow\;\; \int_0^t W(x,t;\tau)\,d\tau.
+  \]
+\end{itemize}
+
+这就是积分表达式中变量 $\tau$ 的来源：它是由离散时间点 $t_j$ 在极限下连续化得到的。
+\end{proposition}
+为写出 $W(x,t;\tau)$ 的具体表达式，在初值问题 (2.34) 中作变换 $t' = t - \tau$。相应地，(2.34) 化为
+\[
+\begin{cases}
+\displaystyle \frac{\partial^2 W}{\partial t'^2} - a^2 \frac{\partial^2 W}{\partial x^2} = 0, & t'>0,\ -\infty<x<\infty, \\[1.0ex]
+t'=0: \quad W=0, \quad \frac{\partial W}{\partial t'} = f(x,\tau), & -\infty<x<\infty,
+\end{cases}
+\tag{2.36}
+\]
+的形式。于是利用达朗贝尔公式 (2.19)，由于此处的初位移为 $\varphi(x)=0$，故达朗贝尔公式中的
+$
+\frac{1}{2}\bigl[\varphi(x+a t')+\varphi(x-a t')\bigr]
+$
+项消失，仅剩与初速度有关的积分项，其中
+$
+\psi(x)=f(x,\tau).
+$就得其解为
+\[
+W(x,t;\tau) = \frac{1}{2a} \int_{x-a(t-\tau)}^{\,x+a(t-\tau)} f(\xi,\tau)\, d\xi. \tag{2.37}
+\]
+再代入 (2.35) 式，就得到所考察的初值问题 (II) 的解为
+\[
+u(x,t) = \frac{1}{2a} \int_0^t \int_{x-a(t-\tau)}^{\,x+a(t-\tau)} f(\xi,\tau)\, d\xi d\tau
+= \frac{1}{2a} \iint_G f(\xi,\tau)\, d\xi d\tau. \tag{2.38}
+\]
+\begin{center}
+    \begin{tikzpicture}[>=stealth,scale=1.0]
+  % 坐标轴
+  \draw[->] (0,0) -- (7,0) node[below] {$\xi$};
+  \draw[->] (0,0) -- (0,4) node[left] {$\tau$};
+  \node[below left=-1pt] at (0,0) {$O$};
+
+  % 参数
+  \def\xv{4.0}   % 顶点横坐标 x
+  \def\tv{2.2}   % 顶点纵坐标 t
+  \def\a{1.0}    % 波速 a
+
+  % 底边两端
+  \coordinate (L) at ({\xv-\a*\tv},0);
+  \coordinate (R) at ({\xv+\a*\tv},0);
+  \coordinate (V) at (\xv,\tv);
+
+  % 区域
+  \fill[gray!25] (L) -- (V) -- (R) -- cycle;
+  \draw[line width=1pt] (L) -- (V) -- (R);
+  \draw[gray!60] (L) -- (R);
+
+  % 标注
+  \node[above] at (V) {$(x,t)$};
+  \node at ($(L)!0.5!(R)+(0,1.0)$) {$G$};
+  \path (L) -- node[pos=.55,sloped,above] {$\xi - x = a(\tau - t)$} (V);
+  \path (V) -- node[pos=.55,sloped,above] {$\xi - x = -a(\tau - t)$} (R);
+\end{tikzpicture}
+\end{center}
+\begin{proposition}[图的意义（非齐次一维波动方程）]
+考虑
+\[
+u_{tt}-a^2u_{xx}=f(x,t), \qquad u(x,0)=0,\quad u_t(x,0)=0.
+\]
+其格林函数型解为
+\[
+u(x,t)=\frac{1}{2a}\iint_{G} f(\xi,\tau)\,d\xi\,d\tau,
+\]
+其中积分区域 $G$ 即图中的等腰三角形。坐标轴为：横轴 $\xi$（空间积分变量），纵轴 $\tau$（时间积分变量）。
+三角形的两条斜边由特征线
+\[
+\xi - x = \pm a(\tau - t)
+\]
+给出，它们从顶点 $(x,t)$ 向下延伸至 $\tau=0$ 处的端点 $\xi = x \pm a t$。
+物理上，对观察点 $(x,t)$ 的影响只来自过去时刻 $0\le \tau \le t$ 且满足
+\[
+x-a(t-\tau)\le \xi \le x+a(t-\tau)
+\]
+的源项 $f(\xi,\tau)$；这些“可达”的 $(\xi,\tau)$ 正好构成区域 $G$。
+换言之，$G$ 是由特征线围成的 \emph{影响域}（domain of dependence），
+积分 $\iint_G f$ 给出了外力在该域内对点 $(x,t)$ 的全部
+\end{proposition}
+\begin{proposition}[初边值问题的结构]
+为了唯一确定波动方程的解，必须同时给出偏微分方程本身、初始条件和边界条件。具体如下：
+
+\begin{enumerate}
+  \item \textbf{偏微分方程（PDE 本身）}  
+  \[
+  u_{tt} - a^2 u_{xx} = 0, \quad 0<x<L,\; t>0.
+  \]
+  它描述了解的演化规律，但单独并不能确定解。
+
+  \item \textbf{初始条件（时间方向约束）}  
+  \begin{align*}
+  u(x,0) &= \varphi(x), \quad 0<x<L, \\
+  u_t(x,0) &= \psi(x), \quad 0<x<L.
+  \end{align*}
+  前者给出 $t=0$ 时弦的形状（位移），后者给出 $t=0$ 时弦的速度。  
+  这两个条件共同决定了时间演化的起点。
+
+  \item \textbf{边界条件（空间方向约束）}  
+  常见类型包括：
+  \begin{itemize}
+    \item Dirichlet 边界：$u(0,t)=u(L,t)=0$ （两端固定）；  
+    \item Neumann 边界：$u_x(0,t)=u_x(L,t)=0$ （两端自由）；  
+    \item Robin 边界：$u_x(0,t)-k u_t(0,t)=0$ （端点与外界介质相互作用）。
+  \end{itemize}
+  边界条件规定了解在空间端点的行为。
+
+\end{enumerate}
+
+因此，\textbf{初边值问题 = PDE 本身 + 两个初始条件 + 边界条件}。  
+三者合起来，才能保证解的存在唯一性。
+
+\end{proposition}
+\subsection{分离变量法}
+% 需要的宏包（若模板未加载）
+% \usepackage{amsmath,amsthm}
+% \newtheorem{definition}{定义}[section]
+% \newtheorem{example}{例}[section]
+
+%——— 起始语句（对应你给的截图） ———
+我们首先求方程的可以分离变量的非平凡（即不恒等于零）特解
+\[
+u(x,t)=X(x)T(t),
+\]
+并要求它满足相应的齐次边界条件。
+
+\begin{definition}
+把双变量函数拆成了两个单变量函数，让求导大大简答   
+\noindent\textbf{基本步骤}（简述）
+\begin{enumerate}
+  \item 设 $u=X(x)T(t)$ 并代入 PDE，得到分离常数 $\lambda$；
+  \item 先解空间特征方程，得到特征值 $\{\lambda_n\}$ 与特征函数 $\{X_n\}$；
+  \item 再解时间方程得到 $T_n(t)$；
+  \item 叠加 $u(x,t)=\sum c_n X_n(x)T_n(t)$；
+  \item 由初值/初始速度等条件用正交性求 $c_n$；
+  \item 遇到非齐次边界，先作稳态平移使之齐次；有源项可用特征展开或 Duhamel 原理。
+\end{enumerate}
+\end{definition}
+\begin{tcolorbox}[
+enhanced,
+breakable,
+sidebyside,
+lefthand ratio=0.5,
+colback=white,
+colframe=gray!40,
+sidebyside gap=5mm,
+segmentation style={densely dashed, gray!60},
+boxsep=1pt,
+]
+% ===== 左边：原方程 =====
+\begin{minipage}[t]{\linewidth}
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2}-a^2\dfrac{\partial^2 u}{\partial x^2}=f(x,t), & (t>0,0<x<l),\\[6pt]
+t=0:\ u=\varphi(x),\ \dfrac{\partial u}{\partial t}=\psi(x), & (0<x<l),\\[6pt]
+x=0:\ u=0,\quad x=l:\ u=0, & (t>0).
+\end{cases}
+\]
+\[
+u
+=u_1+u_2
+\]
+解=通解+特解
+\end{minipage}
+\tcblower
+% ===== 右边：分解说明与两个子问题 =====
+利用叠加原理，上述初边值问题可以分解为下列两个初边值问题：
+
+\[
+\text{(I)}\quad
+\begin{cases}
+\dfrac{\partial^2 \textcolor{red}{u_1}}{\partial t^2}-a^2\dfrac{\partial^2 \textcolor{red}{u_1}}{\partial x^2}=0, & (t>0,0<x<l),\\[6pt]
+t=0:\ \textcolor{red}{u_1}=\varphi(x),\ \dfrac{\partial \textcolor{red}{u_1}}{\partial t}=\psi(x), & (0<x<l),\\[6pt]
+x=0\ \text{和}\ x=l:\ \textcolor{red}{u_1}=0, & (t>0);
+\end{cases}
+\]
+
+\[
+\text{(II)}\quad
+\begin{cases}
+\dfrac{\partial^2 \textcolor{blue}{u_2}}{\partial t^2}-a^2\dfrac{\partial^2 \textcolor{blue}{u_2}}{\partial x^2}=f(x,t), & (t>0,0<x<l),\\[6pt]
+t=0:\ \textcolor{blue}{u_2}=0,\ \dfrac{\partial \textcolor{blue}{u_2}}{\partial t}=0, & (0<x<l),\\[6pt]
+x=0\ \text{和}\ x=l:\ \textcolor{blue}{u_2}=0, & (t>0).
+\end{cases}
+\]
+\end{tcolorbox}
+\begin{example}
+  \begin{dxsolution}
+\[
+u(x,t)=X(x)T(t).
+\]
+\tcblower
+假设方程的特解可以分离变量表示为 $u(x,t)=X(x)T(t)$，其中 $X(x)$ 仅依赖于 $x$，$T(t)$ 仅依赖于 $t$。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+X(x)T''(t)-a^2X''(x)T(t)=0.
+\]
+\tcblower
+将 $u(x,t)=X(x)T(t)$ 代入波动方程 $\displaystyle u_{tt}-a^2u_{xx}=0$，得到关于 $X$ 与 $T$ 的乘积形式方程。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+\frac{T''(t)}{a^2T(t)}=\frac{X''(x)}{X(x)}.
+\]
+\tcblower
+将上式分离变量，得两边分别仅依赖于 $t$ 与 $x$ 的函数形式。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+\begin{cases}
+T''(t)+\lambda a^2T(t)=0,\\[4pt]
+X''(x)+\lambda X(x)=0.
+\end{cases}
+\]
+\tcblower
+由于左边仅为 $t$ 的函数、右边仅为 $x$ 的函数，二者相等时必须等于同一常数。  
+令该常数为 $-\lambda$，即可得到分离变量后的常系数常微分方程组。
+\end{dxsolution}  
+\end{example}
+  % 需要：\usepackage{tcolorbox,amsmath}
+% 建议：\tcbuselibrary{skins,breakable,raster}
+
+
+% 需要：
+% \usepackage{tcolorbox,amsmath,xcolor}
+% \tcbuselibrary{skins,breakable,raster}
+\begin{dxtips}
+    因为X的二阶导加和X本身能消除，所以X只能是$e^r$的函数
+\end{dxtips}
+% 需要：\usepackage{tcolorbox,amsmath,xcolor}
+% 并在导言区：\tcbuselibrary{skins,breakable,raster}
+\begin{compare}[\textbf{情形对比}]{\(\lambda < 0\)}{\(\lambda = 0\)}
+\textbf{情形 A：\(\lambda < 0\)}\\[3pt]
+设 \(\lambda = -\mu^2\)，方程
+\[
+X'' + \lambda X = 0
+\]
+的通解为
+\[
+X(x) = C_1 e^{\mu x} + C_2 e^{-\mu x}.
+\]
+代入边界条件
+\[
+X(0) = X(l) = 0,
+\]
+得
+\[
+\begin{cases}
+C_1 + C_2 = 0,\\[2pt]
+C_1 e^{\mu l} + C_2 e^{-\mu l} = 0.
+\end{cases}
+\]
+行列式
+\(
+\begin{vmatrix}
+1 & 1\\ e^{\mu l} & e^{-\mu l}
+\end{vmatrix}
+= e^{-\mu l} - e^{\mu l} \neq 0
+\)
+故 \(C_1 = C_2 = 0\)，仅有平凡解。  
+
+\tcblower
+
+\textbf{情形 B：\(\lambda = 0\)}\\[3pt]
+此时方程
+\[
+X'' + \lambda X = 0 \;\Rightarrow\; X'' = 0,
+\]
+通解为
+\[
+X(x) = C_1 + C_2 x.
+\]
+代入边界条件
+\[
+X(0) = X(l) = 0,
+\]
+得
+\[
+C_1 = 0, \quad C_2 l = 0.
+\]
+因此 \(C_1 = C_2 = 0\)，同样只有平凡解。
+\end{compare}
+\begin{dxtips}
+    需要合适的λ才能接触和初值条件不冲突的解。
+\end{dxtips}
+\begin{dxsolution}[情形 C：$\lambda>0$]
+
+% ---------------- 左：公式推导 ----------------
+\[
+\text{设 }\lambda>0,\quad
+X''+\lambda X=0
+\]
+\[
+\Rightarrow\;
+X(x)=C_1\cos(\sqrt{\lambda}\,x)+C_2\sin(\sqrt{\lambda}\,x).
+\]
+\[
+X(0)=0\ \Rightarrow\ C_1=0
+\]
+\[
+X(l)=0\ \Rightarrow\ C_2\sin(\sqrt{\lambda}\,l)=0.
+\]
+\[
+C_2\neq 0\ \Rightarrow\ \sin(\sqrt{\lambda}\,l)=0
+\ \Rightarrow\ \sqrt{\lambda}\,l=k\pi\ (k\in\mathbb{N})
+\]
+\[
+\boxed{\ \lambda=\lambda_k=\dfrac{k^2\pi^2}{l^2}\ }\qquad(k=1,2,\dots)
+\]
+\[
+\boxed{\ X_k(x)=\sin\!\left(\dfrac{k\pi}{l}\,x\right)\ }
+\]
+\[
+\text{若原 PDE 为 }u_{tt}=a^2u_{xx},\
+T_k''+\lambda_k a^2 T_k=0
+\]
+\[
+\Rightarrow\
+\boxed{\ T_k(t)=A_k\cos\!\left(\dfrac{k\pi a}{l}\,t\right)
+      +B_k\sin\!\left(\dfrac{k\pi a}{l}\,t\right)\ }.
+\]
+
+\tcblower
+
+% ---------------- 右：文字说明 ----------------
+当 $\lambda>0$ 时，空间常微分方程 $X''+\lambda X=0$ 的通解为余弦与正弦的线性组合。由边界条件 $X(0)=0$ 得 $C_1=0$；再代入 $X(l)=0$，得到 $C_2\sin(\sqrt{\lambda}\,l)=0$。为获得非平凡解（$C_2\neq0$），必须满足 $\sin(\sqrt{\lambda}\,l)=0$，即 $\sqrt{\lambda}\,l=k\pi$。因此，得到一族离散特征值
+\[
+\lambda_k=\frac{k^2\pi^2}{l^2}\quad(k=1,2,\ldots),
+\]
+对应的特征函数（固有函数）为
+\[
+X_k(x)=\sin\!\left(\frac{k\pi}{l}x\right).
+\]
+若原问题是波动方程 $u_{tt}=a^2u_{xx}$ 的分离变量，时间因子满足
+$T_k''+\lambda_k a^2 T_k=0$，其解为
+\[
+T_k(t)=A_k\cos\!\left(\frac{k\pi a}{l}t\right)
+      +B_k\sin\!\left(\frac{k\pi a}{l}t\right),
+\]
+这与图中 (3.12)–(3.14) 的结论一致：$\lambda_k$ 为特征值，$X_k$ 为对应固有函数。
+\end{dxsolution}
+\begin{theorem}[引理 3.1]
+若 \(\varphi(x)\in C^3,\ \psi(x)\in C^2\)，并且满足
+\[
+\varphi(0)=\varphi(l)=\varphi''(0)=\varphi''(l)=\psi(0)=\psi(l)=0,
+\]
+令系数 \(A_k,B_k\) 由式 (3.16) 确定，则级数
+\[
+\sum_{k=1}^{\infty} k^2 |A_k|,\qquad
+\sum_{k=1}^{\infty} k^2 |B_k|
+\]
+收敛。
+\end{theorem}
+\begin{theorem}[定理 3.1]
+若函数 \(\varphi(x)\in C^3,\ \psi(x)\in C^2\)，并且满足
+\[
+\varphi(0)=\varphi(l)=\varphi''(0)=\varphi''(l)=\psi(0)=\psi(l)=0, \tag{3.17}
+\]
+则弦振动方程的定解问题 (I) 的解是存在的，它可以用级数 (3.15) 给出，
+其中系数 \(A_k,B_k\) 由 (3.16) 式确定。
+
+条件 (3.17) 称为使定解问题 (I) 存在解的\textbf{相容性条件}。
+\end{theorem}
+\begin{proposition}
+以上求解方法的特点，是利用具有变量分离形式的特解 \((3.7)\) 来构造初边值问题 \((3.1)\)–\((3.3)\) 的解，故称此方法为\textbf{分离变量法}。  
+19 世纪初，傅里叶（Fourier）首先利用这一方法求解偏微分方程，也正是在这种求解过程中展示了傅里叶级数的作用与威力，  
+因此分离变量法也称为\textbf{傅里叶方法}。
+\end{proposition}
+\begin{proposition}[解的物理意义]
+由级数 (3.15) 可知，初边值问题 (I) 的解为
+\[
+u_k(x,t)=
+\left(A_k\cos\frac{k\pi a}{l}t
+     +B_k\sin\frac{k\pi a}{l}t\right)
+     \sin\frac{k\pi}{l}x,
+\]
+其上式又可写为
+\[
+u_k(x,t)=N_k\cos(\omega_k t+\theta_k)
+          \sin\frac{k\pi}{l}x, \tag{3.19}
+\]
+其中
+\[
+N_k=\sqrt{A_k^2+B_k^2},\quad
+\omega_k=\frac{k\pi a}{l},\quad
+\cos\theta_k=\frac{A_k}{\sqrt{A_k^2+B_k^2}},\quad
+\sin\theta_k=-\frac{B_k}{\sqrt{A_k^2+B_k^2}}.
+\]
+
+在物理学中，\(N_k\) 称为波的\textbf{振幅}，\(\omega_k\) 称为\textbf{圆频率}，\(\theta_k\) 称为\textbf{初位相}。
+由于 \(a=\sqrt{T/\rho}\)，可知圆频率 \(\omega_k\) 仅与弦本身性质（长度 \(l\)、张力 \(T\) 与密度 \(\rho\)）有关，
+称为弦的\textbf{固有（圆）频率}。
+
+因此，
+\[
+u_k(x,t)=N_k\sin\frac{k\pi}{l}x\cdot\cos(\omega_k t+\theta_k)
+\]
+表示弦的第 \(k\) 次振动模态：弦上各点以相同的频率作简谐振动，其位相相同，
+但振幅 \(|N_k\sin\frac{k\pi}{l}x|\) 随位置 \(x\) 变化。
+当 \(x\) 取
+\[
+x=\frac{ml}{k}\quad(m=0,1,\dots,k)
+\]
+时，弦上该处振幅恒为零，称这些点为\textbf{节点}。
+弦的这种振动称为\textbf{驻波}。
+
+因此，\(u(x,t)\) 的级数形式 (3.15) 表示由自由振动问题 (3.4)–(3.6)
+构成的若干驻波的叠加。由于每项对应不同的固有频率与相位，
+故这种求解方法称为\textbf{分离变量法}或\textbf{驻波法}。
+\end{proposition}
+\begin{example}[一维热方程，端点固定（Dirichlet）]
+在区间 $0<x<L$ 解
+\[
+u_t=a^2u_{xx},\quad u(0,t)=u(L,t)=0,\quad u(x,0)=\varphi(x).
+\]
+\end{example}
+\begin{proof}[解析]
+设 $u=X(x)T(t)$，得
+\[
+\frac{T'}{a^2T}=\frac{X''}{X}=-\lambda.
+\]
+空间部分 $X''+\lambda X=0,\ X(0)=X(L)=0$ 为特征问题，
+非零解当且仅当
+\[
+\lambda_n=\Bigl(\frac{n\pi}{L}\Bigr)^2,\quad X_n(x)=\sin\frac{n\pi x}{L},\ n=1,2,\dots
+\]
+时间部分 $T'+a^2\lambda_nT=0$，解得
+\[
+T_n(t)=e^{-a^2(n\pi/L)^2t}.
+\]
+线性叠加并由初值展开 $\varphi$ 的正弦级数：
+\[
+u(x,t)=\sum_{n=1}^\infty c_n e^{-a^2(n\pi/L)^2t}\sin\frac{n\pi x}{L},
+\qquad
+c_n=\frac{2}{L}\int_0^L\varphi(x)\sin\frac{n\pi x}{L}\,dx.
+\]
+\end{proof}
+
+\begin{example}[一维波动方程，Robin–Robin 边界（通式）]
+在 $0<x<L$ 解
+\[
+u_{tt}=a^2u_{xx},\quad
+X'(0)-h_0X(0)=0,\quad X'(L)+h_LX(L)=0,
+\]
+并满足初值 $u(x,0)=\phi(x),\ u_t(x,0)=\psi(x)$。
+\end{example}
+\begin{proof}[解析]
+分离 $u=X(x)T(t)$，得
+\[
+\frac{T''}{a^2T}=\frac{X''}{X}=-\lambda.
+\]
+空间问题 $X''+\lambda X=0$ 配 Robin 边界。取 $\lambda=\kappa^2>0$，
+\[
+X(x)=A\cos\kappa x+B\sin\kappa x.
+\]
+由 $X'(0)-h_0X(0)=0$ 得 $B=\frac{h_0}{\kappa}A$。
+代入 $X'(L)+h_LX(L)=0$ 得特征方程
+\[
+\boxed{(h_0h_L-\kappa^2)\sin(\kappa L)+\kappa(h_0+h_L)\cos(\kappa L)=0.}
+\]
+其正根 $\{\kappa_n\}_{n\ge1}$ 给出归一化特征函数
+\[
+X_n(x)=\cos(\kappa_n x)+\frac{h_0}{\kappa_n}\sin(\kappa_n x).
+\]
+时间方程 $T''+a^2\kappa_n^2T=0$，
+\[
+T_n(t)=A_n\cos(a\kappa_nt)+B_n\sin(a\kappa_nt).
+\]
+叠加并用初值确定系数：
+\[
+u(x,t)=\sum_{n=1}^\infty\Bigl[A_n\cos(a\kappa_nt)+B_n\sin(a\kappa_nt)\Bigr]X_n(x),
+\]
+\[
+A_n=\langle \phi,X_n\rangle,\qquad
+B_n=\frac{1}{a\kappa_n}\langle \psi,X_n\rangle,
+\]
+其中内积 $\langle f,g\rangle=\dfrac{\int_0^L f(x)g(x)\,dx}{\int_0^L X_n^2(x)\,dx}$；由于该 Robin–Robin 问题为自伴型 Sturm–Liouville 系统，$\{X_n\}$ 在 $[0,L]$ 上按权函数 $w\equiv1$ 正交。
+\end{proof}
+\subsection{作业}
+\begin{exercise}(1)
+证明方程
+\[
+\frac{\partial}{\partial x}\!\left[\Bigl(1-\frac{x}{h}\Bigr)^{2}\frac{\partial u}{\partial x}\right]
+= \frac{1}{a^{2}}\Bigl(1-\frac{x}{h}\Bigr)^{2}\frac{\partial^{2}u}{\partial t^{2}}
+\quad (h>0,\;\text{常数})
+\]
+的通解可以写成
+\[
+u = \frac{F(x-at)+G(x+at)}{h-x},
+\]
+其中 $F,G$ 为任意的具有二阶连续导数的单变量函数，并由此求它满足初始条件
+\[
+t=0:\quad u=\varphi(x),\qquad \frac{\partial u}{\partial t}=\psi(x)
+\]
+的初值问题的解。
+\end{exercise}
+\begin{exercise}
+2. 问初始条件 $\varphi(x)$ 与 $\psi(x)$ 满足怎样的条件时，齐次波动方程初值问题的解仅由右传播波组成？
+\end{exercise}
+
+\begin{exercise}
+3. 利用传播波法，求解波动方程的古尔萨 (Goursat) 问题
+\begin{dxtips}
+   这意味着：
+- 当 $x-at=0$ 时，即 $t=\tfrac{x}{a}$，解 $u$ 沿着这条特征线的取值由函数 $\varphi(x)$ 给定；
+- 当 $x+at=0$ 时，即 $t=-\tfrac{x}{a}$，解 $u$ 沿着这条特征线的取值由函数 $\psi(x)$ 给定。
+
+因此这里的 $\varphi(x), \psi(x)$ 并不是通常 Cauchy 初值问题里的“初始位移函数”和“初始速度函数”，
+而是刻画解在特征线 $x\pm at=0$ 上的边界数据。
+\end{dxtips}
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} = a^2 \dfrac{\partial^2 u}{\partial x^2}, & -at < x < at,\ t>0, \\[6pt]
+u\big|_{x-at=0} = \varphi(x), & t>0, \\[6pt]
+u\big|_{x+at=0} = \psi(x), & t>0,\quad \varphi(0)=\psi(0).
+\end{cases}
+\]
+\end{exercise}
+
+
+
+\begin{exercise}
+4. 对非齐次波动方程的初值问题 (2.5), (2.6)，证明：当 $f(x,t)$ 不变时，
+\begin{itemize}
+\item[(1)] 如果初始条件在 $x$ 轴的区间 $[x_1,x_2]$ 上发生变化，那么对应的解在区间 $[x_1,x_2]$ 的影响区域以外不发生变化；
+\item[(2)] 在 $x$ 轴的区间 $[x_1,x_2]$ 上所给的初始条件唯一地确定区间 $[x_1,x_2]$ 的决定区域中解的数值。
+\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+5. 求解
+\[
+\begin{cases}
+u_{tt} - a^2 u_{xx} = 0, & x>0,\ t>0, \\[6pt]
+u|_{t=0} = \varphi(x), \\[6pt]
+u_t|_{t=0} = 0, \\[6pt]
+\big(u_x - ku_t\big)\big|_{x=0} = 0,
+\end{cases}
+\]
+其中 $k$ 为正常数。
+\end{exercise}
+
+\begin{exercise}
+
+6. 求解初边值问题
+\[
+\begin{cases}
+u_{tt} - u_{xx} = 0, & 0 < t < kx,\ k>1, \\[6pt]
+u|_{t=0} = \varphi_0(x), & x \geq 0, \\[6pt]
+u_t|_{t=0} = \varphi_1(x), & x \geq 0, \\[6pt]
+u|_{t=kx} = \psi(x), & x \geq 0,
+\end{cases}
+\]
+其中 $\varphi_0(0)=\psi(0)$。
+\end{exercise}
+
+\begin{exercise}
+7. 求边值问题
+\[
+\begin{cases}
+u_{tt} - u_{xx} = 0, & f(t)<x<t,\ t>0, \\[6pt]
+u|_{x=t} = \varphi(t), & t>0, \\[6pt]
+u|_{x=f(t)} = \psi(t), & t>0,
+\end{cases}
+\]
+的解，其中 $\varphi(0)=\psi(0)$，$x=f(t)$ 为由原点出发的、介于 $x=t$ 与 $x=-t$ 之间的光滑曲线，且 $|f'(t)|\neq 1$ 对一切 $t$ 成立。
+\end{exercise}
+
+\begin{exercise}
+8. 求解波动方程的初值问题
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} - \dfrac{\partial^2 u}{\partial x^2} = t\sin x, & t>0,\ -\infty<x<\infty, \\[6pt]
+u|_{t=0} = 0, & -\infty<x<\infty, \\[6pt]
+\left.\dfrac{\partial u}{\partial t}\right|_{t=0} = \sin x, & -\infty<x<\infty.
+\end{cases}
+\]
+\end{exercise}
+
+\begin{exercise}
+9. 求解波动方程的初值问题
+\[
+\begin{cases}
+u_{tt} = a^2 u_{xx} + \dfrac{tx}{(1+x^2)^2}, & t>0,\ -\infty<x<\infty, \\[6pt]
+u|_{t=0} = 0, & -\infty<x<\infty, \\[6pt]
+u_t|_{t=0} = \dfrac{1}{1+x^2}, & -\infty<x<\infty.
+\end{cases}
+\]
+\end{exercise}
+
+\begin{exercise}
+10. 证明：在柯西问题
+\[
+\begin{cases}
+u_{tt} - a^2 u_{xx} = f(x,t), & t>0,\ -\infty<x<\infty, \\[6pt]
+u|_{t=0} = u_t|_{t=0} = 0, & -\infty<x<\infty,
+\end{cases}
+\]
+中，若 $f(x,t)$ 是 $x$ 的奇函数，则 $u(0,t)\equiv 0$；若 $f(x,t)$ 是 $x$ 的偶函数，则 $u_x(0,t)\equiv 0$。
+\end{exercise}
+\section{初边值问题的分离变量法}
+\begin{proposition}[分离变量法的解题步骤]
+\begin{enumerate}
+  \item 令 \( u(x,t)=X(x)T(t) \) 代入方程和边界条件，确定 \( X(x) \) 所满足的常微分方程的特征值问题以及 \( T(t) \) 所满足的方程；
+  \item 解常微分方程的特征值问题，求出全部特征值和特征函数，并求出相应 \( T(t) \) 的表达式；
+  \item 将所有变量分离形式的解叠加起来，利用初值定出所有待定常数；
+  \item 证明形式解是真解，对级数解的收敛性进行讨论。
+\end{enumerate}
+\end{proposition}
+\begin{exercise}（1）
+用分离变量法求下列问题的解：
+\begin{enumerate}
+  \item 
+  \[
+  \begin{cases}
+  \dfrac{\partial^{2} u}{\partial t^{2}} 
+  = a^{2} \dfrac{\partial^{2} u}{\partial x^{2}}, \\[6pt]
+  u\big|_{t=0} = \sin \dfrac{3\pi x}{l}, \quad 
+  \left.\dfrac{\partial u}{\partial t}\right|_{t=0} = x(l-x), \\[6pt]
+  u(0,t) = u(l,t) = 0 ;
+  \end{cases}
+  \]
+
+  \item
+  \[
+  \begin{cases}
+  \dfrac{\partial^{2} u}{\partial t^{2}} 
+  - a^{2} \dfrac{\partial^{2} u}{\partial x^{2}} = 0, \\[6pt]
+  u(0,t) = 0, \quad 
+  \dfrac{\partial u}{\partial x}(l,t) = 0, \\[6pt]
+  u(x,0) = \dfrac{h}{l}x, \quad 
+  \dfrac{\partial u}{\partial t}(x,0) = 0 .
+  \end{cases}
+  \]
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}（2）
+设弹簧一端固定，一端在外力作用下作周期振动，此时定解问题归结为
+\[
+\begin{cases}
+\dfrac{\partial^{2} u}{\partial t^{2}} 
+= a^{2} \dfrac{\partial^{2} u}{\partial x^{2}}, \\[6pt]
+u(0,t) = 0, \quad 
+u(l,t) = A \sin^{2} \omega t, \\[6pt]
+u(x,0) = 0, \quad 
+\dfrac{\partial u}{\partial t}(x,0) = 0 .
+\end{cases}
+\]
+求解此问题。
+\end{exercise}
+\begin{exercise}[分离变量法](4)
+求解初边值问题（$0<x<l,\ t>0$）：
+\[
+\begin{cases}
+u_{tt}-a^2u_{xx}=g,\\[2pt]
+u(0,t)=0,\quad u_x(l,t)=0,\\[2pt]
+u(x,0)=0,\quad u_t(x,0)=\displaystyle\sin\!\frac{\pi x}{2l},
+\end{cases}
+\]
+其中 $g$ 为常数。
+\end{exercise}
+\begin{exercise}(6)
+用分离变量法求下面问题的解：
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} + 2b\dfrac{\partial u}{\partial t} = a^2 \dfrac{\partial^2 u}{\partial x^2}, \quad b>0, \\[6pt]
+u|_{x=0} = u|_{x=l} = 0, \\[6pt]
+u(x,0) = \dfrac{h}{l}x, \quad u_t(x,0) = 0.
+\end{cases}
+\]
+
+
+\end{exercise}
+\section{高维波动方程的柯西问题}
+32-46页
+\begin{solution}
+\textcolor{purple}{左侧是冲量，右侧是动量}
+\[
+\int_t^{t+\Delta t}
+\left[
+\int_\Gamma T\frac{\partial u}{\partial n}\,ds
++\iint_\Omega F(x,y,t)\,dxdy
+\right] dt
+=
+\iint_\Omega
+\left[
+\rho\frac{\partial u}{\partial t}(x,y,t+\Delta t)
+-\rho\frac{\partial u}{\partial t}(x,y,t)
+\right] dxdy.
+\]
+
+\begin{dxsolution}
+      
+假设 \(u\) 关于 \(x,y\) 的二阶偏导数连续，利用格林（Green）公式可得
+\[
+\int_t^{t+\Delta t}
+\iint_\Omega
+\left[
+T\left(\frac{\partial^2 u}{\partial x^2}
++\frac{\partial^2 u}{\partial y^2}\right)
++F(x,y,t)
+-\rho\frac{\partial^2 u}{\partial t^2}
+\right] dx\,dy\,dt=0.
+\]
+
+由于时间区间段与空间区域 \(\Omega\) 的任意性，
+由上式就得到膜振动方程
+\[
+\rho\frac{\partial^2 u}{\partial t^2}
+=
+T\left(\frac{\partial^2 u}{\partial x^2}
++\frac{\partial^2 u}{\partial y^2}\right)
++F(x,y,t).
+\]
+\tcblower
+格林公式线面积分转化，$\rho$的内部分是冲量就Ft，ρ对x，y积分完了就是m他后面就是a，再对时间积分就是冲量。T后面那些是由du/dn对线积分转成面积分也就是对x二次偏导和对y对二次偏导
+\end{dxsolution}
+\begin{dxsolution}
+\[ \iint_\Omega F(x,y,t)\,dxdy
+\]
+\[\int_\Gamma T\frac{\partial u}{\partial n}\]
+
+\tcblower
+这个是和外力的积分，F(x,y,t）是（x，y）点t时刻收到力\\是张力的垂直向上的分量。下面我们要分析一个点的张力
+\end{dxsolution}
+\begin{dxtips}[张力的方向——面内且垂直边界]
+“本来膜没有张力，但当外部边界被固定或被拉紧后，
+内部各部分之间产生了连续的拉力场，这种力沿曲面传播，
+在任意截取的边界上表现为张力。”
+薄膜的张力源于分子间吸引力的宏观平均，只能在膜的切平面内传递（$\mathbf{T}\cdot\boldsymbol{\nu}=0$）。
+
+设膜面在点 $P$ 的法线为 $\boldsymbol{\nu}$，边界曲线 $\lambda$ 在 $P$ 的切向量为 $\boldsymbol{\tau}$。
+边界上的张力并非沿 $\boldsymbol{\tau}$，而是\emph{在面内且垂直边界}的方向，唯一由
+\[
+\boxed{\ \boldsymbol{m}=\boldsymbol{\tau}\times\boldsymbol{\nu}\ }
+\]
+给出。因此边界线力（单位长度的张力向量）写作
+\[
+\boxed{\ \boldsymbol{T}=T\,\boldsymbol{m}=T\,(\boldsymbol{\tau}\times\boldsymbol{\nu})\ }.
+\]
+直观地说：张力位于切平面内，指向膜内的“面内边界法向”，而不是沿边界切线方向。
+\end{dxtips}
+\begin{dxsolution}
+{\color{purple}$(\cos(x,s),\,\cos(y,s),\,0)$ 表示边界在 $xoy$ 平面上的切线方向；}
+{\color{purple}$(\cos(x,s),\,\cos(y,s),\,\tfrac{\partial u}{\partial s})$ 表示空间中真实的曲线切向方向，加入了 $z$ 分量；}
+{\color{purple}$(-u_x,-u_y,1)$ 为曲面法向；}
+{\color{purple}$\boldsymbol{\tau}\times\boldsymbol{\nu}$ 保证了张力方向既在切平面内，又与边界切线垂直。}
+
+$
+(\alpha_1,\,\alpha_2,\,\alpha_3)
+$
+
+$
+\begin{cases}
+\alpha_1 = \cos(y,s) + \dfrac{\partial u}{\partial s}\,u_y,\\[4pt]
+\alpha_2 = -\cos(x,s) - \dfrac{\partial u}{\partial s}\,u_x,\\[4pt]
+\alpha_3 = u_x\cos(y,s) - u_y\cos(x,s)
+= u_x\cos(x,n) + u_y\cos(y,n)
+= \dfrac{\partial u}{\partial n}.
+\end{cases}
+$
+
+{\color{purple}$n$ 为曲线 $\lambda$ 投影 $\Gamma$ 在平面上的法向方向。}
+
+$$
+T_u = T\,\dfrac{\alpha_3}{\sqrt{\alpha_1^2+\alpha_2^2+\alpha_3^2}}
+T_u \approx T\,\dfrac{\partial u}{\partial n}=
+\int_{\Gamma} T\,\dfrac{\partial u}{\partial n}\,ds
+$$
+\tcblower
+\end{dxsolution}
+\begin{definition}[膜的振动方程]
+设单位面积的质量为 $\rho$，单位长度的张力为 $T$，外力密度为 $F(x,y,t)$。  
+记
+$$
+\frac{T}{\rho}=a^2,\qquad f=\frac{F}{\rho},
+$$
+则膜的振动方程为
+$$
+\boxed{
+\frac{\partial^2 u}{\partial t^2}
+= a^2\!\left(\frac{\partial^2 u}{\partial x^2}
++ \frac{\partial^2 u}{\partial y^2}\right) + f.
+}
+$$
+其中 $f$ 称为\textbf{自由项}。  
+若 $f\neq 0$，称为\textbf{膜的强迫振动方程}；  
+若 $f=0$，方程为齐次，称为\textbf{膜的自由振动方程}：
+$$
+\frac{\partial^2 u}{\partial t^2}
+= a^2\!\left(\frac{\partial^2 u}{\partial x^2}
++ \frac{\partial^2 u}{\partial y^2}\right).
+$$
+方程也可称为\textbf{二维波动方程}。
+\end{definition}
+\subsection{定解条件的提法}
+需要初位移，初速度
+% -------------------- 第一类（Dirichlet） --------------------
+\begin{dxsolution}
+\[
+\left.u(x,y,t)\right|_{\Gamma}=0
+\qquad\text{或}\qquad
+\left.u(x,y,t)\right|_{\Gamma}=\mu(x,y,t).
+\]
+\tcblower
+\textbf{第一类边界条件（位移给定 / Dirichlet）}：\\
+$\Gamma$ 为膜边界在 $Oxy$ 平面的投影曲线。\\
+在边界上直接规定位移 $u$（可为齐次 $0$，或给定函数 $\mu(x,y,t)$）。
+
+\end{dxsolution}
+
+% -------------------- 第二类（Neumann） --------------------
+\begin{dxsolution}
+
+\[
+\left.\dfrac{\partial u}{\partial n}\right|_{\Gamma}=0
+\qquad\text{或一般地}\qquad
+\left.\dfrac{\partial u}{\partial n}\right|_{\Gamma}=\mu(x,y,t).
+\]
+\tcblower
+\textbf{第二类边界条件（法向导数给定 / Neumann）}：\\
+边界外法向为 $n$。在边界上给定位移的法向导数（通俗理解为给定“边界通量/斜率”），
+可为齐次 $0$ 或非齐次 $\mu(x,y,t)$。
+
+\end{dxsolution}
+
+% -------------------- 第三类（Robin） --------------------
+\begin{dxsolution}
+\[
+\left.\Big(\dfrac{\partial u}{\partial n}+\sigma\,u\Big)\right|_{\Gamma}=0
+\qquad\text{或一般地}\qquad
+\left.\Big(\dfrac{\partial u}{\partial n}+\sigma\,u\Big)\right|_{\Gamma}=\mu(x,y,t).
+\]
+\tcblower
+\textbf{第三类边界条件（混合 / Robin）}：\\
+在边界上规定法向导数与位移的线性组合；
+$\sigma$ 为给定系数（可常数或已知函数），
+$\mu(x,y,t)$ 为给定边界函数。
+
+\end{dxsolution}
+\subsection{球平均法}
+\begin{dxtips}[学习方法]
+ 问物理意义，用记事簿快速记录再整理，通过一道例题详细明白解题步骤。   
+\end{dxtips}
+\begin{definition}[柯西问题给t=0的初始时刻条件]
+设偏微分方程
+\[
+L(u)=f(x,t)
+\]
+在区域 $D \subset \mathbb{R}^{n+1}$ 上成立，若在初始超平面（例如 $t=0$）上给定
+\[
+u|_{t=0}=\varphi(x), \qquad 
+\frac{\partial u}{\partial t}\Big|_{t=0}=\psi(x),
+\]
+则称该方程连同这些初始条件所组成的问题为该方程的\textbf{柯西问题（Cauchy problem）}。
+
+它刻画了在已知初始状态下，求解函数 $u(x,t)$ 在整个空间中随时间演化的过程。
+\end{definition}
+\begin{dxsolution} \begin{equation}
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} 
+= a^2 \!\left(
+\dfrac{\partial^2 u}{\partial x^2} 
++ \dfrac{\partial^2 u}{\partial y^2} 
++ \dfrac{\partial^2 u}{\partial z^2}
+\right), \\[10pt]
+u\big|_{t=0} = \varphi(x,y,z), \qquad
+\dfrac{\partial u}{\partial t}\Big|_{t=0} = \psi(x,y,z).
+\end{cases}
+\tag{4.14}
+\end{equation}
+\begin{equation}
+\dfrac{\partial^2 u}{\partial t^2}
+= a^2 \!\left(
+\dfrac{\partial^2 u}{\partial r^2}
++ \dfrac{2}{r} \dfrac{\partial u}{\partial r}
+\right).
+\tag{4.15}
+\end{equation}
+\[
+\frac{\partial^2 v}{\partial t^2}
+= a^2 \frac{\partial^2 v}{\partial r^2}.
+\]
+\tcblower
+首先我们考虑一个特殊情形，即如果初始资料 
+$\varphi(x,y,z), \psi(x,y,z)$ 
+具有球对称性(它的值只依赖于点到原点的距离(x,y,z) 和 (x,y,-z) 等六个点的值相同)的情形。此时，$\varphi$ 与 $\psi$ 
+仅为变量 
+$r = \sqrt{x^2 + y^2 + z^2}$ 
+的函数，我们可寻求只依赖于 $t$ 与 $r$ 的解 
+$u = u(r,t)$。
+这样，(4.13) 式可以写成4.15
+\\其实就把对x二次偏导写成对z二次偏导以此类推\\
+但如果将 $v = r u$ 取为未知函数就可以消除一阶导内向。
+它与一维波动方程的形式完全相同，从而我们可以利用达朗贝尔公式来求得问题 (4.14) 的具有球对称形式的解。
+\end{dxsolution}
+为了以后的公式写起来方便，我们也常用 $(x_1, x_2, x_3)$ 来记坐标 $(x, y, z)$。  
+设 $h(x_1, x_2, x_3)$ 是在整个空间上连续且有直到二阶连续偏导数的任意函数，  
+考虑函数 $h$ 在以 $(x_1, x_2, x_3)$ 为球心、以 $r$ 为半径的球面 $S_r$ 上的平均值：
+\[
+M_h(x_1, x_2, x_3, r)
+= \frac{1}{4\pi r^2} \iint_{S_r(x)} h\, d_r\sigma,
+\tag{4.16}
+\]
+其中 $d_r\sigma$ 表示以 $x(x_1, x_2, x_3)$ 为球心、以 $r$ 为半径的球面 $S_r(x)$ 上的面积微元。
+
+\begin{definition}[拉普拉斯算子-u的对每一个自变量二阶偏导的和]
+拉普拉斯算子（Laplacian）定义为
+\[
+\boxed{\Delta f = \nabla \cdot \nabla f
+= \frac{\partial^2 f}{\partial x^2}
++ \frac{\partial^2 f}{\partial y^2}
++ \frac{\partial^2 f}{\partial z^2}}.
+\]
+
+它反映了函数 $f$ 在空间的“二阶变化率”，
+即某点的值与其邻域平均值的偏差：
+\[
+\Delta f(P)\propto
+\lim_{r\to 0}\frac{1}{r^2}\!\left(
+\frac{1}{4\pi r^2}\!\iint_{S_r}f\,d\sigma - f(P)
+\right).
+\]
+
+若 $\Delta f=0$，则 $f$ 在该处与周围平均值相等，
+称为\textbf{调和函数}，代表物理上的平衡状态。
+拉普拉斯算子广泛出现在热传导、波动、电势、引力势等方程中，
+刻画场量在空间的扩散与平衡。
+\end{definition}
+\begin{lemma}[$M_h$初始条件球平均函数的性质]
+设 $h \in C^2$，则其球平均函数 $M_h(x_1,x_2,x_3,r)$ 也是二阶连续可导的，且满足方程
+\[
+\left(
+\frac{\partial^2}{\partial r^2}
++ \frac{2}{r}\frac{\partial}{\partial r}
+\right)
+M_h(x_1,x_2,x_3,r)
+= \Delta M_h(x_1,x_2,x_3,r),
+\tag{4.17}
+\]
+其中
+\[
+\Delta = \sum_{i=1}^{3} \frac{\partial^2}{\partial x_i^2},
+\]
+并满足初始条件
+\[
+M_h\big|_{r=0} = h(x_1,x_2,x_3),
+\qquad
+\frac{\partial M_h}{\partial r}\Big|_{r=0} = 0.
+\tag{4.18}
+\]
+\end{lemma}
+\begin{remark}
+\( h \in C^2 \) 意思是：
+
+函数 \( h(x_1, x_2, x_3) \) 属于 **二阶连续可微函数类**（Class \( C^2 \)）。
+$M_h $把原来的函数 h(x) “在半径为 r 的球面上平均化”。
+你可以把它想成“以点 x 为球心、半径 r”取函数值的球面平均。
+\end{remark}
+
+\begin{lemma}[$M_u$波动方程解的球平均函数的性质]
+由于 $M_h$ 满足式 (4.18)，故将 $M_h$ 往 $r<0$ 作偶延拓后，仍有 $M_h \in C^2$。  
+现设 $u(x_1,x_2,x_3,t)$ 是柯西问题 (4.14) 的解，对它关于 $x_1,x_2,x_3$ 作球平均函数  
+\[
+M_u(x_1,x_2,x_3,r,t)
+= \frac{1}{4\pi} \iint_{S_1(x)} 
+u(x_1 + r\alpha_1,\ x_2 + r\alpha_2,\ x_3 + r\alpha_3,\ t)\, d\omega,
+\tag{4.24}
+\]
+我们有
+设 $u(x_1,x_2,x_3,t)$ 是柯西问题~(4.14)~的解，
+则由~(4.24)~式定义的 $M_u$ 作为 $r,t$ 的函数，满足方程
+\[
+\frac{\partial^2 M_u}{\partial t^2}
+- a^2\!\left(
+\frac{\partial^2}{\partial r^2}
++ \frac{2}{r}\frac{\partial}{\partial r}
+\right) M_u = 0,
+\tag{4.25}
+\]
+与初始条件
+\[
+M_u\big|_{t=0} = M_{\varphi}(x_1,x_2,x_3,r),
+\qquad
+\frac{\partial M_u}{\partial t}\Big|_{t=0}
+= M_{\psi}(x_1,x_2,x_3,r).
+\tag{4.26--4.27}
+\]
+\end{lemma}
+
+\begin{remark}
+引理~4.2~说明：若 $u(x_1,x_2,x_3,t)$ 是三维波动方程的解，
+则其\textbf{球面平均函数} $M_u(x_1,x_2,x_3,r,t)$
+同样满足一个关于 $r,t$ 的波动方程
+\[
+M_{u,tt} - a^2\!\left(M_{u,rr} + \frac{2}{r}M_{u,r}\right) = 0,
+\]
+并具有由初始数据 $\varphi,\psi$ 决定的相应初始条件。
+这意味着：在三维空间中，波的球面对称平均仍服从波动规律，
+只是多了一项 $\tfrac{2}{r}M_{u,r}$，
+表示波能量在球面传播时随半径增大而\textbf{几何稀释}。
+
+从物理角度看，引理~4.2~表明波动方程的球面对称解
+可由一维波动方程刻画。
+球平均的引入将复杂的三维传播过程化为径向一维形式，
+揭示了\textbf{球面波振幅随距离衰减而仍保持相位传播不变}的特性，
+为达朗贝尔公式在高维情形下的推广奠定基础。
+\end{remark}
+
+\begin{theorem}[泊松公式-三维给t=0时刻条件的解]
+设 $\varphi \in C^3,\ \psi \in C^2$，那么三维波动方程的柯西问题 (4.14) 存在唯一的解
+\[
+u(x,y,z,t)
+= \frac{\partial}{\partial t}
+\left(
+\frac{1}{4\pi a^2 t}
+\iint_{S_{at}(M)} \varphi\, dS
+\right)
++ \frac{1}{4\pi a^2 t}
+\iint_{S_{at}(M)} \psi\, dS,
+\tag{4.30}
+\]
+其中 $S_{at}(M)$ 表示以点 $M(x,y,z)$ 为球心、$at$ 为半径的球面，$dS$ 为球面的面积微元。
+式 {4.30} 称为泊松公式。
+\end{theorem}
+
+\begin{remark}
+    解分为两个部分，第一个部分是t=0时刻位移决定的，第二个部分是t=0时刻速度决定的。都是在面积维元对初位移和初速度积分。积分完了以后还要都除4πa平方t，这个也就球的面积。最后求出来的是空间中x，y，z点在t时刻的位移
+\end{remark}
+
+
+
+\subsection{降维法}
+\begin{quotation}
+\textbf{The method of descent proceeds by embedding a lower-dimensional problem in a higher-dimensional one, for which an explicit solution is known, and then restricting the result to the lower dimension.}
+
+\medskip
+\textbf{中文译文：}  
+降维法的基本思路是：先将一个低维问题嵌入到一个高维问题中（该高维问题的解析解是已知的），然后再把所求得的高维解限制（或退化）到低维空间，从而得到低维问题的解。
+\end{quotation}
+\begin{dxtips}
+  降维法其实是升维法，升维后信息更多，更容易解，解完了以后再退化一个方向变成二维  
+\end{dxtips}
+\begin{remark}[降维法的基本思想]
+在求解高维波动方程的柯西问题时，常常已经知道某些高维（例如三维）情形的解析解或基本解。
+\textbf{降维法}的核心思想是：利用高维波动方程的已知解，通过假设解与部分空间变量无关，从而“降维”得到低维波动方程的解。
+
+设三维波动方程为
+\[
+\tilde{u}_{tt}=a^2(\tilde{u}_{xx}+\tilde{u}_{yy}+\tilde{u}_{zz}),\qquad
+\tilde{u}(x,y,z,0)=\varphi(x,y,z),\quad
+\tilde{u}_t(x,y,z,0)=\psi(x,y,z).
+\]
+若我们考虑的二维波动方程
+\[
+u_{tt}=a^2(u_{xx}+u_{yy}),\qquad
+u(x,y,0)=\varphi(x,y),\quad
+u_t(x,y,0)=\psi(x,y),
+\]
+并假设 $u(x,y,t)$ 不依赖于变量 $z$，即
+\[
+\tilde{u}(x,y,z,t)=u(x,y,t),
+\]
+则 $\tilde{u}$ 自动满足三维方程及其初值条件。反之，若某个三维方程的解 $\tilde{u}(x,y,z,t)$
+与 $z$ 无关，则它自动满足二维波动方程。
+因此，只要我们能解出三维波动方程的解公式，就可以把它视作二维问题的解，
+从而用三维结果“降维”得到二维的解公式。
+
+这种利用高维波动方程的结果来解决低维波动方程的问题的方法称为\textbf{降维法（reduction of dimensions）}。
+\end{remark}
+\subsection{非齐次波动方程柯西问题的解}
+\end{solution}
+\begin{example}[降维法推导二维波动方程的泊松公式]
+考虑三维波动方程的柯西问题：
+\[
+u_{tt}=a^2(u_{xx}+u_{yy}+u_{zz}),\qquad 
+u|_{t=0}=\varphi(x,y,z),\quad u_t|_{t=0}=\psi(x,y,z).
+\]
+
+若解 $u(x,y,z,t)$ 与 $z$ 无关，即 $u(x,y,z,t)=\tilde{u}(x,y,t)$，
+则显然 $\tilde{u}(x,y,t)$ 满足二维波动方程
+\[
+\tilde{u}_{tt}=a^2(\tilde{u}_{xx}+\tilde{u}_{yy}),
+\]
+从而我们可以利用三维问题的解形式来“降维”得到二维问题的解。
+
+---
+
+\textbf{(1) 三维波动方程的泊松公式}
+
+三维波动方程的解可写为（泊松公式）：
+\[
+\tilde{u}(M,t)
+= \frac{\partial}{\partial t}
+\left(
+  \frac{1}{4\pi a^2t}
+  \iint_{S_{at}(M)} \varphi\, dS
+\right)
++\frac{1}{4\pi a^2t}
+  \iint_{S_{at}(M)} \psi\, dS,
+\]
+其中 $S_{at}(M)$ 表示以点 $M(x,y,z)$ 为球心、半径 $a t$ 的球面。
+
+---
+
+\textbf{(2) 将球面积分投影到平面}
+
+由于 $\varphi,\psi$ 与 $z$ 无关，积分可化为它们在平面 $z=\text{常数}$ 上的投影积分。
+设球面微元 $dS$ 与其在平面上的投影微元 $d\sigma$ 满足
+\[
+d\sigma = dS \cos\gamma, \qquad 
+\cos\gamma = \frac{\sqrt{a^2t^2-(\xi-x)^2-(\eta-y)^2}}{a t}.
+\]
+于是积分可转化为
+\[
+\iint_{S_{at}(M)} f\, dS 
+= 2 \iint_{\Sigma_{at}(M)} 
+  f(\xi,\eta)
+  \frac{a t\, d\sigma}
+  {\sqrt{a^2t^2-(\xi-x)^2-(\eta-y)^2}},
+\]
+其中 $\Sigma_{at}(M)$ 为圆盘 $(\xi-x)^2+(\eta-y)^2\le a^2t^2$。
+
+---
+
+\textbf{(3) 得到二维波动方程的积分解}
+
+代入上式并对 $t$ 求导，得到二维波动方程的解：
+\[
+\tilde{u}(x,y,t)
+= \frac{1}{2\pi a}
+\frac{\partial}{\partial t}
+\iint_{(\xi-x)^2+(\eta-y)^2\le a^2t^2}
+\frac{\varphi(\xi,\eta)}{\sqrt{a^2t^2-(\xi-x)^2-(\eta-y)^2}}\, d\xi d\eta
+\]
+\[
+\quad
++ \frac{1}{2\pi a}
+\iint_{(\xi-x)^2+(\eta-y)^2\le a^2t^2}
+\frac{\psi(\xi,\eta)}{\sqrt{a^2t^2-(\xi-x)^2-(\eta-y)^2}}\, d\xi d\eta.
+\]
+这就是二维波动方程的**泊松公式（Poisson formula）**。
+
+---
+
+\textbf{(4) 降维思想总结}
+
+该推导体现了“\textbf{升维求解，降维取解}”的思想：
+\begin{itemize}
+  \item 先将二维波动方程视为三维波动方程的特殊情形；
+  \item 利用三维波动方程的已知解析解（球面平均）；
+  \item 再将其在无关变量方向上退化（积分投影），得到二维泊松公式。
+\end{itemize}
+因此，“降维法”实质上是一种\textbf{高维嵌入求解法（embedding method）}，
+国外称为 \emph{Method of Descent}.
+\end{example}
+\section{非齐次问题柯西的解}
+\section{波的传播与衰减}
+\begin{itemize}
+  \item \textbf{一维情形（$x,t$）}
+  
+  波动方程的特征线为
+  \[
+  x-x_0=\pm a(t-t_0).
+  \]
+  点 $(x_0,t_0)$ 的依赖区域是初始直线 $t=0$ 上的区间
+  \[
+  |x-x_0|\le at_0.
+  \]
+  初始点 $(x_0,0)$ 的影响区域为
+  \[
+  |x-x_0|\le at,\qquad t>0,
+  \]
+  即由两条特征线围成的区域。
+
+  \item \textbf{二维情形（$x,y,t$）}
+  
+  波动方程的特征锥面为
+  \[
+  (x-x_0)^2+(y-y_0)^2=a^2(t-t_0)^2.
+  \]
+  点 $(x_0,y_0,t_0)$ 的依赖区域是初始平面 $t=0$ 上的圆盘
+  \[
+  (x-x_0)^2+(y-y_0)^2\le a^2t_0^2.
+  \]
+  相应的决定区域是以 $(x_0,y_0,t_0)$ 为顶点、向下开的圆锥体
+  \[
+  (x-x_0)^2+(y-y_0)^2\le a^2(t-t_0)^2,\qquad t\le t_0.
+  \]
+  初始点 $(x_0,y_0,0)$ 的影响区域为
+  \[
+  (x-x_0)^2+(y-y_0)^2\le a^2t^2,\qquad t>0.
+  \]
+
+  \item \textbf{三维情形（$x,y,z,t$）}
+  
+  波动方程的特征锥面为
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2=a^2(t-t_0)^2.
+  \]
+  点 $(x_0,y_0,z_0,t_0)$ 的依赖区域是初始平面 $t=0$ 上的球面
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2=a^2t_0^2.
+  \]
+  对应的决定区域为
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2\le a^2(t_0-t)^2,\qquad t\le t_0.
+  \]
+  初始点 $(x_0,y_0,z_0,0)$ 的影响区域为特征锥面
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2=a^2t^2,\qquad t>0.
+  \]
+\end{itemize}
+\section{惠根斯原理}
+\begin{theorem}[惠更斯原理（无尾效应）]
+考虑三维波动方程
+\[
+u_{tt}=a^2\Delta u \qquad \text{于 } \mathbb R^3.
+\]
+若初始扰动局限在空间中的有界区域 $\Omega$ 内，
+则任一点 $(x,t)$ 的解仅依赖于初始面 $t=0$ 上
+满足 $|x-y|=at$ 的球面数据。
+
+因此，三维波的传播只发生在特征锥面上：
+扰动在到达某点的唯一时刻起作用，
+随后立即消失，不产生尾波。
+该性质称为\emph{惠更斯原理}，
+亦称为三维波动方程的\emph{无尾效应}。
+\end{theorem}
+二维波动中，点源扰动在传播到达后不会消失，而是在圆盘内持续存在并逐渐衰减，因此只有前阵面而无后阵面，惠更斯原理不成立，这种现象称为波的弥散（后效现象）。
+\begin{theorem}[二维波动的后效现象]
+对于二维波动方程，
+点 $(x_0,y_0)$ 处在 $t=0$ 的瞬时扰动，
+在时刻 $t$ 的影响区域为圆盘
+\[
+(x-x_0)^2+(y-y_0)^2\le a^2t^2.
+\]
+任一点距源点距离为 $r$，自 $t=r/a$ 起开始受到扰动，
+且此后扰动不再消失，仅随时间逐渐减弱。
+因此二维波的传播只有清晰的前阵面而无后阵面，
+不满足惠更斯原理。
+该现象称为波的弥散或后效现象。
+\end{theorem}
+\section{能量不等式}

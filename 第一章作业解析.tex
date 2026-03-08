@@ -1,0 +1,3114 @@
+\chapter{第一章作业详细版}
+
+\section{作业1.1方程的导出与定解条件}
+
+% === ElegantBook 习题整理模版 ===
+% 请把这道题排版成 ElegantBook 风格的讲义卡片，要求如下：
+% 1. 使用 \begin{exercise} 开头，左侧为主要推导步骤（如证明、计算过程）；
+% 2. 右侧为旁注（tcolorbox sidebyside），用 \textcolor{second}{...} 暖橙色；
+% 3. 左右分栏比例 65:35；
+% 4. “证明”两字颜色与 ElegantBook 模板一致；
+% 5. 所有数学符号、微分表达式要严格符合 LaTeX 数学规范。
+\begin{exercise}
+1. 细杆（或弹簧）受某种外界原因而产生纵振动，以 $u(x,t)$ 表示静止时在 $x$ 点处的点在时刻 $t$ 离开原来位置的偏移。假设振动过程中所产生的张力服从胡克定律，试证明 $u(x,t)$ 满足方程
+\[
+\frac{\partial}{\partial t}\left(\rho(x)\frac{\partial u}{\partial t}\right)
+= \frac{\partial}{\partial x}\left(E\frac{\partial u}{\partial x}\right),
+\]
+其中 $\rho$ 为杆的密度，$E$ 为杨氏模量。
+
+\begin{tcolorbox}[enhanced, breakable,
+sidebyside, righthand width=0.33\textwidth,
+colback=white, colframe=gray!40,
+lefthand ratio=0.65, sharp corners]
+
+% -------- 左侧正文（不改动你的内容） --------
+\begin{proof}
+在杆上取小段 $[x, x+\Delta x]$，研究纵向位移 $u(x,t)$。
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
+  \item 应变与应力：$\varepsilon=u_x,\ \sigma=E u_x$。
+  \item 受力平衡：两端张力差为净力
+  \[
+  F = E u_x(x+\Delta x,t)-E u_x(x,t)
+  \approx (E u_x)_x \Delta x.
+  \]
+  \item 惯性力：$F_i=\rho \Delta x\, u_{tt}$。
+  \item 建立方程：$\rho u_{tt}=(E u_x)_x$。
+\end{enumerate}
+\end{proof}
+
+% -------- 右侧旁注（按你的原话放入） --------
+\tcblower
+\small
+
+ \textcolor[HTML]{FF8618}{
+分析受力平衡，都要和力相有关，求导加入$\Delta x$写成微分形式，再把求导写成基础形式。}  \[\frac{E\,u_x(x+\Delta x,t)-E\,u_x(x,t)}{\Delta x}.
+\] \textcolor[HTML]{FF8618}{
+这就能看出怎么来的，是由x变化引起的。也就是左端右段的张力差。
+弹力=拉伸力(张力）+伸缩力(压力）
+}
+
+
+\end{tcolorbox}
+
+\end{exercise}
+\begin{dxtips}
+    	如果 纵向振动（杆模型）：张力与惯性力都在 x 方向。
+	\\	如果 横向振动（弦模型）：张力（的有效分量）与惯性力都在 y 方向。
+\end{dxtips}
+\begin{tcolorbox}[enhanced, breakable,
+sidebyside, lefthand ratio=0.65,
+righthand width=0.33\textwidth,
+colback=white, colframe=gray!40, sharp corners]
+
+% ===== 左栏：横/纵受力平衡（核心对比） =====
+\textbf{横向微小振动（弦）：受力平衡}
+\[
+\underbrace{T\sin\theta(x+\Delta x)-T\sin\theta(x)}_{\text{两端张力的\;横向分量之差}}
+\;\approx\;
+T\,y_{xx}\,\Delta x
+\;=\;
+\underbrace{\rho\,\Delta x\;y_{tt}}_{\text{惯性力}}.
+\]
+\[
+\boxed{\;\rho\,y_{tt}=T\,y_{xx}\;}
+\quad(\;T=\text{常量张力},\ \rho=\text{线密度}\;).
+\]
+
+\medskip
+\textbf{纵向微小振动（杆/弹簧）：受力平衡}
+\[
+\underbrace{E\,u_x(x+\Delta x,t)-E\,u_x(x,t)}_{\text{两端\;轴向内力（应力合力）之差}}
+\;\approx\;
+(Eu_x)_x\,\Delta x
+\;=\;
+\underbrace{\rho\,\Delta x\;u_{tt}}_{\text{惯性力}}.
+\]
+\[
+\boxed{\;\rho\,u_{tt}=(E\,u_x)_x\;}
+\quad(\;E=\text{杨氏模量},\ \rho=\text{体/线密度按建模而定}\;).
+\]
+
+% ===== 右栏：旁注（暖橙色） =====
+\tcblower
+\small
+\textcolor[HTML]{E67814}{\textbf{横振动：}}
+\textcolor[HTML]{E67814}{张力 $T$ 本身恒定，起作用的是\emph{张力的横向分量}之差；
+小角近似 $\sin\theta\approx y_x$ 导出 $T\,y_{xx}$。\\[4pt]
+\textbf{纵振动：}
+恢复力来自\emph{轴向弹性}（应力$=\!E\varepsilon$，$\varepsilon=u_x$），
+两端\emph{轴向内力}之差为 $(E u_x)_x\,\Delta x$。\\[4pt]
+两者都以“\emph{内力差 = 质量×加速度}”为核心，只是内力形式不同：横向用张力的横向分量，纵向用应力合力。}
+\end{tcolorbox}
+\begin{exercise}(6)
+绝对柔软而均匀的弦线有一端固定，在它本身重力的作用下，此线处于铅垂的平衡位置，试导出此线的微小横振动方程。
+\end{exercise}
+\begin{proof}
+    
+设弦竖直悬挂，上端 $x=0$ 固定，下端 $x=l$ 自由。弦均匀，单位长度质量为 $\rho$，重力加速度为 $g$。要求平衡状态下位置 $x$ 处的张力 $T(x)$。
+
+\begin{itemize}
+  \item 在位置 $x$ 处，考虑下端整段 $[x,l]$ 的弦，其长度为 $l-x$，质量为 $\rho(l-x)$，重量为 $\rho g (l-x)$。
+  \item 由于弦处于静力平衡，位置 $x$ 处的张力 $T(x)$ 必须正好平衡下端整段弦的重量。
+\end{itemize}
+
+因此有
+\[
+T(x) = \rho g (l-x), \qquad 0 \leq x \leq l.
+\]
+
+\noindent 特殊情况验证：
+\begin{itemize}
+  \item 当 $x=l$ 时，$T(l)=0$，说明最下端没有张力；
+  \item 当 $x=0$ 时，$T(0)=\rho g l$，正好等于整根弦的重量。
+\end{itemize}
+\end{proof}
+\begin{exercise}(7)
+一柔软均匀的细弦，一端固定，另一端是弹性支承。设该弦在阻力与速度成正比的介质中作微小的横振动，试写出弦的位移所满足的定解问题。
+\end{exercise}
+
+\section{作业1.2达朗贝尔公式、 波的传抪}
+\begin{exercise}(1)
+证明方程
+\[
+\frac{\partial}{\partial x}\!\left[\Bigl(1-\frac{x}{h}\Bigr)^{2}\frac{\partial u}{\partial x}\right]
+= \frac{1}{a^{2}}\Bigl(1-\frac{x}{h}\Bigr)^{2}\frac{\partial^{2}u}{\partial t^{2}}
+\quad (h>0,\;\text{常数})
+\]
+的通解可以写成
+\[
+u = \frac{F(x-at)+G(x+at)}{h-x},
+\]
+其中 $F,G$ 为任意的具有二阶连续导数的单变量函数，并由此求它满足初始条件
+\[
+t=0:\quad u=\varphi(x),\qquad \frac{\partial u}{\partial t}=\psi(x)
+\]
+的初值问题的解。
+\end{exercise}
+\begin{solution}
+令
+\[
+w(x,t)=(h-x)u(x,t),
+\]
+则代入(1)并约去含 $w_x,w$ 的项，可得
+\[
+w_{tt}=a^{2}w_{xx}.
+\]
+因此
+\[
+w(x,t)=F(x-at)+G(x+at),
+\qquad
+u(x,t)=\frac{F(x-at)+G(x+at)}{h-x}.
+\]
+
+由初值条件在 $t=0$：
+\[
+\frac{F(x)+G(x)}{h-x}=\varphi(x)
+\ \Longrightarrow\ 
+F(x)+G(x)=S(x):=(h-x)\varphi(x),
+\]
+\[
+u_t(x,0)=\psi(x)
+\ \Longrightarrow\ 
+\frac{-aF'(x)+aG'(x)}{h-x}=\psi(x)
+\ \Longrightarrow\ 
+G'(x)-F'(x)=D'(x):=\frac{h-x}{a}\psi(x).
+\]
+取
+\[
+D(x)=\int_{x_0}^{x}\frac{h-s}{a}\psi(s)\,ds,
+\]
+则由
+\[
+F+G=S,\qquad G-F=D
+\]
+解得
+\[
+F=\frac{S-D}{2},\qquad G=\frac{S+D}{2}.
+\]
+代回得到
+\[
+u(x,t)=\frac{1}{2(h-x)}
+\Bigl[S(x-at)+S(x+at)+D(x+at)-D(x-at)\Bigr].
+\]
+\end{solution}
+%——— 块 1：设 w 与 g，并给出化简目标 + 旁注 ———
+
+
+\begin{proof}
+
+% --- 第1步：引入辅助函数 ---
+\begin{tcolorbox}[enhanced, breakable, sidebyside, lefthand ratio=0.65,
+colback=white, colframe=gray!40, sharp corners]
+% 左
+\[
+w(x,t)=(h-x)\,u(x,t),\quad g(x)=h-x.
+\]
+\[
+\Bigl(1-\tfrac{x}{h}\Bigr)^2=\tfrac{g^2}{h^2},
+\quad
+\partial_x(g^2u_x)=\tfrac{1}{a^2}g^2u_{tt}.
+\]
+% 右
+\tcblower
+\textcolor{second}{引入 $w=(h-x)u$，目的是吸收系数 $(1-\tfrac{x}{h})^2$，让方程更接近标准波动形式。}
+\end{tcolorbox}
+
+% --- 第2步：展开左端 ---
+\begin{tcolorbox}[enhanced, breakable, sidebyside, lefthand ratio=0.65,
+colback=white, colframe=gray!40, sharp corners]
+% 左
+\[
+\partial_x(g^2u_x)=g^2u_{xx}+2gg'u_x=g^2u_{xx}-2g\,u_x.
+\]
+\[
+g^2u_{xx}-2g\,u_x=\tfrac{1}{a^2}g^2u_{tt}. \tag{1}
+\]
+% 右
+\tcblower
+\textcolor{second}{$g'(x)=-1$，代入并整理得式 (1)。这是接下来代换的起点。}
+\end{tcolorbox}
+
+% --- 第3步：计算偏导并代入 ---
+\begin{tcolorbox}[enhanced, breakable, sidebyside, lefthand ratio=0.65,
+colback=white, colframe=gray!40, sharp corners]
+% 左
+\[
+u=\tfrac{w}{g},\quad
+u_x=\frac{g w_x+w}{g^2},\quad
+u_{xx}=\frac{w_{xx}}{g}+\frac{2w_x}{g^2}+\frac{2w}{g^3},\quad
+u_{tt}=\frac{w_{tt}}{g}.
+\]
+% 右
+\tcblower
+\textcolor{second}{求偏导时要分清变量：
+$g=g(x)$ 与 $t$ 无关，对 $t$ 求导时当常数处理。}
+\end{tcolorbox}
+
+% --- 第4步：化简成标准波方程 ---
+\begin{tcolorbox}[enhanced, breakable, sidebyside, lefthand ratio=0.65,
+colback=white, colframe=gray!40, sharp corners]
+% 左
+\[
+\text{代入(1)并约去含 }w_x,w\text{ 的项，得 } 
+w_{tt}=a^2w_{xx}.
+\]
+\[
+w(x,t)=F(x-at)+G(x+at),\quad
+u(x,t)=\frac{F(x-at)+G(x+at)}{h-x}.
+\]
+% 右
+\tcblower
+\textcolor{second}{达到目标形式 $w_{tt}=a^2w_{xx}$，说明变换正确；
+原方程化为常系数波动方程。}
+\end{tcolorbox}
+
+% --- 第5步：利用初值条件 ---
+\begin{tcolorbox}[enhanced, breakable, sidebyside, lefthand ratio=0.65,
+colback=white, colframe=gray!40, sharp corners]
+% 左
+\[
+t=0:\quad \frac{F(x)+G(x)}{h-x}=\varphi(x)
+\Rightarrow F+G=S(x):=(h-x)\varphi(x). \tag{2}
+\]
+\[
+t=0:\quad -aF'(x)+aG'(x)=(h-x)\psi(x)
+\Rightarrow G'-F'=D'(x):=\frac{h-x}{a}\psi(x). \tag{3}
+\]
+% 右
+\tcblower
+\textcolor{second}{式 (2) 给出 $F+G$；
+式 (3) 给出 $G'-F'$，二者构成完整初值约束。}
+\end{tcolorbox}
+
+% --- 第6步：积分与最终解 ---
+\begin{tcolorbox}[enhanced, breakable, sidebyside, lefthand ratio=0.65,
+colback=white, colframe=gray!40, sharp corners]
+% 左
+\[
+D(x)=\int_{x_0}^x \tfrac{h-s}{a}\psi(s)\,ds,
+\quad
+F=\tfrac{S-D}{2},\ G=\tfrac{S+D}{2}.
+\]
+\[
+\boxed{
+u(x,t)=\frac{1}{2(h-x)}
+\big[S(x-at)+S(x+at)+D(x+at)-D(x-at)\big].
+}
+\]
+% 右
+\tcblower
+\textcolor{second}{积分得 $D(x)$，再由 $S,F,G$ 构造显式通解；
+积分下限 $x_0$ 可任取，不影响结果。}
+\end{tcolorbox}
+
+\end{proof}
+\begin{dxtips}[计算技巧]
+\begin{enumerate}
+  \item 牢牢地记住：切换变量以后，要会求关于 $x$ 的一阶、二阶偏导，关于 $t$ 的一阶、二阶偏导。
+ 
+  \item 在处理不同形式的波动方程时，$w$ 的定义方式并不固定。通常需要根据方程结构选择合适的变量替换，使代入后能尽量消去复杂项，化简为标准形式。最终目标是化为
+  \[
+  w_{tt}=a^{2}w_{xx},
+  \]
+  即一维标准波动方程。
+  
+  \item 求二阶导数时要用“长分线”展开；像 $g(x)$ 这类与 $t$ 无关的量，在对 $t$ 求导时视作常数。
+  
+  \item 初值条件 $u(x,0)=\varphi(x)$ 限制了 $F(x)+G(x)$ 的关系。
+  
+  \item 最后一步的思路：先拆分波，得到简化过的通解形式。最终任务是将解中不确定的函数（常数项）全部用题目给定的初值数据 $\varphi(x),\psi(x)$ 表达出来，才能得到唯一解。
+\end{enumerate}
+\end{dxtips}
+\begin{dxtips}[关于偏导的处理与原理u=(h,g)是重点]
+没有算到最后一步不要把 $w$ 对 $x$ 偏导，$g$ 对 $x$ 偏导算出来。方便后面消去。设 $w,g$ 就是把 $u$ 对 $x$ 偏导，$u$ 对 $t$ 偏导转化为 $\partial w/\partial x$。$\partial w/\partial t$，
+$\partial g/\partial t$
+$\partial g/\partial x$。因为
+\[
+u = u(h,g)=\frac{h}{g},\qquad
+\frac{du}{dx}
+=\frac{\partial u}{\partial h}\frac{dh}{dx}
++\frac{\partial u}{\partial g}\frac{dg}{dx}
+=\frac{1}{g}\frac{dh}{dx}
+-\frac{h}{g^2}\frac{dg}{dx}
+=\frac{g\,\dfrac{dh}{dx}-h\,\dfrac{dg}{dx}}{g^2}.
+\]
+\end{dxtips}
+\begin{dxtips}[计算技巧]
+   \begin{enumerate}
+       \item 长的段带积分的一定要重新把整个写成新的函数H()弄清楚对于积分来说自变量是什么。
+       \item  还有出现导数条件往往需要从x0积到x
+   \end{enumerate}
+\begin{dxsolution}
+\[
+G'(x)-F'(x)=\frac{h-x}{a}\psi(x)
+\]
+\[
+\int_{x_0}^{x}\!\!\bigl(G'(s)-F'(s)\bigr)\,ds
+=\int_{x_0}^{x}\!\!\frac{h-s}{a}\psi(s)\,ds.
+\]
+\[
+(G-F)(x)-(G-F)(x_0)
+=\int_{x_0}^{x}\!\!\frac{h-s}{a}\psi(s)\,ds,
+\qquad\]
+\[D(x):=\int_{x_0}^{x}\tfrac{h-s}{a}\psi(s)\,ds.
+\]
+\tcblower
+积分时将左右两边分别在区间 $[x_0,x]$ 上积分。  
+左边由微积分基本定理得到 $(G-F)(x)-(G-F)(x_0)$，  
+右边为积分定义的 $D(x)$。  
+积分常数以边界项 $(G-F)(x_0)$ 的形式出现，  
+通常可吸收进常数项或由边界条件确定。
+\end{dxsolution}
+   
+\end{dxtips}
+\begin{example}
+考虑常微分方程
+\[
+y''+y=0.
+\]
+它的通解为
+\[
+y(x)=C_1 \cos x + C_2 \sin x,
+\]
+其中 $C_1,C_2$ 是任意常数。
+
+此时我们已经知道了解的一般形式，但并不知道具体是哪一个解。若题目进一步给出初值条件
+\[
+y(0)=1,\qquad y'(0)=0,
+\]
+则可以代入通解求得
+\[
+C_1=1,\qquad C_2=0,
+\]
+从而得到唯一解
+\[
+y(x)=\cos x.
+\]
+
+同样的道理，在偏微分方程中，通解
+\[
+u(x,t)=\frac{F(x-at)+G(x+at)}{h-x}
+\]
+虽然已经揭示了所有解的形式，但其中的 $F,G$ 仍然是“任意函数”。要得到满足具体初值条件的唯一解，就必须像 ODE 中确定 $C_1,C_2$ 一样，用初值条件来确定 $F,G$。
+\end{example}
+\begin{dxtips}[条件是干什么都]
+   或给出初时刻每一个 $x$ 点的 $y$ 坐标，或给出每一个 $x$ 点的初速度，最终目的都是将 $F,G$ 用初值函数 $\varphi(x),\,\psi(x)$ 替换表示。
+\begin{example}
+\begin{align*}
+u(x,t)&=F(0)+G(x+at)=F(0)+G(2x)=\varphi(x)
+\\[2pt]
+&\Longrightarrow\;
+G(2x)=\varphi(x)-F(0)
+\;\Rightarrow\;
+G(s)=\varphi\!\left(\tfrac{s}{2}\right)-F(0),
+\\[6pt]
+u(x,t)&=F(x-at)+G(0)=F(2x)+G(0)=\psi(x)
+\\[2pt]
+&\Longrightarrow\;
+F(2x)=\psi(x)-G(0)
+\;\Rightarrow\;
+F(s)=\psi\!\left(\tfrac{s}{2}\right)-G(0).
+\end{align*}
+\end{example}
+\end{dxtips}
+\begin{exercise}
+3. 利用传播波法，求解波动方程的古尔萨 (Goursat) 问题
+\begin{dxtips}
+   这意味着：
+- 当 $x-at=0$ 时，即 $t=\tfrac{x}{a}$，解 $u$ 沿着这条特征线的取值由函数 $\varphi(x)$ 给定；
+- 当 $x+at=0$ 时，即 $t=-\tfrac{x}{a}$，解 $u$ 沿着这条特征线的取值由函数 $\psi(x)$ 给定。
+
+因此这里的 $\varphi(x), \psi(x)$ 并不是通常 Cauchy 初值问题里的“初始位移函数”和“初始速度函数”，
+而是刻画解在特征线 $x\pm at=0$ 上的边界数据。
+\end{dxtips}
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} = a^2 \dfrac{\partial^2 u}{\partial x^2}, & -at < x < at,\ t>0, \\[6pt]
+u\big|_{x-at=0} = \varphi(x), & t>0, \\[6pt]
+u\big|_{x+at=0} = \psi(x), & t>0,\quad \varphi(0)=\psi(0).
+\end{cases}
+\]
+\end{exercise}
+
+
+\begin{dxsolution}
+\[
+u(x,t)=F(x-at)+G(x+at)
+\]
+\tcblower
+波动方程的通解形式，其中 $F,G$ 为沿两条特征线传播的任意函数。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=F(0)+G(x+at)=F(0)+G(2x)=\varphi(x)
+\]
+\[
+\Longrightarrow\;
+G(2x)=\varphi(x)-F(0)
+\quad\Rightarrow\quad
+G(s)=\varphi\!\left(\frac{s}{2}\right)-F(0)
+\tag{1}
+\]
+\tcblower
+沿特征线 $x-at=0$（即 $t=x/a$）上，函数 $F$ 取常数值 $F(0)$，  
+由边界条件 $u(x,t)=\varphi(x)$ 得到关于 $G$ 的表达式。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=F(x-at)+G(0)=F(2x)+G(0)=\psi(x)
+\]
+\[
+\Longrightarrow\;
+F(2x)=\psi(x)-G(0)
+\quad\Rightarrow\quad
+F(s)=\psi\!\left(\frac{s}{2}\right)-G(0)
+\tag{2}
+\]
+\tcblower
+沿另一条特征线 $x+at=0$（即 $t=-x/a$）上，  
+可由边界条件 $u(x,t)=\psi(x)$ 解出 $F$ 的形式。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+\varphi(0)=\psi(0)=F(0)+G(0)
+\tag{3}
+\]
+\tcblower
+两条特征线交于原点 $(0,0)$，  
+一致性条件要求两侧边界在此点取相同值。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+\begin{aligned}
+u(x,t)
+&= F(x-at)+G(x+at)\\
+&= \psi\!\left(\frac{x-at}{2}\right)-G(0)
+   +\varphi\!\left(\frac{x+at}{2}\right)-F(0)\\
+&= \psi\!\left(\frac{x-at}{2}\right)
+   +\varphi\!\left(\frac{x+at}{2}\right)
+   -\bigl(F(0)+G(0)\bigr)\\
+&= \psi\!\left(\frac{x-at}{2}\right)
+   +\varphi\!\left(\frac{x+at}{2}\right)
+   -\varphi(0)
+\end{aligned}
+\]
+\tcblower
+将 (1)、(2)、(3) 代回通解，消去常数项，  
+得到满足题面四个边界条件的显式解。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+\boxed{
+u(x,t)
+= \varphi\!\left(\frac{x+at}{2}\right)
++ \psi\!\left(\frac{x-at}{2}\right)
+- \varphi(0)
+}
+\]
+\tcblower
+最终得到显式解。  
+由于 $\varphi(0)=\psi(0)$，最后一项也可写为 $-\psi(0)$。
+\end{dxsolution}
+
+\subsection{边值问题}
+\begin{dxtips}[如何理解图像]
+永远记得：$u(x,t)$ 得到的就是 $y$。
+
+我明白，就是在三维坐标系 $(x,\,t,\,u)$ 中，  
+$xyz$ 轴里，$xOy$ 平面对应的是 $t$–$x$ 平面，  
+$z$ 轴表示函数值 $u(x,t)$。
+
+特征线就是 $x=at$（或 $x-at=\text{常数}$）  
+在底面 $x$–$t$ 平面上画出的那条线。
+
+在三维空间中，这条线的上方（沿 $z$ 轴方向）的一系列点，  
+表示的是 $u(x,t)$ 在这条“传播轨迹”上的取值变化。
+
+换句话说，特征线是 $x$–$t$ 平面上  
+信息或波峰传播的轨迹；  
+而在三维曲面 $z=u(x,t)$ 上，  
+沿特征线方向的点反映了解随时间传播的形状。
+整个波函数 u(x,t) 的三维曲面，
+就是所有沿特征线平移的波形的“叠加结果”。
+\end{dxtips}
+\begin{dxtips}[条件辨析]
+    \begin{itemize}
+  \item 当条件给在 $t=0$ 上时，称为 \textbf{初值条件（initial condition）}；
+  \item 当条件给在 $x=0$ 或 $x=L$ 等空间边界上时，称为 \textbf{边值条件（boundary condition）}。
+  \item 这个 x - at = 0 不是初值条件也不是边值条件，
+一条特征线（characteristic line）。
+\end{itemize}
+\end{dxtips}
+
+\begin{exercise}
+
+5. 求解
+\[
+\begin{cases}
+u_{tt} - a^2 u_{xx} = 0, & x>0,\ t>0, \\[6pt]
+u|_{t=0} = \varphi(x), \\[6pt]
+u_t|_{t=0} = 0, \\[6pt]
+\big(u_x - ku_t\big)\big|_{x=0} = 0,
+\end{cases}
+\]
+其中 $k$ 为正常数。
+\end{exercise}
+\begin{dxtips}
+这里没有 ``$F_x$'' 和 ``$F_t$'' 这种区别，因为 $F$ 本质上是一元函数，只有一个自变量 $\xi$。
+
+\begin{itemize}
+  \item 当我们写 $F'(x-at)$ 的时候，它始终表示：先对 $\xi$ 求导，然后再把 $\xi = x-at$ 代进去；
+  \item 不存在 ``$F$ 对 $x$ 求导'' 和 ``$F$ 对 $t$ 求导'' 的区别 —— 那样说法是把 $F$ 误当成了二元函数。
+\end{itemize}
+
+真正的区别只在于链式法则给出的前置系数：
+\[
+\begin{aligned}
+\frac{\partial}{\partial x} F(x-at) &= F'(x-at)\cdot \frac{\partial (x-at)}{\partial x} = F'(x-at)\cdot 1, \\[6pt]
+\frac{\partial}{\partial t} F(x-at) &= F'(x-at)\cdot \frac{\partial (x-at)}{\partial t} = F'(x-at)\cdot (-a).
+\end{aligned}
+\]
+
+\medskip
+\textbf{总结：}
+\begin{itemize}
+  \item $F'(x-at)$ 在两种偏导里是同一个“核心一元导数”；
+  \item 区别只在前面的系数（$1$ 或 $-a$）；
+  \item 没有 $F_x, F_t$ 这种二元偏导的概念。
+\end{itemize}
+\end{dxtips}
+\begin{solution}
+
+%---------------- 第一部分：未遇到边界 ----------------
+\begin{dxsolution}
+\[
+u_{tt}-a^2u_{xx}=0\ (x>0,t>0),\qquad
+u(x,0)=\varphi(x),\quad u_t(x,0)=0,\qquad
+(u_x-ku_t)\big|_{x=0}=0\ (k>0).
+\]
+\tcblower
+半无限区间 $x>0$ 上的波动方程，带 Robin 型边界条件 $(u_x-ku_t)=0$。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=F(x-at)+G(x+at)
+\]
+\[
+\Rightarrow\quad
+u(x,0)=F(x)+G(x)=\varphi(x),\qquad
+u_t(x,0)=-aF'(x)+aG'(x)=0.
+\]
+由第二式得 $F'(x)=G'(x)$，积分得
+\[
+F(x)=G(x)+C.
+\]
+代入第一式：
+\[
+G(x)+C+G(x)=\varphi(x)\ \Rightarrow\ 
+G(x)=\tfrac12\bigl[\varphi(x)-C\bigr],\quad 
+F(x)=\tfrac12\bigl[\varphi(x)+C\bigr].
+\]
+若要求 $u(x,t)$ 在 $t=0$ 时连续，则取 $C=0$，于是
+\[
+F(x)=G(x)=\tfrac12\varphi(x).
+\]
+代回通解得
+\[
+\boxed{u(x,t)=\tfrac12\bigl[\varphi(x-at)+\varphi(x+at)\bigr]},\quad x\ge at.
+\]
+\tcblower
+这是**未遇边界部分**的完整达朗贝尔解推导过程，仅利用初值条件。
+\end{dxsolution}
+
+\medskip
+\noindent\textbf{下面是遇到边界后的计算：}
+
+%---------------- 第二部分：使用边界条件 ----------------
+\begin{dxsolution}
+\[
+u_x(0,t)=F'(-at)+G'(at),\qquad 
+u_t(0,t)=-aF'(-at)+aG'(at).
+\]
+代入边界条件 $(u_x-ku_t)|_{x=0}=0$：
+\[
+(1+ka)F'(-at)+(1-ka)G'(at)=0.
+\]
+\tcblower
+这是由 Robin 条件得到的边界导数关系。
+\end{dxsolution}
+
+\begin{dxsolution}
+由于初值阶段有 $G'(x)=F'(x)$，代入得
+\[
+F'(-\xi)=-\,\frac{1-ka}{1+ka}\,F'(\xi),\qquad(\xi>0).
+\]
+定义反射系数
+\[
+r=\frac{1-ka}{1+ka}.
+\]
+\tcblower
+$|r|<1$ 表示部分反射；$r=1$ 对应自由端；$r=-1$ 对应固定端。
+\end{dxsolution}
+
+\begin{dxsolution}
+由上式积分可得
+\[
+F(-x)=-rF(x)+A,\qquad A\text{ 为常数}.
+\]
+令 $A=\tfrac{1-r}{2}\varphi(0)$ 以保持 $u$ 在 $x=0$ 处连续。
+于是当 $0<x<at$：
+\[
+u(x,t)=F(x-at)+G(x+at)
+=\tfrac12\varphi(x+at)
++\tfrac{r}{2}\varphi(at-x)
++\tfrac{1-r}{2}\varphi(0),
+\]
+而当 $x\ge at$：
+\[
+u(x,t)=\tfrac12[\varphi(x-at)+\varphi(x+at)].
+\]
+\tcblower
+最终显式解为
+\[
+\boxed{
+u(x,t)=
+\begin{cases}
+\dfrac{1}{2}\bigl[\varphi(x-at)+\varphi(x+at)\bigr], & x\ge at,\\[10pt]
+\dfrac{1}{2}\varphi(x+at)
++\dfrac{r}{2}\varphi(at-x)
++\dfrac{1-r}{2}\varphi(0), & 0<x<at,
+\end{cases}
+\qquad r=\dfrac{1-ka}{1+ka}.
+}
+\]
+此为**遇到边界后**的解，体现 Robin 条件的反射效应。
+\end{dxsolution}
+
+\end{solution}
+\begin{dxtips}
+    �� 所以当左行波 撞到 x=0 时，它不能穿过去，而是要“反弹”。
+这个反弹不是简单的镜像，而是根据边界条件 u_x - k u_t = 0 来决定的，反映在数学上就是一个反射系数 r=\tfrac{1-ka}{1+ka}。
+\end{dxtips}
+
+\begin{exercise}
+7. 求边值问题
+\[
+\begin{cases}
+u_{tt} - u_{xx} = 0, & f(t)<x<t,\ t>0, \\[6pt]
+u|_{x=t} = \varphi(t), & t>0, \\[6pt]
+u|_{x=f(t)} = \psi(t), & t>0,
+\end{cases}
+\]
+的解，其中 $\varphi(0)=\psi(0)$，$x=f(t)$ 为由原点出发的、介于 $x=t$ 与 $x=-t$ 之间的光滑曲线，且 $|f'(t)|\neq 1$ 对一切 $t$ 成立。
+\end{exercise}
+\begin{solution}
+    \begin{dxsolution}
+\[
+u_{tt}-u_{xx}=0,\qquad 0<t<kx,\;k>1,\;x>0,
+\]
+\[
+u(x,0)=\varphi_0(x),\quad u_t(x,0)=\varphi_1(x),\quad 
+u(x,kx)=\psi(x),\qquad x\ge0,
+\]
+并给定相容条件 $\varphi_0(0)=\psi(0)$。
+\tcblower
+题目给出波动方程及初、边值条件。  
+空间为 $x>0$，时间上限由斜线 $t=kx$ 确定，  
+边界条件为在该直线上指定的位移函数 $\psi(x)$。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=F(x-t)+G(x+t),
+\]
+\tcblower
+通解形式为两列特征方向的行波叠加。  
+$F$ 表示沿 $x-t=\text{常数}$ 的左行波，$G$ 表示右行波。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+F(x)+G(x)=\varphi_0(x), \tag{1}
+\]
+\[
+-F'(x)+G'(x)=\varphi_1(x). \tag{2}
+\]
+\tcblower
+代入 $t=0$，利用初值条件 $u(x,0)=\varphi_0(x)$、  
+$u_t(x,0)=\varphi_1(x)$，得到 $F,G$ 的两个方程。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+H(\xi)=\int_0^{\xi}\varphi_1(s)\,ds,
+\]
+\[
+F(\xi)=\tfrac12\varphi_0(\xi)-\tfrac12H(\xi)+\tfrac{C}{2},\qquad
+G(\xi)=\tfrac12\varphi_0(\xi)+\tfrac12H(\xi)-\tfrac{C}{2},\quad (\xi\ge0),
+\]
+其中常数 $C$ 对 $u(x,t)=F+G$ 无影响。
+\tcblower
+对式 (2) 积分得到 $H(\xi)$，  
+再结合式 (1) 解出 $F,G$ 的显式表达。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,kx)=F\big((1-k)x\big)+G\big((1+k)x\big)=\psi(x).
+\]
+\tcblower
+在边界 $t=kx$ 上代入通解，得到 $F$ 与 $G$ 的约束关系。  
+由于 $(1-k)x<0$，$F$ 的定义需向负区延拓。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+F(\xi)=\psi\!\left(\tfrac{\xi}{1-k}\right)
+ -G\!\left(\tfrac{1+k}{1-k}\,\xi\right),\qquad \xi\le0.
+\]
+\tcblower
+上式给出了 $F$ 在负自变量处的延拓公式，  
+通过边界函数 $\psi$ 和 $G$ 在正区间的值确定。
+\end{dxsolution}
+
+\begin{dxsolution}
+当 $0<t\le x$ 时：
+\[
+u(x,t)
+ =\tfrac12\big[\varphi_0(x-t)+\varphi_0(x+t)\big]
+  +\tfrac12\int_{x-t}^{x+t}\varphi_1(s)\,ds.
+\]
+\tcblower
+此区域两条特征线均落在初始线 $t=0$ 上，  
+因此可直接用达朗贝尔公式得到标准形式。
+\end{dxsolution}
+
+\begin{dxsolution}
+当 $x<t<kx$ 时，左行特征落在边界 $t=kx$，右行特征落在 $t=0$。  
+记
+\[
+x_b=\frac{t-x}{k-1},\qquad 
+\eta=x+t,\qquad 
+\eta_b=\frac{1+k}{k-1}(t-x),
+\]
+则
+\[
+u(x,t)
+ =\psi(x_b)
+  +\tfrac12\big[\varphi_0(\eta)-\varphi_0(\eta_b)\big]
+  +\tfrac12\big[H(\eta)-H(\eta_b)\big],
+\]
+其中 $H(\xi)=\int_0^{\xi}\varphi_1(s)\,ds$。
+\tcblower
+此区域的特征结构不同：一条来自边界、一条来自初始线。  
+用延拓公式代入得到混合积分表达式。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=
+\begin{cases}
+\dfrac12\big[\varphi_0(x-t)+\varphi_0(x+t)\big]
++\dfrac12\displaystyle\int_{x-t}^{x+t}\varphi_1(s)\,ds,
+& 0<t\le x,\\[12pt]
+\psi\!\left(\tfrac{t-x}{k-1}\right)
++\tfrac12\Big[\varphi_0(x+t)
+-\varphi_0\!\left(\tfrac{1+k}{k-1}(t-x)\right)\Big]\\[4pt]
+\quad
++\tfrac12\Big[H(x+t)
+-H\!\left(\tfrac{1+k}{k-1}(t-x)\right)\Big],
+& x<t<kx,
+\end{cases}
+\]
+相容条件 $\varphi_0(0)=\psi(0)$ 保证在 $(0,0)$ 处连续。
+\tcblower
+最终分段显式解。  
+上半区为常规达朗贝尔解，下半区体现斜边界反射效应，  
+相容条件确保两区交界连续。
+\end{dxsolution}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{exercise}
+8. 求解波动方程的初值问题
+\[
+\begin{cases}
+\dfrac{\partial^2 u}{\partial t^2} - \dfrac{\partial^2 u}{\partial x^2} = t\sin x, & t>0,\ -\infty<x<\infty, \\[6pt]
+u|_{t=0} = 0, & -\infty<x<\infty, \\[6pt]
+\left.\dfrac{\partial u}{\partial t}\right|_{t=0} = \sin x, & -\infty<x<\infty.
+\end{cases}
+\]
+\end{exercise}
+\begin{solution}
+    \begin{dxsolution}
+\[
+u_{tt}-u_{xx}=t\sin x,\qquad t>0,\ -\infty<x<\infty,
+\]
+\[
+u(x,0)=0,\qquad u_t(x,0)=\sin x.
+\]
+\tcblower
+求解带有非齐次项 $t\sin x$ 的波动方程初值问题。  
+初始位移为零，初始速度为 $\sin x$。
+\end{dxsolution}
+
+\begin{dxsolution}
+记初值函数 $\varphi(x)=0,\ \psi(x)=\sin x$，非齐次项 $f(x,t)=t\sin x$。  
+Duhamel 原理给出非齐次波动方程的通解：
+\[
+u(x,t)
+=\tfrac12\bigl[\varphi(x-t)+\varphi(x+t)\bigr]
++\tfrac12\int_{x-t}^{x+t}\psi(s)\,ds
++\tfrac12\int_{0}^{t}\!\!\int_{x-(t-\tau)}^{x+(t-\tau)} f(\xi,\tau)\,d\xi\,d\tau.
+\]
+\tcblower
+采用达朗贝尔公式与 Duhamel 原理，将问题分为  
+由初值引起的齐次部分与由非齐次源项引起的积分部分。
+\end{dxsolution}
+
+\begin{dxsolution}
+代入 $\varphi\equiv0,\ \psi(s)=\sin s$，齐次部分为
+\[
+\frac12\int_{x-t}^{x+t}\sin s\,ds
+=\tfrac12[-\cos s]_{x-t}^{x+t}
+=\tfrac12\bigl(-\cos(x+t)+\cos(x-t)\bigr)
+=\sin x\sin t.
+\]
+\tcblower
+计算齐次部分的积分，得到标准达朗贝尔形式结果 $\sin x\sin t$。
+\end{dxsolution}
+
+\begin{dxsolution}
+Duhamel 项：
+\[
+\tfrac12\int_{0}^{t}\int_{x-(t-\tau)}^{x+(t-\tau)} \tau\sin\xi\,d\xi\,d\tau.
+\]
+对 $\xi$ 积分：
+\[
+\int_{x-(t-\tau)}^{x+(t-\tau)}\sin\xi\,d\xi
+=-\cos(x+(t-\tau))+\cos(x-(t-\tau))
+=2\sin x\sin(t-\tau).
+\]
+\tcblower
+先对空间变量积分，利用三角恒等式化简出 $\sin x\sin(t-\tau)$ 形式。
+\end{dxsolution}
+
+\begin{dxsolution}
+因此
+\[
+\tfrac12\int_{0}^{t} \tau\cdot 2\sin x\sin(t-\tau)\,d\tau
+= \sin x\int_{0}^{t}\tau\sin(t-\tau)\,d\tau.
+\]
+令 \(s=t-\tau\)，则积分变为
+\[
+\int_{0}^{t}\tau\sin(t-\tau)\,d\tau
+=\int_{0}^{t}(t-s)\sin s\,ds
+= t\int_{0}^{t}\sin s\,ds-\int_{0}^{t}s\sin s\,ds.
+\]
+\tcblower
+变量代换 $\tau\mapsto s$，将时间卷积转化为两项标准积分。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+\int_{0}^{t}\sin s\,ds=1-\cos t,\qquad
+\int_{0}^{t}s\sin s\,ds=[-s\cos s+\sin s]_{0}^{t}=-t\cos t+\sin t.
+\]
+故
+\[
+\int_{0}^{t}(t-s)\sin s\,ds
+=t(1-\cos t)-(-t\cos t+\sin t)
+=t-\sin t.
+\]
+\tcblower
+逐项计算两积分并整理，得到结果 $t-\sin t$。
+\end{dxsolution}
+
+\begin{dxsolution}
+因此 Duhamel 项为
+\[
+\sin x\,(t-\sin t).
+\]
+\tcblower
+时域卷积积分化简后得到与 $\sin x$ 成比例的时间函数。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=\sin x\sin t+\sin x\,(t-\sin t)
+=\sin x\,t.
+\]
+\tcblower
+将齐次解与 Duhamel 项相加，所有中间项抵消后，得到极为简洁的结果 $u(x,t)=t\sin x$。
+\end{dxsolution}
+
+\begin{dxsolution}
+验证：
+\[
+u_{tt}=0,\qquad u_{xx}=-t\sin x,\qquad u_{tt}-u_{xx}=t\sin x,
+\]
+且 \(u(x,0)=0,\ u_t(x,0)=\sin x.\)
+\tcblower
+验证解满足原方程与初始条件，确认正确性。
+\end{dxsolution}
+
+\begin{dxsolution}
+\[
+u(x,t)=t\sin x.
+\]
+\tcblower
+最终解：$u(x,t)=t\sin x$，  
+体现了线性增长的时间因子与空间正弦形分布。
+\end{dxsolution}
+\end{solution}
+\begin{dxtips}
+    四个方程第一个，为了让我们拆解成两个波把一个两个自变量的函数拆成两个一个自变量的函数。然后第二第三个方程一般会给初始条件比如t=0时各x点处的位移和速度。最后一个条件是左波到达x=0后会产生的作用因为题目里面x大于0，所以x-at要变成at-x
+\end{dxtips}
+\section{分离变量法}
+P31:4
+\begin{homework}[1(2)]
+求解初边值问题（$0<x<l,\ t>0$）：
+\[
+\begin{cases}
+u_{tt}=a^{2}u_{xx},\\[3pt]
+u(0,t)=0,\quad u_x(l,t)=0,\\[3pt]
+u(x,0)=\dfrac{h}{l}x,\quad u_t(x,0)=0.
+\end{cases}
+\]
+\end{homework}
+\begin{solution}
+由分离变量法，设
+\[
+u(x,t)=X(x)T(t),
+\]
+代入方程得
+\[
+\frac{T''}{a^{2}T}=\frac{X''}{X}=-\lambda .
+\]
+\begin{dxtips}
+    $u(0,t)=X(0)T(t)$
+    
+    $
+    ux(l,t)=X'(l)T(t)$
+\end{dxtips}
+空间部分满足
+\[
+X''+\lambda X=0,\qquad X(0)=0,\quad X'(l)=0.
+\]
+可得特征值与特征函数
+\[
+\lambda_n=\left(\frac{(2n-1)\pi}{2l}\right)^2,\qquad
+X_n(x)=\sin\frac{(2n-1)\pi x}{2l},\quad n=1,2,\dots
+\]
+
+时间部分为
+\[
+T_n(t)=A_n\cos(\omega_n t)+B_n\sin(\omega_n t),
+\qquad
+\omega_n=a\frac{(2n-1)\pi}{2l}.
+\]
+
+因此通解为
+\[
+u(x,t)=\sum_{n=1}^{\infty}
+\left(A_n\cos(\omega_n t)+B_n\sin(\omega_n t)\right)
+\sin\frac{(2n-1)\pi x}{2l}.
+\]
+
+初始条件 $u_t(x,0)=0$ 给出
+\[
+B_n=0.
+\]
+
+初始条件 $u(x,0)=\frac{h}{l}x$ 给出
+\[
+\frac{h}{l}x=\sum_{n=1}^{\infty} A_n
+\sin\frac{(2n-1)\pi x}{2l}.
+\]
+利用正交性计算
+\[
+A_n=\frac{2}{l}\int_0^l \frac{h}{l}x
+\sin\frac{(2n-1)\pi x}{2l}\,dx
+= \frac{4h(-1)^{\,n-1}}{(2n-1)^2\pi^2}.
+\]
+
+最终得到解
+\[
+u(x,t)=
+\sum_{n=1}^{\infty}
+\frac{4h(-1)^{\,n-1}}{(2n-1)^2\pi^2}
+\cos\!\left(a\frac{(2n-1)\pi}{2l}t\right)
+\sin\!\left(\frac{(2n-1)\pi x}{2l}\right).
+\]
+\end{solution}
+\begin{theorem}[分离变量法中 $\lambda$ 的三种情形（母式总结）]
+考虑空间特征方程
+\[
+X''+\lambda X=0.
+\]
+根据 $\lambda$ 的符号，可分为以下三类情形：
+
+\begin{itemize}
+
+%------------------ λ = 0 ------------------%
+\item \textbf{$\lambda=0$：线性函数型}
+
+方程化为
+\[
+X''=0 \quad\Longrightarrow\quad X(x)=Ax+B.
+\]
+是否允许此类解取决于边界条件。
+
+例如若
+\[
+X(0)=0,\quad X(l)=0,
+\]
+则只有零解 $X\equiv 0$，因此本情形被排除。
+
+%------------------ λ > 0 ------------------%
+\item \textbf{$\lambda>0$：三角函数型（最常用）}
+
+设 $\lambda=\mu^{2}>0$，则
+\[
+X(x)=A\cos(\mu x)+B\sin(\mu x).
+\]
+
+常见边界条件与特征值如下：
+
+\[
+\begin{array}{c|c|c}
+\text{边界条件} & X_n(x) & \lambda_n \\\hline
+X(0)=0,\ X(l)=0 &
+\displaystyle \sin\frac{n\pi x}{l} &
+\displaystyle \left(\frac{n\pi}{l}\right)^{2}
+\\[6pt]
+X'(0)=0,\ X'(l)=0 &
+\displaystyle \cos\frac{n\pi x}{l} &
+\displaystyle \left(\frac{n\pi}{l}\right)^{2}
+\\[6pt]
+X(0)=0,\ X'(l)=0 &
+\displaystyle \sin\frac{(2n-1)\pi x}{2l} &
+\displaystyle \left(\frac{(2n-1)\pi}{2l}\right)^{2}
+\end{array}
+\]
+
+在你的题目中出现的便是
+\[
+X_n(x)=\sin\frac{(2n-1)\pi x}{2l},
+\qquad
+\lambda_n=\left(\frac{(2n-1)\pi}{2l}\right)^2.
+\]
+
+%------------------ λ < 0 ------------------%
+\item \textbf{$\lambda<0$：指数 / 双曲函数型}
+
+设 $\lambda=-\mu^{2}<0$，则
+\[
+X(x)=A\cosh(\mu x)+B\sinh(\mu x).
+\]
+
+通常在 Dirichlet 或 Neumann 边界条件下，此类解难以满足两端条件，因此常被排除，只剩零解。
+
+\end{itemize}
+
+\medskip
+\noindent\textbf{记忆口诀：}
+
+\[
+\boxed{\lambda=0\text{得线性函数},\quad 
+\lambda>0\text{得正弦余弦},\quad
+\lambda<0\text{得双曲函数}.}
+\]
+
+\medskip
+\noindent
+其中只有 $\lambda>0$ 能产生满足一般边界条件的非零特征函数，并给出离散的特征值序列，可用于展开初始条件。
+
+\end{theorem}
+\begin{lemma}[分离变量法中 $\lambda>0$ 时特征函数的选取原则]
+
+\noindent\textbf{总原则：}
+
+\begin{itemize}
+    \item 若 $X(0)=0$（Dirichlet），取 $X(x)=\sin(\mu x)$；
+    \item 若 $X'(0)=0$（Neumann），取 $X(x)=\cos(\mu x)$；
+    \item 若 $X(l)=0$，则令内部角满足 $\mu l = n\pi$；
+    \item 若 $X'(l)=0$，则令 $\mu l = n\pi$（因为导数变成 $\sin$）。
+\end{itemize}
+
+因此可记忆为：
+
+\[
+\text{Dirichlet} \Rightarrow \sin,\qquad 
+\text{Neumann} \Rightarrow \cos.
+\]
+
+\bigskip
+
+\noindent\textbf{不同边界条件下的特征函数与特征值：}
+
+\begin{itemize}
+
+    \item[\textbf{(1)}] 
+    边界条件：$X(0)=0,\;X(l)=0$
+
+    选取 $X(x)=\sin(\mu x)$。
+
+    \[
+    X(l)=\sin(\mu l)=0 \;\Longrightarrow\; \mu l = n\pi,\quad \mu=\frac{n\pi}{l}.
+    \]
+
+    得到特征函数与特征值：
+
+    \[
+    X_n(x)=\sin\frac{n\pi x}{l},\qquad 
+    \lambda_n=\mu^2=\left(\frac{n\pi}{l}\right)^2.
+    \]
+
+    \bigskip
+
+    \item[\textbf{(2)}]
+    边界条件：$X'(0)=0,\;X'(l)=0$
+
+    选取 $X(x)=\cos(\mu x)$。
+
+    \[
+    X'(l)=-\mu\sin(\mu l)=0
+    \;\Longrightarrow\;
+    \mu l = n\pi.
+    \]
+
+    得到：
+
+    \[
+    X_n(x)=\cos\frac{n\pi x}{l},\qquad
+    \lambda_n=\left(\frac{n\pi}{l}\right)^2.
+    \]
+
+    \bigskip
+
+    \item[\textbf{(3)}]
+    边界条件：$X(0)=0,\;X'(l)=0$
+
+    由于 $X(0)=0$，选取 $X(x)=\sin(\mu x)$。
+
+    \[
+    X'(l)=\mu\cos(\mu l)=0
+    \;\Longrightarrow\;
+    \cos(\mu l)=0
+    \;\Longrightarrow\;
+    \mu l=\frac{(2n-1)\pi}{2}.
+    \]
+
+    故：
+
+    \[
+    X_n(x)=\sin\frac{(2n-1)\pi x}{2l},\qquad
+    \lambda_n=\left(\frac{(2n-1)\pi}{2l}\right)^2.
+    \]
+
+\end{itemize}
+
+\end{lemma}
+\begin{note}{分离变量中 $\lambda_n,\,X_n,\,T_n$ 的关系}{}
+设波动方程或热方程的分离变量形式为
+\[
+u(x,t)=X(x)T(t).
+\]
+代入原方程并分离变量得
+\[
+\frac{T''}{a^{2}T}=\frac{X''}{X}=-\lambda.
+\]
+\end{note}
+
+\subsection*{1. 空间特征值问题（决定 $\lambda_n$ 与 $X_n$）}
+
+空间部分满足
+\[
+X''+\lambda X=0,
+\]
+并附带边界条件（例如 $X(0)=0,\ X'(l)=0$）。
+解该特征值问题可得离散特征值与特征函数：
+\[
+\lambda_n=\left(\frac{(2n-1)\pi}{2l}\right)^{2},\qquad
+X_n(x)=\sin\frac{(2n-1)\pi x}{2l},\qquad n=1,2,\dots
+\]
+
+\begin{itemize}
+    \item $\lambda_n$ 完全由边界条件决定；
+    \item 每个 $\lambda_n$ 对应唯一（至常数倍）的空间特征函数 $X_n(x)$；
+    \item $\{X_n\}$ 构成正交基，用于展开初始条件。
+\end{itemize}
+
+\subsection*{2. 时间部分（将 $\lambda_n$ 代入得到 $T_n$）}
+
+时间方程为
+\[
+T''+a^{2}\lambda T=0.
+\]
+将刚得到的 $\lambda_n$ 代入：
+\[
+\omega_n=a\sqrt{\lambda_n}
+       =a\,\frac{(2n-1)\pi}{2l}.
+\]
+因此
+\[
+T_n(t)=A_n\cos(\omega_n t)+B_n\sin(\omega_n t).
+\]
+
+\begin{itemize}
+    \item 每个 $\lambda_n$ 产生一个时间振荡频率 $\omega_n$；
+    \item 每个空间模式 $X_n$ 有对应的时间演化 $T_n$；
+    \item 最终解由所有模式叠加而成。
+\end{itemize}
+
+\subsection*{3. 最终解：特征模态的叠加}
+
+\[
+u(x,t)=\sum_{n=1}^{\infty}
+\Bigl(A_n\cos(\omega_n t)+B_n\sin(\omega_n t)\Bigr)
+X_n(x).
+\]
+
+\begin{note}{一句话总结}{}
+\[
+\boxed{
+\lambda_n \ \text{决定}\ X_n,\qquad
+X_n \ \text{决定}\ \omega_n,\qquad
+u(x,t)=\sum X_n(x)\,T_n(t).
+}
+\]
+\end{note}
+\begin{homework}[2]
+求解初边值问题：
+\[
+\begin{cases}
+u_{tt}=a^{2}u_{xx},\\[3pt]
+u(0,t)=0,\quad u(l,t)=A\sin^{2}(\omega t),\\[3pt]
+u(x,0)=0,\quad u_t(x,0)=0.
+\end{cases}
+\]
+\end{homework}
+\begin{solution}
+由于右端边界 $u(l,t)=A\sin^{2}(\omega t)$ 非齐次，先作函数分离：
+\[
+u(x,t)=v(x,t)+w(x,t),
+\]
+其中 $w$ 用来吸收右端的非齐次边界，使得 $v$ 满足齐次边界条件。
+
+\medskip
+\noindent\textbf{第一步：构造 $w(x,t)$ 使得}
+\[
+w(0,t)=0,\qquad w(l,t)=A\sin^{2}(\omega t).
+\]
+取线性函数
+\[
+w(x,t)=\frac{x}{l}A\sin^{2}(\omega t).
+\]
+
+则
+\[
+w_{tt}(x,t)=\frac{x}{l}A\cdot 2\omega^{2}\bigl(\cos(2\omega t)-1\bigr),
+\qquad
+w_{xx}(x,t)=0.
+\]
+
+因此 $v=u-w$ 满足
+\[
+v_{tt}-a^{2}v_{xx}=F(x,t),
+\qquad
+F(x,t)=-w_{tt}(x,t)=
+ -\frac{2A\omega^{2}x}{l}\bigl(\cos(2\omega t)-1\bigr).
+\]
+
+并满足齐次边界条件
+\[
+v(0,t)=0,\qquad v(l,t)=0,
+\]
+以及齐次初始条件
+\[
+v(x,0)=0,\qquad v_t(x,0)=0.
+\]
+
+\medskip
+\noindent\textbf{第二步：按正弦级数展开 $F$}
+
+令
+\[
+F(x,t)=\sum_{n=1}^{\infty} f_n(t)\sin\frac{n\pi x}{l},
+\qquad
+v(x,t)=\sum_{n=1}^{\infty} V_n(t)\sin\frac{n\pi x}{l}.
+\]
+
+利用正交性计算
+\[
+f_n(t)=\frac{2}{l}\int_0^l F(x,t)\sin\frac{n\pi x}{l}\,dx.
+\]
+
+代入
+\[
+F(x,t)= -\frac{2A\omega^{2}x}{l}\bigl(\cos 2\omega t -1 \bigr),
+\]
+得
+\[
+f_n(t)=\frac{4A\omega^{2}}{l^{2}}\bigl(1-\cos 2\omega t\bigr)
+\int_{0}^{l} x\sin\frac{n\pi x}{l}\,dx.
+\]
+
+计算积分
+\[
+\int_0^{l} x\sin\frac{n\pi x}{l}\,dx
+= \frac{l^{2}}{n\pi}(-1)^{n+1}.
+\]
+
+因此
+\[
+f_n(t)=\frac{4A\omega^{2}}{n\pi}(-1)^{\,n+1}
+\bigl(1-\cos 2\omega t\bigr).
+\]
+
+\medskip
+\noindent\textbf{第三步：求解每个模态 $V_n(t)$}
+
+模态方程为
+\[
+V_n''(t)+\lambda_n a^{2} V_n(t)=f_n(t),
+\qquad
+\lambda_n=\left(\frac{n\pi}{l}\right)^2,
+\]
+且满足初值
+\[
+V_n(0)=0,\qquad V_n'(0)=0.
+\]
+
+其解为
+\[
+V_n(t)=\int_0^{t} \frac{\sin\big(a\sqrt{\lambda_n}(t-s)\big)}{a\sqrt{\lambda_n}}
+f_n(s)\,ds.
+\]
+
+代入 $\sqrt{\lambda_n}=n\pi/l$ 和 $f_n$ 得：
+\[
+V_n(t)=\frac{4A\omega^{2}(-1)^{n+1}l}{a(n\pi)^2}
+\int_0^{t}\sin\!\left(\frac{an\pi}{l}(t-s)\right)
+\bigl(1-\cos 2\omega s\bigr)\,ds.
+\]
+
+该积分可直接计算，最终得到：
+\[
+V_n(t)=
+\frac{4A\omega^{2}l(-1)^{n+1}}{(n\pi)^{2}}
+\left[
+\frac{1-\cos\left(\frac{an\pi t}{l}\right)}{\frac{an\pi}{l}}
+-
+\frac{
+\frac{an\pi}{l}\cos 2\omega t -2\omega\cos\left(\frac{an\pi t}{l}\right)
+}{\left(\frac{an\pi}{l}\right)^{2}-4\omega^{2}}
+\right].
+\]
+
+\medskip
+\noindent\textbf{第四步：写出 $v$ 与 $u$ 的解}
+
+\[
+v(x,t)=\sum_{n=1}^{\infty} V_n(t)\sin\frac{n\pi x}{l}.
+\]
+
+最终解为
+\[
+u(x,t)=v(x,t)+w(x,t),
+\]
+其中
+\[
+w(x,t)=\frac{x}{l}A\sin^{2}(\omega t).
+\]
+
+整理得
+\[
+\boxed{
+u(x,t)=\frac{Ax}{l}\sin^{2}(\omega t)
++\sum_{n=1}^{\infty} V_n(t)\sin\frac{n\pi x}{l}
+}.
+\]
+
+其中 $V_n(t)$ 的显式表达式如上。
+
+\end{solution}
+\begin{homework}
+[4]求解
+\[
+\begin{cases}
+u_{tt}-a^{2}u_{xx}=g,\\[3pt]
+u(0,t)=0,\quad u_x(l,t)=0,\\[3pt]
+u(x,0)=0,\quad u_t(x,0)=\sin\frac{\pi x}{2l}.
+\end{cases}
+\]
+\end{homework}
+\begin{solution}
+考虑初边值问题
+\[
+\begin{cases}
+u_{tt}-a^{2}u_{xx}=g,\\
+u(0,t)=0,\quad u_x(l,t)=0,\\
+u(x,0)=0,\quad u_t(x,0)=\sin\dfrac{\pi x}{2l}.
+\end{cases}
+\]
+
+\medskip
+\noindent\textbf{第一步：分离变量与空间特征值问题}
+
+设
+\[
+u(x,t)=X(x)T(t),
+\]
+代入齐次方程对应的特征问题
+\[
+X''+\lambda X=0,
+\qquad
+X(0)=0,\quad X'(l)=0.
+\]
+该 Sturm--Liouville 问题的特征值与特征函数为
+\[
+\lambda_n=\left(\frac{(2n-1)\pi}{2l}\right)^2,
+\qquad
+X_n(x)=\sin\frac{(2n-1)\pi x}{2l},
+\quad n=1,2,\dots
+\]
+
+因此设解为级数形式
+\[
+u(x,t)=\sum_{n=1}^{\infty} T_n(t)\sin\frac{(2n-1)\pi x}{2l}.
+\]
+
+\medskip
+\noindent\textbf{第二步：展开源项}
+
+由于右端常数函数 $g$ 在区间 $(0,l)$ 上可展开为正弦级数
+\[
+g=\sum_{n=1}^{\infty} g_n \sin\frac{(2n-1)\pi x}{2l},
+\]
+其中
+\[
+g_n=\frac{2}{l}\int_0^l g\sin\frac{(2n-1)\pi x}{2l}\,dx
+=\frac{4g}{(2n-1)\pi}.
+\]
+
+\medskip
+\noindent\textbf{第三步：时间模态方程}
+
+代入原方程并利用正交性，得到每个模态满足
+\[
+T_n''(t)+a^{2}\lambda_n T_n(t)=g_n,
+\qquad
+\lambda_n=\left(\frac{(2n-1)\pi}{2l}\right)^2.
+\]
+
+即
+\[
+T_n''(t)+\omega_n^2 T_n(t)=\frac{4g}{(2n-1)\pi},
+\qquad
+\omega_n=a\frac{(2n-1)\pi}{2l}.
+\]
+
+其通解为
+\[
+T_n(t)
+=C_n\cos(\omega_n t)+D_n\sin(\omega_n t)
++\frac{4g}{(2n-1)\pi\,\omega_n^2}.
+\]
+
+\medskip
+\noindent\textbf{第四步：利用初始条件确定系数}
+
+由 $u(x,0)=0$ 得
+\[
+C_n+\frac{4g}{(2n-1)\pi\,\omega_n^2}=0
+\quad\Rightarrow\quad
+C_n=-\frac{4g}{(2n-1)\pi\,\omega_n^2}.
+\]
+
+由 $u_t(x,0)=\sin\dfrac{\pi x}{2l}$，
+注意到
+\[
+\sin\frac{\pi x}{2l}
+=
+\sin\frac{(2\cdot1-1)\pi x}{2l},
+\]
+因此只有第一个模态非零，得到
+\[
+D_1\omega_1=1,\qquad D_n=0\ (n\ge2),
+\]
+即
+\[
+D_1=\frac{1}{\omega_1},\qquad D_n=0\ (n\ge2).
+\]
+
+\medskip
+\noindent\textbf{第五步：写出最终解}
+
+综上，解为
+\[
+u(x,t)
+=
+\sum_{n=1}^{\infty}
+\left[
+-\frac{4g}{(2n-1)\pi\,\omega_n^2}\cos(\omega_n t)
++\frac{4g}{(2n-1)\pi\,\omega_n^2}
+\right]
+\sin\frac{(2n-1)\pi x}{2l}
++\frac{1}{\omega_1}\sin(\omega_1 t)\sin\frac{\pi x}{2l},
+\]
+其中
+\[
+\omega_n=a\frac{(2n-1)\pi}{2l}.
+\]
+
+这即为所求解。
+\end{solution}
+\begin{dxtips}[能把公式都写上就是胜利]
+    \noindent\textbf{第一步：把常数提出积分号}
+
+由于 $g$ 为常数，有
+\[
+g_n=\frac{2g}{l}\int_0^l \sin\frac{(2n-1)\pi x}{2l}\,dx.
+\]
+
+\noindent\textbf{第二步：计算正弦积分}
+
+记
+\[
+\alpha=\frac{(2n-1)\pi}{2l},
+\]
+则
+\[
+\int \sin(\alpha x)\,dx
+=
+-\frac{1}{\alpha}\cos(\alpha x).
+\]
+因此
+\[
+\int_0^l \sin(\alpha x)\,dx
+=
+\left[-\frac{1}{\alpha}\cos(\alpha x)\right]_0^l
+=
+\frac{1}{\alpha}\bigl(1-\cos(\alpha l)\bigr).
+\]
+\end{dxtips}
+\begin{homework}
+[6] 求解阻尼波方程
+\[
+\begin{cases}
+u_{tt}+2bu_t=a^{2}u_{xx},\quad b>0,\\[3pt]
+u(0,t)=u(l,t)=0,\\[3pt]
+u(x,0)=\frac{h}{l}x,\quad u_t(x,0)=0.
+\end{cases}
+\]
+\end{homework}
+\begin{solution}
+考虑阻尼波方程
+\[
+u_{tt}+2bu_t=a^{2}u_{xx},\qquad b>0,
+\]
+配以边界条件
+\[
+u(0,t)=u(l,t)=0,
+\]
+及初始条件
+\[
+u(x,0)=\frac{h}{l}x,\qquad u_t(x,0)=0.
+\]
+
+\medskip
+\noindent\textbf{第一步：消去阻尼项}
+
+作指数型变量替换
+\[
+u(x,t)=e^{-bt}v(x,t).
+\]
+直接计算得
+\[
+u_t=e^{-bt}(v_t-bv),\qquad
+u_{tt}=e^{-bt}(v_{tt}-2bv_t+b^2v).
+\]
+代入原方程并约去公共因子 $e^{-bt}$，得到
+\[
+v_{tt}-a^{2}v_{xx}-b^{2}v=0.
+\]
+
+边界条件保持为
+\[
+v(0,t)=v(l,t)=0.
+\]
+
+由初始条件可得
+\[
+v(x,0)=u(x,0)=\frac{h}{l}x,\qquad
+v_t(x,0)=bu(x,0)=\frac{bh}{l}x.
+\]
+
+\medskip
+\noindent\textbf{第二步：分离变量与空间特征问题}
+
+设
+\[
+v(x,t)=X(x)T(t),
+\]
+得到空间特征值问题
+\[
+X''+\lambda X=0,\qquad X(0)=X(l)=0.
+\]
+其特征值与特征函数为
+\[
+\lambda_n=\left(\frac{n\pi}{l}\right)^2,
+\qquad
+X_n(x)=\sin\frac{n\pi x}{l},
+\quad n=1,2,\dots
+\]
+
+因此设解为级数形式
+\[
+v(x,t)=\sum_{n=1}^{\infty} T_n(t)\sin\frac{n\pi x}{l}.
+\]
+
+\medskip
+\noindent\textbf{第三步：时间模态方程}
+
+代入方程可得每个模态满足
+\[
+T_n''(t)+\omega_n^2 T_n(t)=0,
+\qquad
+\omega_n=\sqrt{a^2\left(\frac{n\pi}{l}\right)^2+b^2}.
+\]
+其通解为
+\[
+T_n(t)=A_n\cos(\omega_n t)+B_n\sin(\omega_n t).
+\]
+
+\medskip
+\noindent\textbf{第四步：利用初始条件确定系数}
+
+由
+\[
+v(x,0)=\sum_{n=1}^\infty A_n\sin\frac{n\pi x}{l}
+=\frac{h}{l}x
+\]
+可知 $A_n$ 为 $\dfrac{h}{l}x$ 的正弦级数系数，即
+\[
+A_n=\frac{2}{l}\int_0^l \frac{h}{l}x\sin\frac{n\pi x}{l}\,dx
+=\frac{2h(-1)^{n+1}}{n\pi}.
+\]
+
+由
+\[
+v_t(x,0)=\sum_{n=1}^\infty B_n\omega_n\sin\frac{n\pi x}{l}
+=\frac{bh}{l}x
+\]
+得
+\[
+B_n=\frac{1}{\omega_n}\cdot
+\frac{2}{l}\int_0^l \frac{bh}{l}x\sin\frac{n\pi x}{l}\,dx
+=\frac{2bh(-1)^{n+1}}{n\pi\,\omega_n}.
+\]
+
+\medskip
+\noindent\textbf{第五步：写出最终解}
+
+综上，
+\[
+v(x,t)=
+\sum_{n=1}^{\infty}
+\left(
+A_n\cos(\omega_n t)+B_n\sin(\omega_n t)
+\right)
+\sin\frac{n\pi x}{l}.
+\]
+由 $u(x,t)=e^{-bt}v(x,t)$，最终解为
+\[
+\boxed{
+u(x,t)=e^{-bt}
+\sum_{n=1}^{\infty}
+\left(
+\frac{2h(-1)^{n+1}}{n\pi}\cos(\omega_n t)
++\frac{2bh(-1)^{n+1}}{n\pi\,\omega_n}\sin(\omega_n t)
+\right)
+\sin\frac{n\pi x}{l},
+}
+\]
+其中
+\[
+\omega_n=\sqrt{a^2\left(\frac{n\pi}{l}\right)^2+b^2}.
+\]
+\end{solution}
+
+
+\section{4高维柯西问题}
+% 在半径 r 的球面 |M-M_0|=r 上参数化
+\[
+(x',y',z')=(x,y,z)+w,\qquad w=(w_1,w_2,w_3),
+\]
+其中
+\[
+w_1=r\sin\theta\cos\phi,\qquad
+w_2=r\sin\theta\sin\phi,\qquad
+w_3=r\cos\theta,
+\quad (0\le \theta\le \pi,\ 0\le \phi\le 2\pi).
+\]
+于是
+\[
+\varphi\bigl(x+r\sin\theta\cos\phi,\ y+r\sin\theta\sin\phi,\ z+r\cos\theta\bigr)
+=\varphi(x+w_1,\ y+w_2,\ z+w_3).
+\]
+% 球面对称性导致的消失/保留规则（在 |w|=r 的球面上）
+\[
+\iint_{|w|=r} w_i\,dS=0 \qquad (i=1,2,3),
+\]
+\[
+\iint_{|w|=r} w_iw_j\,dS=0 \quad (i\ne j),
+\]
+\[
+\iint_{|w|=r} w_1^2\,dS=\iint_{|w|=r} w_2^2\,dS=\iint_{|w|=r} w_3^2\,dS
+=\frac{4\pi r^4}{3},
+\]
+更一般地（任意含奇次幂的单项式都为 0）：
+\[
+\iint_{|w|=r} w_1^{\alpha_1}w_2^{\alpha_2}w_3^{\alpha_3}\,dS=0
+\quad\text{只要 }\alpha_1+\alpha_2+\alpha_3\text{ 为奇数}.
+\]
+\begin{homework}[1]
+    
+
+利用泊松公式求解波动方程的柯西问题：
+\[
+\begin{cases}
+u_{tt} = a^{2}(u_{xx} + u_{yy} + u_{zz}),\\[4pt]
+u|_{t=0} = 0,\quad u_t|_{t=0} = x^{2} + yz;
+\end{cases}
+\qquad (1)
+\]
+\[
+\begin{cases}
+u_{tt} = a^{2}(u_{xx} + u_{yy} + u_{zz}),\\[4pt]
+u|_{t=0} = x^{3} + y^{2}z,\quad u_t|_{t=0} = 0.
+\end{cases}
+\qquad (2)
+\]
+\end{homework}
+\begin{definition}[三维波动方程的 Kirchhoff（泊松）公式]
+设函数 $u=u(x,t)$ 满足三维波动方程
+\[
+u_{tt}=a^{2}\Delta u,\qquad x\in\mathbb{R}^{3},\ t>0,
+\]
+并给定初始条件
+\[
+u(x,0)=\varphi(x),\qquad u_t(x,0)=\psi(x).
+\]
+记 $M_0=x$, 点 $M$ 在球面 
+\(
+|M-M_0|=at
+\)
+上，且
+\(
+r=|M-M_0|.
+\)
+则 $u(x,t)$ 可由下式唯一表示：
+\[
+u(x,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac{1}{4\pi a}
+\iint_{|M-M_0|=at}
+\frac{\varphi(M)}{r}\, dS
+\right]
++
+\frac{1}{4\pi a}
+\iint_{|M-M_0|=at}
+\frac{\psi(M)}{r}\, dS.
+\]
+该公式称为三维波动方程的 \emph{Kirchhoff（泊松）公式}，可视为三维波动方程的显式通解。
+\end{definition}
+\begin{dxtips}
+    a是波速，at是半径，M是变量，M0是定量。M在以M0为圆心at为半径的球面上\[
+u(x,t)
+=\partial_t\!\bigl(\text{球面平均的 }\varphi\bigr)
+\;+\;
+\text{球面平均的 }\psi .
+\]
+$\varphi$是t=0时刻u关于x的方程，$\psi$是t=0时，u对t的导数关于x的方程
+都是1/4πa然后都是除以r再在球面上积分
+\end{dxtips}
+\begin{solution}
+\textbf{利用泊松（Kirchhoff）公式求解三维波动方程}
+
+三维波动方程
+\[
+u_{tt}=a^{2}(u_{xx}+u_{yy}+u_{zz}),
+\qquad 
+u(x,0)=\varphi(x,y,z),\quad 
+u_t(x,0)=\psi(x,y,z)
+\]
+的 Poisson–Kirchhoff 公式为
+\[
+u(x,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac{1}{4\pi a}
+\iint_{|M-M_0|=at}
+\frac{\varphi(M)}{r}\, dS
+\right]
++
+\frac{1}{4\pi a}
+\iint_{|M-M_0|=at}
+\frac{\psi(M)}{r}\, dS,
+\qquad r=|M-M_0|.
+\]
+
+本题第（2）问中
+\[
+\psi=0,\qquad \varphi=x^{3}+y^{2}z.
+\]
+
+记球面参数化：
+\[
+M=(x+r\sin\theta\cos\phi,\;\; y+r\sin\theta\sin\phi,\;\; z+r\cos\theta),
+\qquad r=at,
+\]
+\[
+dS = r^{2}\sin\theta \, d\theta d\phi.
+\]
+
+于是
+\[
+\iint_{|M-M_0|=at} \frac{\varphi}{r}\, dS
+=
+\int_{0}^{2\pi}\!\!\int_{0}^{\pi}
+\varphi(x+r\sin\theta\cos\phi,\; y+r\sin\theta\sin\phi,\; z+r\cos\theta)
+\, r\sin\theta\, d\theta d\phi.
+\]
+
+对 \(\varphi=x^{3}+y^{2}z\) 展开：
+\[
+\Phi(r,\theta,\phi)
+=
+(x+r\sin\theta\cos\phi)^{3}
++
+(y+r\sin\theta\sin\phi)^{2}(z+r\cos\theta).
+\]
+
+展开并分项积分，可得：
+
+\[
+\iint \frac{\varphi}{r}\, dS
+=
+4\pi r(x^{3}+y^{2}z)
++4\pi r^{3}x
++\frac{4\pi}{3}r^{3}z
+\qquad (r=at).
+\]
+
+因此
+\[
+\iint_{|M-M_0|=at} \frac{\varphi}{r}\, dS
+=
+4\pi at\left[
+x^{3}+y^{2}z + a^{2}t^{2}x + \frac13 a^{2}t^{2}z
+\right].
+\]
+
+代入 Kirchhoff 公式：
+\[
+u(x,y,z,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac{1}{4\pi a}
+\cdot
+4\pi at
+\left(
+x^{3}+y^{2}z + a^{2}t^{2}x + \frac13 a^{2}t^{2}z
+\right)
+\right].
+\]
+
+即
+\[
+u(x,y,z,t)
+=
+\frac{\partial}{\partial t}
+\left[
+t x^{3}
++
+t y^{2}z
++
+x a^{2} t^{3}
++
+\frac13 a^{2} t^{2} z
+\right].
+\]
+
+求导得到最终解：
+\[
+\boxed{
+u(x,y,z,t)
+=
+x^{3}
++y^{2}z
++3a^{2}t^{2}x
++a^{2}t^{2}z.
+}
+\]
+
+\end{solution}
+\begin{homework}[2]
+试用降维法导出弦振动方程的达朗贝尔公式。
+
+\end{homework}
+\begin{dxtips}
+    就把无关的项去掉，然后带入柏松公式，然后变量替换。
+\end{dxtips}
+\begin{solution}
+三维波动方程的柯西问题为
+\[
+\begin{cases}
+u_{tt}=a^{2}(u_{xx}+u_{yy}+u_{zz}),\\[3pt]
+u(x,y,z,0)=\varphi(x,y,z),\quad
+u_t(x,y,z,0)=\phi(x,y,z).
+\end{cases}
+\]
+
+若解 $u$ 不依赖于 $x,y$，即 $u=u(z,t)$，则方程退化为一维波动方程
+\[
+\begin{cases}
+u_{tt}=a^{2}u_{zz},\\[3pt]
+u(z,0)=\varphi(z),\quad u_t(z,0)=\phi(z).
+\end{cases}
+\]
+
+由三维波动方程的 Kirchhoff（泊松）公式，
+\[
+u(z,t)
+=\frac{\partial}{\partial t}
+\left[
+\frac{1}{4\pi a}
+\iint_{|M-M_0|=r}
+\frac{\varphi}{r}\, dS
+\right]
++
+\frac{1}{4\pi a}
+\iint_{|M-M_0|=r} \frac{\phi}{r}\, dS,
+\qquad r=at.
+\]
+
+由于 $u$ 仅与 $z$ 有关，只需计算
+\[
+\iint_{|M-M_0|=r} \frac{\varphi}{r}\, dS.
+\]
+
+对球面 $|M-M_0|=r$ 作参数化：
+\[
+z_M = z + r\cos\theta,
+\qquad
+dS = r^{2}\sin\theta\, d\theta d\phi.
+\]
+于是
+\[
+\iint \frac{\varphi}{r}\, dS
+=
+\int_{0}^{2\pi}\!\int_{0}^{\pi}
+\frac{\varphi(z+r\cos\theta)}{r}\,
+r^{2}\sin\theta\, d\theta d\phi
+=
+2\pi r\int_{0}^{\pi}
+\varphi(z+r\cos\theta)\sin\theta\, d\theta.
+\]
+
+令
+\[
+\xi=z+r\cos\theta,
+\qquad
+-r\sin\theta\, d\theta=d\xi,
+\]
+则
+\[
+\iint \frac{\varphi}{r}\, dS
+=
+2\pi\int_{z-r}^{z+r}\varphi(\xi)\, d\xi.
+\]
+
+将其代回 Kirchhoff 公式，并在此处代入 $r=at$，得
+\[
+u(z,t)
+=
+\frac{1}{4\pi a}
+\frac{\partial}{\partial t}
+\left[
+2\pi\int_{z-at}^{z+at}\varphi(\xi)\, d\xi
+\right]
++
+\frac{1}{4\pi a}
+\cdot
+2\pi\int_{z-at}^{z+at}\phi(\xi)\, d\xi.
+\]
+
+化简得
+\[
+u(z,t)
+=
+\frac{1}{2a}
+\frac{\partial}{\partial t}
+\int_{z-at}^{z+at}\varphi(\xi)\, d\xi
++
+\frac{1}{2a}
+\int_{z-at}^{z+at}\phi(\xi)\, d\xi.
+\]
+
+对第一项求导：
+\[
+\frac{\partial}{\partial t}
+\int_{z-at}^{z+at}\varphi(\xi)\, d\xi
+=
+a\varphi(z+at)+a\varphi(z-at).
+\]
+
+因此得到达朗贝尔公式
+\[
+\boxed{
+u(z,t)
+=
+\frac12\bigl[\varphi(z+at)+\varphi(z-at)\bigr]
++
+\frac{1}{2a}\int_{z-at}^{z+at}\phi(\xi)\, d\xi.
+}
+\]
+\end{solution}
+\begin{definition}[Leibniz 含参积分求导公式]
+设
+\[
+F(t)=\int_{a(t)}^{b(t)} f(\xi)\,d\xi,
+\]
+其中 $a(t),\,b(t)$ 为可导函数，且被积函数 $f$ 与参数 $t$ 无关。
+则 $F(t)$ 可导，并满足
+\[
+\frac{dF}{dt}
+=
+f\bigl(b(t)\bigr)\,b'(t)
+-
+f\bigl(a(t)\bigr)\,a'(t).
+\]
+\end{definition}
+\begin{homework}[4]
+求二维波动方程的轴对称解（即二维波动方程的形如 $u=u(r,t)$ 的解，其中 $r=\sqrt{x^{2}+y^{2}}$）。
+\end{homework}
+\begin{solution}
+
+设二维波动方程为
+\[
+u_{tt}=a^{2}(u_{xx}+u_{yy}),\qquad r=\sqrt{x^{2}+y^{2}}.
+\]
+若解具有轴对称性，即 $u=u(r,t)$，则初始条件也满足
+\[
+u\big|_{t=0}=\varphi(r),\qquad
+u_t\big|_{t=0}=\psi(r).
+\]
+
+\bigskip
+\textbf{方法一：利用二维波动方程的麦考利公式并进行轴对称化}
+
+二维波动方程的积分表示式为
+\[
+u(x,y,t)
+=
+\frac{1}{2\pi a}\frac{\partial}{\partial t}
+\left[
+\iint_{S_{at}}
+\frac{\varphi(\zeta,\eta)}{\sqrt{(at)^2-(\zeta-x)^2-(\eta-y)^2}}\, d\zeta d\eta
+\right]
++
+\frac{1}{2\pi a}
+\iint_{S_{at}}
+\frac{\psi(\zeta,\eta)}{\sqrt{(at)^2-(\zeta-x)^2-(\eta-y)^2}}
+\, d\zeta d\eta.
+\]
+
+由于 $u$ 轴对称，故 $\varphi,\psi$ 仅依赖 $r=\sqrt{\zeta^2+\eta^2}$。  
+记点 $P(\zeta,\eta)$ 到原点的距离为
+\[
+\rho=\sqrt{\zeta^{2}+\eta^{2}},\qquad s=\sqrt{(\zeta-x)^2+(\eta-y)^2}.
+\]
+由余弦定理：
+\[
+\rho^{2}=r^{2}+s^{2}-2rs\cos\theta.
+\]
+
+因此
+\[
+\varphi(\zeta,\eta)=\varphi(\rho)=\varphi(\sqrt{r^{2}+s^{2}-2rs\cos\theta}),
+\]
+\[
+\psi(\zeta,\eta)=\psi(\rho)=\psi(\sqrt{r^{2}+s^{2}-2rs\cos\theta}).
+\]
+
+将积分区域改为极坐标 $(s,\theta)$，有
+\[
+u(r,t)
+=
+\frac{1}{2\pi a}
+\frac{\partial}{\partial t}
+\left[
+\int_{0}^{at}\int_{0}^{2\pi}
+\frac{\varphi(\sqrt{r^{2}+s^{2}-2rs\cos\theta})}{\sqrt{(at)^{2}-s^{2}}}
+\, s\, d\theta ds
+\right]
++
+\frac{1}{2\pi a}
+\int_{0}^{at}\int_{0}^{2\pi}
+\frac{\psi(\sqrt{r^{2}+s^{2}-2rs\cos\theta})}{\sqrt{(at)^{2}-s^{2}}}
+\, s\, d\theta ds.
+\]
+
+这给出了二维波动方程的轴对称解。
+
+\bigskip
+\textbf{方法二：变量分离法（Bessel 方程）}
+
+令
+\[
+x=r\cos\theta,\qquad y=r\sin\theta,
+\]
+则波动方程化为
+\[
+u_{tt}
+=
+a^{2}\left(u_{rr}+\frac{1}{r}u_{r}\right).
+\]
+
+设 $u(r,t)=R(r)T(t)$，代入得
+\[
+\frac{T''}{a^{2}T}
+=
+\frac{R''+\frac{1}{r}R'}{R}
+=
+-\lambda.
+\]
+
+于是得到两条常微分方程：
+\[
+T''+a^{2}\lambda T=0,\qquad
+r^{2}R''+rR'+\lambda r^{2}R=0.
+\]
+
+第二个方程即为 Bessel 方程，其解为
+\[
+R(r)=J_{0}(\sqrt{\lambda}\, r),
+\]
+而时间部分解为
+\[
+T(t)=A(\lambda)\cos(a\sqrt{\lambda}\, t)+B(\lambda)\sin(a\sqrt{\lambda}\, t).
+\]
+
+令 $\mu=\sqrt{\lambda}$，得到通解的 Bessel–Fourier 展开：
+\[
+u(r,t)
+=
+\int_{0}^{\infty}
+\bigl[
+A(\mu)\cos(a\mu t)
++
+B(\mu)\sin(a\mu t)
+\bigr]
+J_{0}(\mu r)\, d\mu.
+\]
+
+这是二维波动方程轴对称解的另一种标准表示形式。
+
+\end{solution}
+\begin{homework}[5]
+求解下列柯西问题：
+\[
+\begin{cases}
+u_{tt}=a^{2}(u_{xx}+u_{yy})+c^{2}u,\\[4pt]
+u\big|_{t=0}=\varphi(x,y),\\[4pt]
+\dfrac{\partial u}{\partial t}\Big|_{t=0}=\psi(x,y).
+\end{cases}
+\]
+（提示：在三维波动方程中，令 $v(x,y,z,t)=e^{\frac{c}{a}z}\,u(x,y,t)$。）
+\end{homework}
+\begin{solution}
+求解柯西问题
+\[
+\begin{cases}
+v_{tt}=a^{2}(v_{xx}+v_{yy})+c^{2}v,\\[3pt]
+v\big|_{t=0}=\varphi(x,y),\\[3pt]
+v_{t}\big|_{t=0}=\psi(x,y).
+\end{cases}
+\]
+
+\textbf{利用提示}，在三维波动方程中作变换
+\[
+u(x,y,z,t)=e^{\frac{c}{a}z}v(x,y,t).
+\]
+则
+\[
+u_{tt}=e^{\frac{c}{a}z}v_{tt},\qquad
+u_{xx}=e^{\frac{c}{a}z}v_{xx},\qquad
+u_{yy}=e^{\frac{c}{a}z}v_{yy},
+\]
+并且
+\[
+u_{zz}=\frac{c^{2}}{a^{2}}\,e^{\frac{c}{a}z}v.
+\]
+代入得
+\[
+u_{tt}=a^{2}(u_{xx}+u_{yy}+u_{zz}),
+\]
+故 $u$ 满足三维齐次波动方程。
+
+初值为
+\[
+u(x,y,z,0)=e^{\frac{c}{a}z}\varphi(x,y),\qquad
+u_t(x,y,z,0)=e^{\frac{c}{a}z}\psi(x,y).
+\]
+
+由三维波动方程的 Kirchhoff（泊松）公式，
+\[
+u(x,y,z,t)
+=
+\frac{\partial}{\partial t}
+\left[
+\frac{1}{4\pi a}
+\iint_{S^M_{\rho}}
+\frac{e^{\frac{c}{a}\zeta}\varphi(\xi,\eta)}{r}\,dS
+\right]
++
+\frac{1}{4\pi a}
+\iint_{S^M_{\rho}}
+\frac{e^{\frac{c}{a}\zeta}\psi(\xi,\eta)}{r}\,dS,
+\qquad \rho=at,
+\]
+其中球面 $S^M_{\rho}$ 满足
+\[
+(\xi-x)^2+(\eta-y)^2+(\zeta-z)^2=\rho^2.
+\]
+
+解出
+\[
+\zeta=z\pm\sqrt{\rho^2-(\xi-x)^2-(\eta-y)^2}.
+\]
+将球面分为上、下半球并合并积分，得
+\[
+\iint_{S^M_{\rho}} \frac{e^{\frac{c}{a}\zeta}\varphi(\xi,\eta)}{r}\,dS
+=
+2e^{\frac{c}{a}z}
+\iint_{\Sigma^M_{\rho}}
+\frac{
+\cosh\!\left(\frac{c}{a}\sqrt{\rho^2-(\xi-x)^2-(\eta-y)^2}\right)
+}{
+\sqrt{\rho^2-(\xi-x)^2-(\eta-y)^2}
+}
+\varphi(\xi,\eta)\,d\xi d\eta,
+\]
+其中 $\Sigma^M_{\rho}$ 为球面在 $\xi\eta$ 平面的投影圆盘。
+
+在 $\Sigma^M_{\rho}$ 上取极坐标
+\[
+\xi-x=r\cos\theta,\qquad \eta-y=r\sin\theta,
+\]
+则
+\[
+\iint_{S^M_{\rho}} \frac{e^{\frac{c}{a}\zeta}\varphi}{r}\,dS
+=
+2e^{\frac{c}{a}z}
+\int_{0}^{\rho}\!\!\int_{0}^{2\pi}
+\frac{\cosh\!\left(\frac{c}{a}\sqrt{\rho^2-r^2}\right)}
+{\sqrt{\rho^2-r^2}}
+\varphi(x+r\cos\theta,y+r\sin\theta)\,
+r\,d\theta dr.
+\]
+
+类似地可得初速度项的积分表达式。
+
+现将上述结果代回 Kirchhoff 公式，并在此处代入 $\rho=at$，
+再由 $v=e^{-\frac{c}{a}z}u$，得到所求解
+\[
+\boxed{
+\begin{aligned}
+v(x,y,t)
+&=
+\frac{\partial}{\partial t}
+\left\{
+\frac{1}{2\pi a}
+\int_{0}^{at}\!\!\int_{0}^{2\pi}
+\frac{\cosh\!\left(\tfrac{c}{a}\sqrt{a^{2}t^{2}-r^{2}}\right)}
+{\sqrt{a^{2}t^{2}-r^{2}}}
+\varphi(x+r\cos\theta,y+r\sin\theta)\,
+r\,d\theta dr
+\right\}
+\\[4pt]
+&\quad+
+\frac{1}{2\pi a}
+\int_{0}^{at}\!\!\int_{0}^{2\pi}
+\frac{\cosh\!\left(\tfrac{c}{a}\sqrt{a^{2}t^{2}-r^{2}}\right)}
+{\sqrt{a^{2}t^{2}-r^{2}}}
+\psi(x+r\cos\theta,y+r\sin\theta)\,
+r\,d\theta dr.
+\end{aligned}
+}
+\]
+
+即为所求解。
+\end{solution}
+\begin{homework}[6]
+试用齐次化原理导出平面非齐次波动方程
+\[
+u_{tt}=a^{2}(u_{xx}+u_{yy})+f(x,y,t)
+\]
+在齐次初始条件
+\[
+u\big|_{t=0}=0,\qquad u_{t}\big|_{t=0}=0
+\]
+下的求解公式。
+\end{homework}
+\begin{solution}
+要求平面非齐次波动方程
+\[
+\begin{cases}
+u_{tt}=a^{2}(u_{xx}+u_{yy})+f(x,y,t),\\[3pt]
+u(x,y,0)=0,\quad u_t(x,y,0)=0
+\end{cases}
+\]
+的求解公式。
+
+\medskip\noindent
+\textbf{1. 齐次化原理（Duhamel 原理）}
+
+先证明：若 $w(x,y,t,\tau)$ 是下面齐次波动方程的定解问题
+\[
+\begin{cases}
+w_{tt}=a^{2}(w_{xx}+w_{yy}),\\[3pt]
+w(x,y,0,\tau)=0,\\[3pt]
+w_t(x,y,\tau,\tau)=f(x,y,\tau)
+\end{cases}
+\]
+的解，则
+\[
+u(x,y,t)=\displaystyle\int_{0}^{t} w(x,y,t,\tau)\,d\tau
+\]
+就是原非齐次问题的解。
+
+\medskip
+显然
+\[
+u(x,y,0)=\int_{0}^{0} w\,d\tau =0.
+\]
+又有
+\[
+\frac{\partial u}{\partial t}
+=\int_{0}^{t}\frac{\partial w}{\partial t}\,d\tau + w(x,y,t,t),
+\]
+于是
+\[
+u_t(x,y,0)=\int_{0}^{0} w_t\,d\tau + w(x,y,0,0)=0,
+\]
+故初始条件满足。
+
+再计算
+\[
+u_{tt}
+=\frac{\partial}{\partial t}\left( \int_{0}^{t} w_t\,d\tau + w(x,y,t,t)\right)
+=\int_{0}^{t} w_{tt}\,d\tau + w_t(x,y,t,t),
+\]
+以及
+\[
+u_{xx} = \int_{0}^{t} w_{xx}\,d\tau,\qquad
+u_{yy} = \int_{0}^{t} w_{yy}\,d\tau.
+\]
+由 $w$ 满足齐次波动方程 $w_{tt}=a^{2}(w_{xx}+w_{yy})$ 得
+\[
+\int_{0}^{t} w_{tt}\,d\tau
+=a^{2}\int_{0}^{t}(w_{xx}+w_{yy})\,d\tau
+=a^{2}(u_{xx}+u_{yy}).
+\]
+又由终端条件 $w_t(x,y,t,t)=f(x,y,t)$，故
+\[
+u_{tt}=a^{2}(u_{xx}+u_{yy})+f(x,y,t),
+\]
+从而 $u$ 满足原非齐次波动方程和齐次初始条件，齐次化原理得证。
+
+\medskip\noindent
+\textbf{2. 齐次问题的 Poisson 公式}
+
+对每个固定的 $\tau$，$w(x,y,t,\tau)$ 是齐次平面波动方程的解，并具有初始条件
+\[
+w(x,y,0,\tau)=0,\qquad w_t(x,y,\tau,\tau)=f(x,y,\tau).
+\]
+由二维波动方程的 Poisson 公式可得
+\[
+w(x,y,t,\tau)
+=\frac{1}{2\pi a}
+\iint_{(\zeta-x)^{2}+(\eta-y)^{2}<a^{2}(t-\tau)^{2}}
+\frac{f(\zeta,\eta,\tau)}{\sqrt{a^{2}(t-\tau)^{2}-(\zeta-x)^{2}-(\eta-y)^{2}}}
+\,d\zeta d\eta,
+\quad t>\tau.
+\]
+
+将积分区域改用极坐标
+\[
+\zeta=x+r\cos\theta,\qquad
+\eta =y+r\sin\theta,\qquad
+0<r<a(t-\tau),\ 0<\theta<2\pi,
+\]
+并注意 $d\zeta d\eta = r\,dr d\theta$，得
+\[
+w(x,y,t,\tau)
+=\frac{1}{2\pi a}
+\int_{0}^{a(t-\tau)}\int_{0}^{2\pi}
+\frac{f\bigl(x+r\cos\theta,\;y+r\sin\theta,\;\tau\bigr)}
+{\sqrt{a^{2}(t-\tau)^{2}-r^{2}}}\,r\,d\theta dr.
+\]
+
+\medskip\noindent
+\textbf{3. 非齐次问题的求解公式}
+
+由 Duhamel 原理
+\[
+u(x,y,t)=\int_{0}^{t} w(x,y,t,\tau)\,d\tau,
+\]
+代入上式得到
+\[
+u(x,y,t)
+=\frac{1}{2\pi a}
+\int_{0}^{t}\int_{0}^{a(t-\tau)}\int_{0}^{2\pi}
+\frac{f\bigl(x+r\cos\theta,\;y+r\sin\theta,\;\tau\bigr)}
+{\sqrt{a^{2}(t-\tau)^{2}-r^{2}}}\,
+r\,d\theta dr d\tau.
+\]
+
+这就是平面非齐次波动方程在齐次初始条件下的积分求解公式。
+\end{solution}
+\begin{homework}[1]
+用分离变量法求下列定解问题的解：
+\[
+\begin{cases}
+\dfrac{\partial u}{\partial t}
+= a^2\dfrac{\partial^2 u}{\partial x^2}, & (t>0,\,0<x<\pi),\\[6pt]
+u(0,t)=0, \quad \dfrac{\partial u}{\partial x}(\pi,t)=0, & (t>0),\\[6pt]
+u(x,0)=f(x), & (0<x<\pi).
+\end{cases}
+\]
+\end{homework}
+\begin{solution}
+    % 题 1
+\[
+u_t=a^2u_{xx},\qquad u(0,t)=0,\quad u_x(\pi,t)=0,\quad u(x,0)=f(x)
+\]
+
+\[
+u(x,t)=X(x)T(t)
+\]
+
+\[
+\frac{T'}{a^2T}=\frac{X''}{X}=-\lambda
+\]
+
+\[
+T'+a^2\lambda T=0,\qquad T(t)=C\,e^{-a^2\lambda t}
+\]
+
+\[
+X''+\lambda X=0,\qquad X(0)=0,\quad X'(\pi)=0
+\]
+
+\[
+\lambda=(n+\tfrac12)^2,\qquad X_n(x)=\sin\!\big((n+\tfrac12)x\big),\qquad n=0,1,2,\ldots
+\]
+
+\[
+u(x,t)=\sum_{n=0}^{\infty}b_n\,e^{-a^2(n+\frac12)^2t}\,\sin\!\big((n+\tfrac12)x\big)
+\]
+
+\[
+f(x)=\sum_{n=0}^{\infty}b_n\,\sin\!\big((n+\tfrac12)x\big)
+\]
+
+\[
+b_n=\frac{2}{\pi}\int_0^{\pi}f(x)\,\sin\!\big((n+\tfrac12)x\big)\,dx
+\]
+\end{solution}
+
+
+
+
+
+
+\section{5波的传播与衰减}
+P53
+\begin{homework}[1]
+试说明：对一维波动方程所描述的波的传播过程一般具有后效现象。
+\end{homework}
+\begin{solution}
+设一维波动方程柯西问题
+\[
+u_{tt}=a^{2}u_{xx},\qquad u(x,0)=\varphi(x),\quad u_t(x,0)=\psi(x),
+\]
+其达朗贝尔公式为
+\[
+u(x,t)=\frac12\bigl[\varphi(x-at)+\varphi(x+at)\bigr]
++\frac{1}{2a}\int_{x-at}^{x+at}\psi(\xi)\,d\xi.
+\]
+其中积分项表明：在时刻 $t$，点 $x$ 处的位移不仅由两条特征线端点
+$x\pm at$ 处的初位形决定，还由区间 $[x-at,x+at]$ 上初速度
+$\psi$ 的\emph{整体贡献}决定。
+
+若初速度 $\psi$ 在某段区间内非零，则当 $t$ 增大时，
+区间 $[x-at,x+at]$ 逐渐覆盖这段非零区域，
+从而积分项在一段时间内持续影响 $u(x,t)$；
+因此同一点 $x$ 处在当前时刻的状态依赖于过去（初始）区间上的资料，
+表现为\emph{后效现象}。
+
+特别地，即使某一扰动在初始时刻只发生于局部区域，
+其影响对固定 $x$ 的响应一般仍会通过上述积分项在随后一段时间内延续，
+故一维波的传播过程一般具有后效现象。
+\end{solution}
+\begin{homework}[2]
+试说明：对一维波动方程，即使初始资料具有紧支集，当 $t\to\infty$ 时其柯西问题的解没有衰减性。
+\end{homework}
+\begin{solution}
+考虑一维波动方程柯西问题
+\[
+u_{tt}=a^{2}u_{xx},\qquad u(x,0)=\varphi(x),\quad u_t(x,0)=\psi(x),
+\]
+其达朗贝尔公式为
+\[
+u(x,t)=\frac12\bigl[\varphi(x-at)+\varphi(x+at)\bigr]
++\frac{1}{2a}\int_{x-at}^{x+at}\psi(\xi)\,d\xi.
+\]
+取具有紧支集的初始资料，例如令
+\[
+\varphi\equiv 0,\qquad \psi(\xi)=\mathbf 1_{[-1,1]}(\xi),
+\]
+则 $\varphi,\psi$ 均为紧支集函数。此时
+\[
+u(x,t)=\frac{1}{2a}\int_{x-at}^{x+at}\mathbf 1_{[-1,1]}(\xi)\,d\xi
+=\frac{1}{2a}\, \bigl|[x-at,x+at]\cap[-1,1]\bigr|.
+\]
+对任意固定的 $x$，当 $t$ 足够大时，有 $x-at\le -1$ 且 $x+at\ge 1$，
+从而
+\[
+[x-at,x+at]\supset[-1,1]\quad\Rightarrow\quad
+\bigl|[x-at,x+at]\cap[-1,1]\bigr|=2.
+\]
+因此存在 $T$ 使得对所有 $t\ge T$，
+\[
+u(x,t)=\frac{1}{2a}\cdot 2=\frac{1}{a},
+\]
+于是
+\[
+\lim_{t\to\infty}u(x,t)=\frac{1}{a}\neq 0.
+\]
+这说明即使初始资料具有紧支集，一维波动方程的解在 $t\to\infty$ 时一般也不具有衰减性。
+\end{solution}
+\begin{homework}[3]
+设 $u$ 为初始资料 $\varphi$ 及 $\psi$ 具有紧支集的二维波动方程的解。试证明：对任意固定的 $(x_0,y_0)\in\mathbb{R}^2$，$u(x_0,y_0,t)$ 以 $t^{-1/2}$ 的速度趋于零。
+\end{homework}
+\begin{solution}
+设 $\supp\varphi\cup\supp\psi\subset B_R(0)\subset\mathbb R^2$，固定 $\mathbf x_0=(x_0,y_0)$，记
+\[
+M:=R+|\mathbf x_0|.
+\]
+二维波动方程 $u_{tt}=a^2\Delta u$ 的 Poisson 公式可写为
+\[
+u(\mathbf x_0,t)=\frac{\partial}{\partial t}\left[\frac1{2\pi a}
+\iint_{|\mathbf x_0-\mathbf y|<at}\frac{\varphi(\mathbf y)}{\sqrt{a^2t^2-|\mathbf x_0-\mathbf y|^2}}\,d\mathbf y\right]
++\frac1{2\pi a}\iint_{|\mathbf x_0-\mathbf y|<at}\frac{\psi(\mathbf y)}{\sqrt{a^2t^2-|\mathbf x_0-\mathbf y|^2}}\,d\mathbf y .
+\]
+当 $t>\frac{M}{a}$ 时，对任意 $\mathbf y\in\supp\varphi\cup\supp\psi$ 有
+$|\mathbf x_0-\mathbf y|\le M<at$，故上式中的积分域可直接改为 $B_R(0)$。
+于是对 $t>\frac{M}{a}$，
+\[
+\left|\iint_{B_R(0)}\frac{\psi(\mathbf y)}{\sqrt{a^2t^2-|\mathbf x_0-\mathbf y|^2}}\,d\mathbf y\right|
+\le
+\frac{\|\psi\|_{L^1(\mathbb R^2)}}{\sqrt{a^2t^2-M^2}}
+=O(t^{-1}),
+\]
+并且
+\[
+\left|\frac{\partial}{\partial t}\frac{1}{\sqrt{a^2t^2-|\mathbf x_0-\mathbf y|^2}}\right|
+=\frac{a^2t}{\bigl(a^2t^2-|\mathbf x_0-\mathbf y|^2\bigr)^{3/2}}
+\le \frac{a^2t}{(a^2t^2-M^2)^{3/2}}=O(t^{-2}),
+\]
+从而
+\[
+\left|\frac{\partial}{\partial t}\iint_{B_R(0)}
+\frac{\varphi(\mathbf y)}{\sqrt{a^2t^2-|\mathbf x_0-\mathbf y|^2}}\,d\mathbf y\right|
+\le
+\|\varphi\|_{L^1(\mathbb R^2)}\cdot O(t^{-2})=O(t^{-2}).
+\]
+综上，
+\[
+|u(\mathbf x_0,t)|=O(t^{-1})\qquad (t\to\infty),
+\]
+因而特别有
+\[
+u(x_0,y_0,t)=O(t^{-1/2})\qquad (t\to\infty),
+\]
+即 $u(x_0,y_0,t)$ 以 $t^{-1/2}$ 的速度趋于零。
+\end{solution}
+\section{6解的唯一性和稳定性能量不等书}
+P62
+\begin{homework}[1]
+对受摩擦力作用且具有固定端点的有界弦振动，满足方程
+\[
+u_{tt}=a^{2}u_{xx}-c u_t,
+\]
+其中常数 $c>0$，证明其能量是减少的，并由此证明方程
+\[
+u_{tt}=a^{2}u_{xx}-c u_t+f
+\]
+的初边值问题解的唯一性以及关于初始条件及自由项的稳定性
+\end{homework}
+\begin{definition}[波动方程的能量]
+对一维波动方程，其能量函数定义为
+\[
+E(t)=\int_{0}^{l}\left(u_t^{\,2}+a^{2}u_x^{\,2}\right)\,dx.
+\]
+
+该能量包含以下物理意义：
+\begin{itemize}
+    \item $u_t^{\,2}$ 表示动能；
+    \item $a^{2}u_x^{\,2}$ 表示势能；
+    \item 动能与势能之和即为波动系统的总能量；
+    \item 这是能量法分析偏微分方程的核心量。
+\end{itemize}
+\end{definition}
+\begin{solution}
+
+\textbf{记能量函数为}
+\[
+E(t)=\int_{0}^{l}\left( u_t^2 + a^{2} u_x^{2}\right)dx .
+\]
+
+我们用能量方法证明题目要求的三个结论。
+
+\begin{itemize}
+
+%------------------------------------
+\item \textbf{(1) 证明能量 $E(t)$ 随时间递减}
+
+对 $E(t)$ 求导：
+
+\[
+\frac{dE(t)}{dt}
+=\int_{0}^{l}\left(2u_tu_{tt}+2a^{2}u_xu_{xt}\right)dx .
+\]
+
+利用分部积分，
+
+\[
+\int_0^l u_x u_{xt}dx
+= u_x u_t\bigg|_{0}^{l}-\int_0^l u_{xx}u_tdx .
+\]
+\begin{dxtips}
+    这里都是关于x的导数也是对x积分可以看作(uv)'=uv'+u'v求导都是对项求的
+\end{dxtips}
+由于边界固定 $u(0,t)=u(l,t)=0$，故 $u_t(0,t)=u_t(l,t)=0$，于是
+
+\[
+\int_0^l u_x u_{xt}dx
+=-\int_0^l u_{xx}u_tdx .
+\]
+
+因此，
+
+\[
+\frac{dE(t)}{dt}
+=2\int_0^l \left[u_t(u_{tt}-a^{2}u_{xx})\right]dx .
+\]
+\begin{dxtips}
+    一系列操作就是为了把题目的形式凑出来
+\end{dxtips}
+\textcolor{purple}{题目给的}
+由方程 $u_{tt}=a^{2}u_{xx}-cu_t$ 得
+
+\[
+u_{tt}-a^{2}u_{xx}=-cu_t .
+\]
+
+代入得
+
+\[
+\frac{dE(t)}{dt}
+=2\int_0^l u_t(-cu_t)dx
+=-2c\int_0^l u_t^{2}dx \le 0.
+\]
+
+故能量是单调减少的：
+
+\[
+\boxed{\frac{dE(t)}{dt}\le0}.
+\]
+
+这说明系统受摩擦力作用下能量随时间衰减。对t求导小于等于0就是最终目的
+
+%-----------------------------------
+\begin{dxtips}
+    因为两个解的初始条件完全相同，所以它们的差 $w$ 在初始时刻满足
+\[
+w(x,0)=0,\qquad w_t(x,0)=0,\qquad w_x(x,0)=0,
+\]
+因此其能量
+\[
+E_w(0)=\int_0^l \left(w_t^2 + a^2 w_x^2\right)\,dx = 0.
+\]
+\end{dxtips}
+\item \textbf{(2) 由能量递减性证明非齐次问题解的唯一性}
+
+设 $u_1,u_2$ 为同一初边值问题的两个解，令 $w=u_1-u_2$，则 $w$ 满足齐次方程
+
+\[
+\begin{cases}
+w_{tt}=a^{2}w_{xx}-cw_t,\\[4pt]
+w(0,t)=w(l,t)=0,\\[4pt]
+w(x,0)=0,\quad w_t(x,0)=0.
+\end{cases}
+\]
+
+对 $w$ 的能量
+
+\[
+E_w(t)=\int_0^l \left( w_t^2 + a^2 w_x^2\right)dx
+\]
+
+由上一问的证明可知
+
+\[
+\frac{dE_w(t)}{dt} \le 0, \qquad  E_w(0)=0.
+\]
+
+因此对所有 $t>0$，
+
+\[
+0 \le E_w(t) \le E_w(0)=0.
+\]
+
+故
+
+\[
+w_t=w_x\equiv 0,\quad w\equiv 0,
+\]
+
+从而
+
+\[
+u_1\equiv u_2.
+\]
+
+这说明方程的解是唯一的。
+
+\begin{definition}[解关于初始条件与自由项的稳定性]
+设波动方程的两组初始数据分别为
+\[
+(\varphi_1,\psi_1,f_1), \qquad (\varphi_2,\psi_2,f_2),
+\]
+对应解为 $u_1,u_2$。令差
+\[
+w=u_1-u_2 .
+\]
+
+若对任意 $t>0$，存在常数 $C>0$，使得
+\[
+\|w(\cdot,t)\|_{H^1(0,l)}^{2}
++\|w_t(\cdot,t)\|_{L^2(0,l)}^{2}
+\le 
+C\Big( 
+\|\varphi_1-\varphi_2\|_{H^1(0,l)}^{2}
++\|\psi_1-\psi_2\|_{L^2(0,l)}^{2}
++\int_{0}^{t}\|f_1-f_2\|_{L^2(0,l)}^{2}\, d\tau
+\Big),
+\]
+则称波动方程的解对初始条件与自由项 $f$ 是稳定的。
+
+该条件也可写成能量形式：
+\[
+E_w(t)
+\le 
+C\left(
+E_w(0) 
++ \int_{0}^{t} \|f_1-f_2\|_{L^2(0,l)}^{2} d\tau
+\right),
+\]
+其中
+\[
+E_w(t)=\int_{0}^{l}\left(w_t^{2}+a^{2}w_x^{2}\right)\,dx
+\]
+为差函数 $w$ 在时刻 $t$ 的能量。
+\end{definition}
+\begin{dxtips}
+    若初始差与右端项差足够小，则在任意有限时间内，两个解的差也保持小。
+\end{dxtips}
+\item \textbf{(3) 证明解关于初始条件与自由项 $f$ 的稳定性}
+
+设 $(\varphi_1,\psi_1,f_1)$ 与 $(\varphi_2,\psi_2,f_2)$ 为两组初始条件与自由项，
+相应解为 $u_1,u_2$，令
+
+\[
+w=u_1-u_2.
+\]
+
+则 $w$ 满足
+
+\[
+w_{tt}=a^{2}w_{xx}-cw_t + (f_1-f_2),
+\]
+\[
+w(x,0)=\varphi_1-\varphi_2,\qquad w_t(x,0)=\psi_1-\psi_2.
+\]
+
+记能量
+
+\[
+E_w(t)=\int_0^l (w_t^2 + a^2 w_x^2)\, dx.
+\]
+
+与前面类似可得
+\begin{dxtips}
+   \begin{note}[能量不等式的标准模板]
+
+对满足波动方程（含阻尼与外力）
+\[
+w_{tt}=a^{2}w_{xx}-c w_t + F,
+\]
+其能量定义为
+\[
+E_w(t)=\int_{0}^{l}\left(w_t^{\,2}+a^{2}w_x^{\,2}\right)\,dx.
+\]
+
+则总满足如下标准能量不等式母式：
+\[
+\boxed{
+\frac{dE(t)}{dt} \le C\,E(t) + C\|F(t)\|_{L^2}^2
+}
+\]
+
+这是 PDE 能量法稳定性的核心结构。
+
+\medskip
+
+将该母式代入 Gronwall 不等式，可得稳定性估计：
+\[
+\boxed{
+E(t) \le C\Big(E(0) + \int_{0}^{t}\|F(\tau)\|_{L^2}^2 d\tau\Big)
+}
+\]
+
+这也是各类 PDE 教科书（Evans、Renardy、李大潜等）统一使用的能量—稳定性框架。
+
+\end{note}
+\end{dxtips}
+\[
+\frac{dE_w(t)}{dt}
+\le C E_w(t) + C\|f_1-f_2\|_{L^2}^2,
+\]
+
+应用 Gronwall 不等式得
+
+\[
+E_w(t)
+\le C\Big(E_w(0)+\int_0^t \|f_1-f_2\|_{L^2}^2\, d\tau\Big)
+\quad (t>0).
+\]
+
+因此只要初始条件满足
+
+\[
+\|\varphi_1-\varphi_2\|_{H^1} + \|\psi_1-\psi_2\|_{L^2} < \eta,
+\]
+
+并且自由项满足
+
+\[
+\|f_1-f_2\|_{L^2}<\eta,
+\]
+
+即可保证对所有 $t>0$，
+
+\[
+\|u_1(\cdot,t)-u_2(\cdot,t)\|_{H^1}
++\|u_{1t}(\cdot,t)-u_{2t}(\cdot,t)\|_{L^2}
+<\varepsilon .
+\]
+
+故解对初始条件与自由项稳定。
+
+\end{itemize}
+\begin{note}[波动方程稳定性不等式的含义]
+
+考虑稳定性结论：
+\[
+\|u_1(\cdot,t)-u_2(\cdot,t)\|_{H^1}
+\;+\;
+\|u_{1t}(\cdot,t)-u_{2t}(\cdot,t)\|_{L^2}
+<\varepsilon .
+\]
+
+其每一部分含义如下：
+
+\begin{itemize}
+
+  \item \textbf{函数差 $u_1(\cdot,t)-u_2(\cdot,t)$}
+
+  表示两个不同初始条件（或不同外力）所得到的解在时刻 $t$ 的差。
+  其中符号 “$\cdot$” 代表空间变量（如 $x$）未写出，例如
+  \[
+  u_i(\cdot,t)=u_i(x,t).
+  \]
+
+  \item \textbf{$H^1$ 范数 $\|u_1(\cdot,t)-u_2(\cdot,t)\|_{H^1}$}
+
+  $H^1$ 范数定义为
+  \[
+  \|w\|_{H^1}^2
+  =\int_0^l \left(w^2 + w_x^2\right) dx.
+  \]
+  因此有
+  \[
+  \|u_1-u_2\|_{H^1}
+  =
+  \left(
+  \int_0^l \left[(u_1-u_2)^2 + (u_{1x}-u_{2x})^2\right]dx
+  \right)^{1/2}.
+  \]
+
+  其意义是：不仅比较解本身的差，也比较它们的空间导数差，
+  即比较“形状变化”。
+
+  \item \textbf{$L^2$ 范数 $\|u_{1t}(\cdot,t)-u_{2t}(\cdot,t)\|_{L^2}$}
+
+  表示两个解的时间导数（速度）之差：
+  \[
+  \|u_{1t}-u_{2t}\|_{L^2}
+  =\left(
+  \int_0^l (u_{1t}-u_{2t})^2 dx
+  \right)^{1/2}.
+  \]
+
+  这是波动方程能量中的“动能差”部分。
+
+  \item \textbf{稳定性的数学意义}
+
+  当
+  \[
+  \|u_1-u_2\|_{H^1}
+  +\|u_{1t}-u_{2t}\|_{L^2} < \varepsilon,
+  \]
+  这意味着：
+
+  \begin{itemize}
+    \item 函数值差很小；
+    \item 空间导数差很小（形状差小）；
+    \item 速度差很小（动能差小）。
+  \end{itemize}
+
+  即整个解（位置 + 速度）都随初始条件微小变化而连续变化。
+
+  \item \textbf{一句话总结}
+
+  上述不等式说明：\textbf{两个解在能量范数下非常接近}，
+  因此波动方程的解对初始条件与自由项 $f$ 是稳定的。
+\end{itemize}
+
+\end{note}
+\end{solution}
+\begin{homework}[5]
+考虑波动方程的第三类初边值问题
+\[
+\begin{cases}
+u_{tt}-a^{2}(u_{xx}+u_{yy})=0, & t>0,\ (x,y)\in\Omega,\\[4pt]
+u|_{t=0}=\varphi(x,y),\qquad u_t|_{t=0}=\psi(x,y),\\[4pt]
+\left.\left(\dfrac{\partial u}{\partial n}+\sigma u\right)\right|_{\Gamma}=0,
+\end{cases}
+\]
+其中 $\sigma>0$ 为常数，$\Gamma$ 为 $\Omega$ 的边界，$n$ 为 $\Gamma$ 上的单位外法线向量。
+对上述定解问题的解，定义能量函数
+\[
+E(t)=\iint_{\Omega}[u_t^2 + a^{2}(u_x^2+u_y^2)]\,dxdy
+\ +\ a^{2}\int_{\Gamma}\sigma u^{2}\,ds.
+\]
+试证明 $E(t)\equiv\text{常数}$，并由此证明上述定解问题的唯一性。
+\end{homework}
+\begin{solution}
+设
+\[
+E(t)=\iint_{\Omega}\bigl[u_t^2+a^2(u_x^2+u_y^2)\bigr]\,dxdy+a^2\int_{\Gamma}\sigma u^2\,ds.
+\]
+对 $t$ 求导得
+\[
+E'(t)=2\iint_{\Omega}\bigl(u_tu_{tt}+a^2u_xu_{xt}+a^2u_yu_{yt}\bigr)\,dxdy
++2a^2\int_{\Gamma}\sigma uu_t\,ds.
+\]
+对空间项分部积分（或用散度定理）：
+\begin{dxtips}
+    所以对标量函数 $u(x,y,t)$：
+\[
+\nabla u=\left(\frac{\partial u}{\partial x},\ \frac{\partial u}{\partial y}\right)=(u_x,u_y),
+\]
+\[
+\nabla u_t=\left(\frac{\partial u_t}{\partial x},\ \frac{\partial u_t}{\partial y}\right)=(u_{xt},u_{yt}).
+\]
+\end{dxtips}
+\[
+\iint_{\Omega}(u_xu_{xt}+u_yu_{yt})\,dxdy
+=\iint_{\Omega}\nabla u\cdot\nabla u_t\,dxdy
+=-\iint_{\Omega}(\Delta u)\,u_t\,dxdy+\int_{\Gamma}\frac{\partial u}{\partial n}u_t\,ds.
+\]
+代回并用方程 $u_{tt}=a^2\Delta u$，得
+\[
+E'(t)=2\iint_{\Omega}u_t(u_{tt}-a^2\Delta u)\,dxdy
++2a^2\int_{\Gamma}\left(\frac{\partial u}{\partial n}u_t+\sigma uu_t\right)\,ds.
+\]
+体积分为 $0$；边界上由 $\frac{\partial u}{\partial n}+\sigma u=0$ 得
+\[
+\frac{\partial u}{\partial n}u_t+\sigma uu_t=\left(\frac{\partial u}{\partial n}+\sigma u\right)u_t=0,
+\]
+故
+\[
+E'(t)=0\quad\Rightarrow\quad E(t)\equiv \text{常数}.
+\]
+
+\medskip
+\noindent\textbf{唯一性：}
+若 $u^{(1)},u^{(2)}$ 为两解，令 $w=u^{(1)}-u^{(2)}$，则
+\[
+w_{tt}-a^2(w_{xx}+w_{yy})=0,\quad w|_{t=0}=0,\quad w_t|_{t=0}=0,\quad
+\left(\frac{\partial w}{\partial n}+\sigma w\right)\Big|_{\Gamma}=0.
+\]
+对 $w$ 定义同样的能量 $E_w(t)$，由上证 $E_w(t)\equiv E_w(0)=0$。
+而 $E_w(t)$ 各项非负，故对任意 $t$，
+\[
+\iint_{\Omega}w_t^2\,dxdy=0,\qquad \iint_{\Omega}|\nabla w|^2\,dxdy=0,\qquad \int_{\Gamma}\sigma w^2\,ds=0,
+\]
+从而 $w_t\equiv0$、$\nabla w\equiv0$，且 $w|_{\Gamma}\equiv0$，于是 $w\equiv0$。
+故解唯一。
+\end{solution}
+\begin{homework}[7]
+设 $u(x,t)$ 是 $[0,1]\times[0,\infty)$ 中初边值问题
+\[
+\begin{cases}
+u_{tt}-u_{xx}=0,\\[4pt]
+u|_{x=0}=u|_{x=1}=0,\\[4pt]
+u|_{t=0}=0,\qquad u_t|_{t=0}=x^{2}(1-x),
+\end{cases}
+\]
+的解。求
+\[
+\int_{0}^{1}\left[u_t^{2}(x,t)+u_x^{2}(x,t)\right]\,dx.
+\]
+\end{homework}
+

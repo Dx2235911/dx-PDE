@@ -1,0 +1,228 @@
+\chapter{填空会考什么}
+\section{1.1}
+弦振动方程。
+初值/初始条件就值t=0时刻的速度和位置。
+x=0和x=l的方程就是边界条件
+。三种边界条件。
+
+
+
+\[
+\begin{cases}
+\Delta u=0, & x\in\Omega,\\[4pt]
+\left(\dfrac{\partial u}{\partial n}+\sigma(x)\,u\right)\Big|_{\Gamma}=g(x), & x\in\Gamma.
+\end{cases}
+\]
+\begin{dxtips}
+    \textbf{1）最直观：只有法向分量才会“出/入域”}
+
+在边界上一点，沿着边界走（切向）只是在边界上滑动，不会离开区域；\\
+只有沿外法线方向走，才是真正离开/进入区域。
+
+所以如果你要描述“从区域里流出去多少”，自然要看在法向方向上的变化率。
+\end{dxtips}
+\section{1.2}
+\begin{theorem}[定理 3.1]
+若函数 $\varphi(x)\in C^{3},\ \psi(x)\in C^{2}$，并且
+\[
+\varphi(0)=\varphi(l)=\varphi''(0)=\varphi''(l)=\psi(0)=\psi(l)=0,
+\]
+则弦振动方程的定解问题 (I) 的解是存在的，它可以用级数 (3.15) 给出，其中 $A_k$ 及 $B_k$
+由 (3.16) 式确定。条件 (3.17) 称为使定解问题 (I) 存在解的相容性条件。
+\end{theorem}
+达朗贝尔公式。
+决定区域，依赖区间。
+这里的at的a就是波速对吧at就是传播半径这个物理意义就是波传到的前沿和后沿。
+相容条件？
+\section{1.3}
+非齐次方程解长得样子。
+\section{1.4}
+柯西问题就是知道t=0时刻的初速度和初位移。
+\begin{dxtips}
+    又r求导时记住r也是x的函数不能只对看得见的x求导
+\end{dxtips}
+球平均法公式4.16
+拉普拉斯算子
+\[
+M_h(x_1,x_2,x_3,r)=\frac{1}{4\pi r^{2}}\iint_{S_r(x)} h\, d_r\sigma .
+\]
+\begin{example}[球面平均的物理例子]
+设 $h(y)$ 表示三维空间中的稳态温度场（$y\in\mathbb R^3$），取中心点 $x=(x_1,x_2,x_3)$ 与半径 $r>0$，球面
+\[
+S_r(x)=\{\,y\in\mathbb R^3:\ |y-x|=r\,\},
+\]
+则
+\[
+M_h(x,r)=\frac{1}{4\pi r^2}\iint_{S_r(x)} h(y)\,dS_y
+\]
+表示半径为 $r$ 的球面上温度的面积平均值。令 $h(y)=20+3y_1$，取 $x=0,\ r=2$，则
+\[
+M_h(0,2)=\frac{1}{16\pi}\iint_{|y|=2}\bigl(20+3y_1\bigr)\,dS_y
+=20+\frac{3}{16\pi}\iint_{|y|=2}y_1\,dS_y=20.
+\]
+\end{example}
+h(y)只是权重。
+把u的变量xyz换成r就会出现
+Mh的性质
+明天重点这个球平均法。
+1.6、1.7下午先学再理解答案1.8和1.9晚上格林函数已经格林性质
+\section{1.5影响区域}  
+\begin{dxtips}
+    “\textbf{初始圆盘}”就是在初始平面 $t=0$ 上取的那块圆形区域（圆盘），用来承载初值
+\[
+\varphi(x,y)=u(x,y,0),\qquad \psi(x,y)=u_t(x,y,0).
+\]
+
+对给定的时空点 $(x_0,y_0,t_0)$，它对应的初始圆盘为
+\[
+\{(x,y,0):\ (x-x_0)^2+(y-y_0)^2\le a^2t_0^2\},
+\]
+即圆心为 $(x_0,y_0)$、半径为 $a t_0$ 的圆盘（其中 $a$ 为波速）。
+\end{dxtips}
+\begin{itemize}
+  \item \textbf{点 $(x_0,y_0,t_0)$ 的依赖区域：}
+  $
+  (x-x_0)^2+(y-y_0)^2\le a^2t_0^2 \quad (t=0). 
+  $，依赖区域是t0，因为这个点的依赖区域是确定的。依赖区域就是t=0时刻符合这个不等式的(x,y)坐标会影响确定的这个点
+\begin{dxtips}
+    因为二维的时候依赖一(x0,y0)为圆心初始条件ϕ和ψ的积分
+\end{dxtips}
+  \item \textbf{初始圆盘的决定区域：}令初始圆盘
+\[
+D_0:=\{(x,y,0):\ (x-x_0)^2+(y-y_0)^2\le a^2t_0^2\}.
+\]
+则 $D_0$ 的决定区域为
+\[
+(x-x_0)^2+(y-y_0)^2\le a^2(t-t_0)^2,\qquad (t\le t_0). \tag{5.2}
+\]
+
+  \item \textbf{初始点 $(x_0,y_0,0)$ 的影响区域：}
+  \[
+  (x_0-x)^2+(y_0-y)^2\le a^2t^2 \quad (t>0). \tag{5.3}
+  \]
+  \begin{dxtips}
+      这里都是x0-x，y0-y小于的是at的平方，也就是波能传播到的地方。所以t大于0
+  \end{dxtips}
+\end{itemize}
+\begin{dxtips}
+    总结二维依赖是两个相减等于固定at0²，决定区域是a(t-to)的平方，影响区域是at，t大于0
+\end{dxtips}
+\noindent\textbf{三维：依赖区域、决定区域与影响区域}
+\begin{itemize}
+  \item \textbf{点 $(x_0,y_0,z_0,t_0)$ 的依赖区域（$t=0$ 上）：}
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2 = a^2 t_0^2,\qquad (t=0). \tag{5.4}
+  \]
+
+  \item \textbf{初始球面（半径 $a t_0$）的决定区域：}
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2 \le a^2 (t_0-t)^2,\qquad (t\le t_0). \tag{5.5}
+  \]
+
+  \item \textbf{初始点 $(x_0,y_0,z_0,0)$ 的影响区域：}
+  \[
+  (x-x_0)^2+(y-y_0)^2+(z-z_0)^2 = a^2 t^2,\qquad (t>0). \tag{5.6}
+  \]
+\end{itemize}
+\noindent\textbf{一维：依赖区间、决定区域与影响区域}
+\noindent\textbf{一维：依赖区间、决定区域与影响区域}
+\begin{itemize}
+  \item \textbf{点 $(x,t)$ 的依赖区间（在初始轴 $t=0$ 上）：}
+  \[
+  x-at\le \xi \le x+at,\qquad (\xi\in\mathbb{R},\ t\ge 0).
+  \]
+
+  \item \textbf{初始区间 $[x_1,x_2]$ 的决定区域：}
+  \[
+  \left\{(x,t):\ x_1+at\le x\le x_2-at,\ \ t\ge 0\right\}.
+  \]
+  （等价地，它由两条特征直线 $x=x_1+at$ 与 $x=x_2-at$ 及底边 $t=0,\ x\in[x_1,x_2]$ 围成。）
+\begin{dxtips}
+    决定区域是正着的三角形
+\end{dxtips}
+  \item \textbf{初始区间 $[x_1,x_2]$ 的影响区域：}
+  \[
+  x_1-at\le x\le x_2+at,\qquad (t>0). \tag{2.21}
+  \]
+  \begin{dxtips}
+      影响区域是倒着的梯型，后两个底边都是[x1,x2]
+  \end{dxtips}
+\end{itemize}
+\section{惠根斯原理}
+\begin{definition}[惠更斯原理]
+点 $(x,y,z)$ 距离圆心为 $r$，只有 $t=\dfrac{r}{a}$ 时刻，这个点才在扰动面上。  
+原点传多久扰动接受多久。
+
+$t$ 足够大的时候传播其实就是一个空心球，内包络面就是后阵面，外包络面就是前阵面。  
+有清晰的前阵面和后阵面的现象就叫做惠根斯原理。三维传播就是有这个的也叫无后效现象。  
+但是二维由于他和过去走过地方的积分有关所以他没有惠更斯原理，他的现象叫波的弥散也就后效现象，偶数都是惠根斯奇数维度都是后效。
+    
+\end{definition}
+\chapter{2}
+\section{傅立叶}
+\begin{itemize}
+  \item 傅立叶是线性变换 \(F[αf1+βf2]=αF[f1]+βF[f2]\)
+  \item \(F[f1*f2]=F[f1].F[f2]\)前面是卷积后面是点乘
+  \item \(F[f1.f2]=1/2πF[f1].F[f2]\)
+  \item \(F[f'(x)]=i\lambda F[f(x)]\)
+  \item \(F[-ixf(x)]=\dfrac{d}{d\lambda}F[f]\)
+\end{itemize}
+\section{老师说的重点}
+\begin{itemize}
+  \item 平均值公式
+  \item 傅立叶变换性质运用
+  \item 性质证明特别注意填空题
+  \item 结论简单的计算
+  \item 格林公式性质计算题
+  \item 简单的证明题
+  \item 能量不等式
+\end{itemize}
+
+\begin{itemize}
+  \item 求解柯西问题
+  \item 初值问题
+  \item 简单热传导方程求解公式用傅立叶算
+\end{itemize}
+
+\begin{itemize}
+  \item 极值原理结论
+  \item 抛物边界定义
+  \item 填空最大值最小值
+  \item 极值原理证明必要条件
+  \item 为什么不能在区域内
+\end{itemize}
+
+\begin{itemize}
+  \item 第一章概念定义适定型
+  \item 惠根斯
+  \item 依赖区间
+  \item 影响区域
+  \item 通解
+  \item 特征线方法
+  \item 作业题达朗贝尔公式
+  \item 无界问题球面法
+  \item 高纬柏松公式
+  \item 降维法
+\end{itemize}
+
+\begin{itemize}
+  \item ppt上习题不考的推导拓展不考
+  \item 第三节界的物理不考
+  \item 膜震动不考
+  \item 非齐次柯西问题不考
+  \item 球平均函数要考
+  \item 2不考
+  \item 扩散方程3.1不考
+  \item 格林函数写的静电原像法112.1 120.5 105、1.3.6
+  \item 92极值原理
+  \item 87定理4.3 背
+  \begin{theorem}[4.3]
+对任意给定的 $T>0$，热传导方程的初边值问题在
+\[
+Q_T=\{\,0\le x\le l,\ 0\le t\le T\,\}
+\]
+上的解是唯一的，且连续地依赖于初值 $\varphi(x)$ 以及边界条件中的函数 $\mu_1(t),\mu_2(t)$。
+\end{theorem}
+  \item 看怎么推4.8
+  \item 96.6对t求导
+\end{itemize}

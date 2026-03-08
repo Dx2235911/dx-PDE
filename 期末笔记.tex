@@ -1,0 +1,954 @@
+
+\chapter{第二章期末笔记}
+\section{第二章柯西问题}
+第二题
+\textbf{目标：}证明 $\hat f(\omega)$ 在 $\omega_0$ 处连续，
+即 $\displaystyle\lim_{\omega\to\omega_0}\hat f(\omega)=\hat f(\omega_0)$。
+
+\textbf{第一步：把差写成一个积分。}
+\[
+\hat f(\omega)-\hat f(\omega_0)
+=\int_{\mathbb R} f(x)\bigl(e^{-i\omega x}-e^{-i\omega_0 x}\bigr)\,dx
+=: \int_{\mathbb R} g_\omega(x)\,dx.
+\]
+
+\textbf{第二步：为支配收敛定理准备两个条件。}
+
+(1) \emph{点态收敛：}
+对每个固定的 $x$，
+\[
+\omega\to\omega_0\quad\Rightarrow\quad
+e^{-i\omega x}\to e^{-i\omega_0 x},
+\]
+因此
+\[
+g_\omega(x)=f(x)\bigl(e^{-i\omega x}-e^{-i\omega_0 x}\bigr)\to 0.
+\]
+
+(2) \emph{存在可积的支配函数：}
+由
+\[
+|e^{-i\omega x}-e^{-i\omega_0 x}|
+\le |e^{-i\omega x}|+|e^{-i\omega_0 x}|=2
+\]
+得到
+\[
+|g_\omega(x)|
+\le 2|f(x)|=:h(x).
+\]
+又因 $f\in L^1(\mathbb R)$，故 $h(x)=2|f(x)|\in L^1(\mathbb R)$。
+
+\textbf{第三步：应用支配收敛定理，把极限搬进积分号。}
+
+由支配收敛定理，
+\[
+\lim_{\omega\to\omega_0}\bigl(\hat f(\omega)-\hat f(\omega_0)\bigr)
+=\lim_{\omega\to\omega_0}\int_{\mathbb R} g_\omega(x)\,dx
+=\int_{\mathbb R}\lim_{\omega\to\omega_0} g_\omega(x)\,dx
+=\int_{\mathbb R}0\,dx=0.
+\]
+
+于是
+\[
+\lim_{\omega\to\omega_0}\hat f(\omega)=\hat f(\omega_0),
+\]
+即 $\hat f$ 在 $\omega_0$ 处连续。
+由于 $\omega_0$ 任意，$\hat f$ 在 $\mathbb R$ 上处处连续。
+我想把极限搬进积分，所以先把差写成积分，再证明这一串被积函数既逐点收敛，又被一个可积的函数压着——这样支配收敛定理就允许我合法地做这个动作，极限一搬进去，自然得到连续性。”
+\\
+第三题
+\begin{dxtips}
+    我梳理一下啊，我们的目标就是去掉烦人的偏导，所以我们需要用傅立叶变换把u变成uhat 然后变成uhat我们就能用常微分方程解出答案，uhatsit的方程，然后我们再把答案通过反傅立叶变换弄回去，也就是说傅立叶变换就和正交化一样对吧映射完了以后在反映射
+\end{dxtips}
+\begin{dxtips}[给chat的提示词]
+    目标–母式–凑型
+    「请你按 ‘目标–工具–步骤–一句话总结’ 的结构给我讲这道题：先说清楚要证明/要算的目标是什么，再列出会用到的核心工具/定理，然后把解答分成几步，每一步说明：这一步在干嘛、为什么要这么做，最后用一两句话压缩整个思路。」
+\end{dxtips}
+\section{分离变量法必记公式}
+对特征方程
+\[
+X''+\lambda X=0,\qquad X(0)=0,\ X(a)=0,
+\]
+按 $\lambda$ 的取值分三种情况讨论。
+
+\begin{itemize}
+  \item 情况一：$\lambda = 0$.
+
+  此时方程变为
+  \[
+  X'' = 0 \quad\Longrightarrow\quad X(x)=C_1 x + C_2.
+  \]
+  由边界条件
+  \[
+  X(0)=0 \Rightarrow C_2=0,\qquad
+  X(a)=0 \Rightarrow C_1 a = 0 \Rightarrow C_1=0,
+  \]
+  得 $X\equiv 0$ 为平凡解，不是我们要的非零特征函数，故
+  \[
+  \lambda=0 \ \text{不合要求}.
+  \]
+
+  \item 情况二：$\lambda<0$.
+
+  设 $\lambda=-\mu^2$，$\mu>0$，则
+  \[
+  X''-\mu^2 X=0.
+  \]
+  通解为
+  \[
+  X(x)=C_1 e^{\mu x}+C_2 e^{-\mu x}.
+  \]
+  由 $X(0)=0$ 得
+  \[
+  C_1+C_2=0 \Rightarrow C_2=-C_1,
+  \]
+  从而
+  \[
+  X(x)=C_1\left(e^{\mu x}-e^{-\mu x}\right)
+      =C_1\sinh(\mu x).
+  \]
+  再由 $X(a)=0$ 得
+  \[
+  C_1\sinh(\mu a)=0.
+  \]
+  因 $\mu a>0$ 时 $\sinh(\mu a)\neq 0$，要 $X\not\equiv 0$ 就必须 $C_1\neq 0$，与上式矛盾，只能 $C_1=0$，仍得到平凡解。故
+  \[
+  \lambda<0 \ \text{也不合要求}.
+  \]
+
+  \item 情况三：$\lambda>0$.
+
+  设 $\lambda=\mu^2$，$\mu>0$，方程为
+  \[
+  X''+\mu^2 X=0.
+  \]
+  通解
+  \[
+  X(x)=A\cos(\mu x)+B\sin(\mu x).
+  \]
+  利用边界条件：
+  \[
+  X(0)=0 \Rightarrow A\cos 0 + B\sin 0 = A =0,
+  \]
+  故
+  \[
+  X(x)=B\sin(\mu x).
+  \]
+  再由
+  \[
+  X(a)=0 \Rightarrow B\sin(\mu a)=0.
+  \]
+  为得到非零解，要求 $B\neq 0$，于是
+  \[
+  \sin(\mu a)=0
+  \quad\Longrightarrow\quad
+  \mu a = n\pi,\quad n=1,2,3,\dots
+  \]
+  即
+  \[
+  \mu_n=\frac{n\pi}{a},\qquad
+  \lambda_n=\mu_n^2=\left(\frac{n\pi}{a}\right)^2.
+  \]
+  对应的特征函数可取
+  \[
+  X_n(x)=\sin\!\left(\frac{n\pi x}{a}\right),\quad n=1,2,\dots
+  \]
+  （常数因子可并入后续的傅里叶系数中，故省略。）
+\end{itemize}
+
+综上，满足边界条件 $X(0)=X(a)=0$ 的非零特征解为
+\[
+\lambda_n=\left(\frac{n\pi}{a}\right)^2,\qquad
+X_n(x)=\sin\left(\frac{n\pi x}{a}\right),\quad n=1,2,\dots
+\]
+\[
+X''+\lambda X=0
+\]
+\begin{cases}
+\lambda>0:\ \lambda=\mu^2,\ \mu>0, &
+X(x)=A\cos(\mu x)+B\sin(\mu x);\\[0.4em]
+\lambda=0: &
+X(x)=A x + B;\\[0.4em]
+\lambda<0:\ \lambda=-\mu^2,\ \mu>0, &
+X(x)=A e^{\mu x}+B e^{-\mu x}
+      = A\sinh(\mu x)+B\cosh(\mu x).
+\end{cases}
+\[
+\sinh t = \frac{e^{t}-e^{-t}}{2},\qquad
+\cosh t = \frac{e^{t}+e^{-t}}{2}.
+\]
+\section{格林公式}
+%==================== 格林公式 ====================%
+\begin{definition}[格林公式]
+设 $\Omega\subset\mathbb{R}^3$ 为以足够光滑的曲面 $\Gamma$ 为边界的有界区域，
+外法向单位向量为 $\bm n=(\cos(n,x),\cos(n,y),\cos(n,z))$。
+若函数 $P(x,y,z),Q(x,y,z),R(x,y,z)$ 在 $\Omega\cup\Gamma$ 上连续，
+并且在 $\Omega$ 内具有连续一阶偏导数，则有
+\[
+\iiint_{\Omega}
+\left(
+  \frac{\partial P}{\partial x}
+ +\frac{\partial Q}{\partial y}
+ +\frac{\partial R}{\partial z}
+\right)\mathrm d\Omega
+=
+\iint_{\Gamma}
+\bigl[P\cos(n,x)+Q\cos(n,y)+R\cos(n,z)\bigr]\,\mathrm dS .
+\]
+记 $\mathbf{F}=(P,Q,R)$，上式也可写成
+\[
+\iiint_{\Omega} \nabla\!\cdot\!\mathbf{F}\,\mathrm d\Omega
+= \iint_{\Gamma} \mathbf{F}\cdot\bm n\,\mathrm dS .
+\]
+\end{definition}
+\begin{note}
+    也是从三维将到二维，$\Omega$是三维的体积三个积分号代表分别从x，y，z积分。$\Gamma$是曲面所以他的信息必须比三维的多所以三维的是求导，二维的只是投影了。
+\end{note}
+\begin{note}
+    % 说明格林公式右端中 \cos(n,x),\cos(n,y),\cos(n,z) 的投影意义
+看右边那一项积分：
+\[
+\iint_{\Gamma}\bigl[P\cos(n,x)+Q\cos(n,y)+R\cos(n,z)\bigr]\,dS.
+\]
+把它拆开，可以写成
+\[
+\iint_{\Gamma}P\cos(n,x)\,dS
++
+\iint_{\Gamma}Q\cos(n,y)\,dS
++
+\iint_{\Gamma}R\cos(n,z)\,dS.
+\]
+
+以第一项
+\[
+\iint_{\Gamma}P\cos(n,x)\,dS
+\]
+为例：
+
+\begin{itemize}
+  \item 从几何上看，$\cos(n,x)\,dS$ 正好等于这块小面元 $dS$
+        在 $yz$ 平面上的投影面积 $dS_x$，即
+        \[
+        dS_x = \cos(n,x)\,dS.
+        \]
+  \item 因此第一项可以理解为
+        \[
+        \iint_{\Gamma}P\cos(n,x)\,dS
+        = \iint_{\text{投影到 }yz\text{ 的那块面}} P\,dS_x.
+        \]
+\end{itemize}
+
+同理，
+\[
+Q\cos(n,y)\,dS
+\]
+对应把曲面投影到 $xz$ 平面，
+\[
+R\cos(n,z)\,dS
+\]
+对应把曲面投影到 $xy$ 平面。
+
+所以，可以说这些 $\cos$ 项的作用就是：
+\emph{把实际的空间曲面 $\Gamma$ 在不同坐标方向上投影到各个坐标平面上，
+并用相应分量 $P,Q,R$ 在这些投影面上做面积分。}
+\end{note}
+\begin{definition}[Stokes 公式]
+设 $S$ 是 $\mathbb R^3$ 中一块足够光滑的定向曲面，
+边界为分段光滑的闭曲线 $\partial S = C$，
+$\mathbf n$ 为与 $C$ 的方向相容的单位法向量。
+若向量场 $\mathbf F=\mathbf F(x,y,z)$ 在 $S$ 的邻域内有连续一阶偏导数，则
+\[
+\iint_{S} (\nabla\times\mathbf F)\cdot\mathbf n\,\mathrm dS
+=
+\oint_{C} \mathbf F\cdot d\mathbf r.
+\]
+其中 $d\mathbf r = (dx,dy,dz)$，$\nabla\times\mathbf F$ 为 $\mathbf F$ 的旋度。
+\end{definition}
+%==================== 格林第一公式 ====================%
+\begin{definition}[格林第一公式]
+设函数 $u(x,y,z)$ 和 $v(x,y,z)$ 以及它们的一阶偏导数在闭区域
+$\Omega\cup\Gamma$ 上连续，它们的所有二阶偏导数在 $\Omega$ 内连续。
+由格林公式
+\[
+\iiint_{\Omega}
+\left(
+  \frac{\partial P}{\partial x}
+ +\frac{\partial Q}{\partial y}
+ +\frac{\partial R}{\partial z}
+\right)\mathrm d\Omega
+=
+\iint_{\Gamma}
+\bigl[P\cos(n,x)+Q\cos(n,y)+R\cos(n,z)\bigr]\mathrm dS,
+\]
+在上式中令
+\[
+P = u\,\frac{\partial v}{\partial x},\qquad
+Q = u\,\frac{\partial v}{\partial y},\qquad
+R = u\,\frac{\partial v}{\partial z},
+\]
+则有
+\[
+\frac{\partial P}{\partial x}
+= \frac{\partial u}{\partial x}\frac{\partial v}{\partial x}
+  + u\,\frac{\partial^2 v}{\partial x^2},\quad
+\frac{\partial Q}{\partial y}
+= \frac{\partial u}{\partial y}\frac{\partial v}{\partial y}
+  + u\,\frac{\partial^2 v}{\partial y^2},\quad
+\frac{\partial R}{\partial z}
+= \frac{\partial u}{\partial z}\frac{\partial v}{\partial z}
+  + u\,\frac{\partial^2 v}{\partial z^2}.
+\]
+将它们代入左端并整理，记
+\[
+\Delta v
+= \frac{\partial^2 v}{\partial x^2}
+ + \frac{\partial^2 v}{\partial y^2}
+ + \frac{\partial^2 v}{\partial z^2},\qquad
+\frac{\partial v}{\partial n}
+= \frac{\partial v}{\partial x}\cos(n,x)
+ + \frac{\partial v}{\partial y}\cos(n,y)
+ + \frac{\partial v}{\partial z}\cos(n,z),
+\]
+即可得到
+\begin{equation}\label{eq:Green1}
+\iiint_{\Omega} u\,\Delta v\,\mathrm d\Omega
+=
+\iint_{\Gamma} u\,\frac{\partial v}{\partial n}\,\mathrm dS
+-
+\iiint_{\Omega}
+\left(
+  \frac{\partial u}{\partial x}\frac{\partial v}{\partial x}
+ +\frac{\partial u}{\partial y}\frac{\partial v}{\partial y}
+ +\frac{\partial u}{\partial z}\frac{\partial v}{\partial z}
+\right)\mathrm d\Omega.
+\end{equation}
+这就是格林第一公式。
+\end{definition}
+\begin{note}
+就行前导后不导乘前不导后导一样
+ % 多维乘法公式：
+\[
+\nabla\cdot\bigl(u\,\nabla v\bigr)
+= \nabla u\cdot\nabla v + u\,\Delta v.
+\]
+
+% 坐标展开验证：
+设
+\[
+\nabla v = \left(\frac{\partial v}{\partial x},
+               \frac{\partial v}{\partial y},
+               \frac{\partial v}{\partial z}\right),
+\quad
+\nabla u = \left(\frac{\partial u}{\partial x},
+               \frac{\partial u}{\partial y},
+               \frac{\partial u}{\partial z}\right),
+\]
+则
+\[
+\nabla\cdot\bigl(u\,\nabla v\bigr)
+= \frac{\partial}{\partial x}\!\left(u\,\frac{\partial v}{\partial x}\right)
+ +  \frac{\partial}{\partial y}\!\left(u\,\frac{\partial v}{\partial y}\right)
+ +  \frac{\partial}{\partial z}\!\left(u\,\frac{\partial v}{\partial z}\right).
+\]
+用一维乘法公式展开：
+\[
+= \frac{\partial u}{\partial x}\frac{\partial v}{\partial x}
+  +u\,\frac{\partial^2 v}{\partial x^2}
+ +\frac{\partial u}{\partial y}\frac{\partial v}{\partial y}
+  +u\,\frac{\partial^2 v}{\partial y^2}
+ +\frac{\partial u}{\partial z}\frac{\partial v}{\partial z}
+  +u\,\frac{\partial^2 v}{\partial z^2}.
+\]
+整理得到
+\[
+\nabla\cdot\bigl(u\,\nabla v\bigr)
+= \left(
+    \frac{\partial u}{\partial x}\frac{\partial v}{\partial x}
+   +\frac{\partial u}{\partial y}\frac{\partial v}{\partial y}
+   +\frac{\partial u}{\partial z}\frac{\partial v}{\partial z}
+  \right)
+ + u\left(
+    \frac{\partial^2 v}{\partial x^2}
+   +\frac{\partial^2 v}{\partial y^2}
+   +\frac{\partial^2 v}{\partial z^2}
+   \right).
+\]
+也就是
+\[
+\nabla\cdot\bigl(u\,\nabla v\bigr)
+= \nabla u\cdot\nabla v + u\,\Delta v,
+\]
+其中
+\[
+\Delta v = \nabla\cdot(\nabla v).
+\]   
+\end{note}
+%==================== 格林第二公式 ====================%
+\begin{definition}[格林第二公式]
+在格林第一公式的同样条件下，先分别对 $(u,v)$ 和 $(v,u)$ 应用格林第一公式。
+
+\medskip
+对 $(u,v)$ 有
+\begin{equation}\label{eq:G1-uv}
+\iiint_{\Omega} u\,\Delta v\,\mathrm d\Omega
+=
+\iint_{\Gamma} u\,\frac{\partial v}{\partial n}\,\mathrm dS
+-
+\iiint_{\Omega} \nabla u\cdot\nabla v\,\mathrm d\Omega.
+\end{equation}
+
+对 $(v,u)$ 有
+\begin{equation}\label{eq:G1-vu}
+\iiint_{\Omega} v\,\Delta u\,\mathrm d\Omega
+=
+\iint_{\Gamma} v\,\frac{\partial u}{\partial n}\,\mathrm dS
+-
+\iiint_{\Omega} \nabla v\cdot\nabla u\,\mathrm d\Omega.
+\end{equation}
+
+注意到
+\[
+\nabla u\cdot\nabla v = \nabla v\cdot\nabla u,
+\]
+将式 \eqref{eq:G1-vu} 从式 \eqref{eq:G1-uv} 中相减，左端得到
+\[
+\iiint_{\Omega} u\,\Delta v\,\mathrm d\Omega
+-\iiint_{\Omega} v\,\Delta u\,\mathrm d\Omega
+=
+\iiint_{\Omega} (u\,\Delta v - v\,\Delta u)\,\mathrm d\Omega,
+\]
+右端因为 $\nabla u\cdot\nabla v$ 项相互抵消，得到
+\[
+\iint_{\Gamma} u\,\frac{\partial v}{\partial n}\,\mathrm dS
+-\iint_{\Gamma} v\,\frac{\partial u}{\partial n}\,\mathrm dS
+=
+\iint_{\Gamma}
+\left(
+  u\,\frac{\partial v}{\partial n}
+  - v\,\frac{\partial u}{\partial n}
+\right)\mathrm dS.
+\]
+
+于是得到
+\begin{equation}\label{eq:Green2}
+\iiint_{\Omega} (u\,\Delta v - v\,\Delta u)\,\mathrm d\Omega
+=
+\iint_{\Gamma}
+\left(
+  u\,\frac{\partial v}{\partial n}
+  - v\,\frac{\partial u}{\partial n}
+\right)\mathrm dS,
+\end{equation}
+这就是格林第二公式。
+\end{definition}
+\begin{note}[格林三公式的关系（记忆版）]
+
+\begin{enumerate}
+  \item \textbf{格林公式（散度定理）}  
+  体积分 $\leftrightarrow$ 通量积分 的总纲：  
+  \[
+  \iiint_{\Omega} \nabla\!\cdot\!\mathbf F\,\mathrm d\Omega
+  = \iint_{\Gamma} \mathbf F\cdot\bm n\,\mathrm dS.
+  \]
+
+  \item \textbf{格林第一公式}  
+  用格林公式对特定向量场 $\mathbf F = u\nabla v$，得到
+  “三维分部积分公式”：  
+  \[
+  \iiint_{\Omega} u\,\Delta v\,\mathrm d\Omega
+  = \iint_{\Gamma} u\,\frac{\partial v}{\partial n}\,\mathrm dS
+    - \iiint_{\Omega} \nabla u\cdot\nabla v\,\mathrm d\Omega.
+  \]
+
+  \item \textbf{格林第二公式}  
+  在第一公式中交换 $u,v$ 的角色，再把两式相减，得到  
+  \[
+  \iiint_{\Omega} (u\,\Delta v - v\,\Delta u)\,\mathrm d\Omega
+  = \iint_{\Gamma}
+    \left(
+      u\,\frac{\partial v}{\partial n}
+      - v\,\frac{\partial u}{\partial n}
+    \right)\mathrm dS.
+  \]
+\end{enumerate}
+
+\medskip
+\noindent\textbf{一句话记忆：}\\
+格林公式 $\Rightarrow$（取 $\mathbf F=u\nabla v$）$\Rightarrow$ 格林第一公式；\\
+格林第一公式 $+$「交换 $u,v$ 再相减」$\Rightarrow$ 格林第二公式。
+
+\end{note}
+% 带 1/r 的 Green 第二公式的来源与物理意义
+
+\begin{note}[式 (2.7) 的来源与意义]
+
+这个式子可以看成是把格林第二公式套在 $u$ 和 $1/r$ 上得到的特殊形式，
+数学上是 Green 第二公式 $+$ 基本解的一种特化，
+物理上描述的是：
+\emph{“点源的基本解 $1/r$ 与调和场 $u$ 的相互作用
+= 在点 $M_0$ 处集中的源强度”}。
+
+\medskip
+\textbf{1. 与格林第二公式的关系}
+
+格林第二公式为
+\[
+\iiint_{\Omega}(u\,\Delta v - v\,\Delta u)\,d\Omega
+=
+\iint_{\Gamma}\!\left(
+u\,\frac{\partial v}{\partial n}
+- v\,\frac{\partial u}{\partial n}
+\right)dS.
+\]
+
+现在取
+\[
+v(M) = \frac{1}{r_{M_0M}} = \frac{1}{|M-M_0|},
+\]
+这是三维拉普拉斯方程的基本解（free space Green 函数）。它满足
+\begin{itemize}
+  \item 当 $M\neq M_0$ 时，$\displaystyle \Delta\!\left(\frac{1}{r}\right)=0$；
+  \item 在 $M_0$ 处存在一个奇异源，用分布表示为
+  \[
+  \Delta\!\left(\frac{1}{r}\right) = -4\pi\,\delta(M-M_0).
+  \]
+\end{itemize}
+
+再假设 $u$ 在 $\Omega$ 内调和：$\Delta u = 0$。  
+将 $v=1/r$ 代入格林第二公式：
+\[
+\iiint_{\Omega}\bigl(u\,\Delta(1/r) - (1/r)\,\Delta u\bigr)\,d\Omega
+=
+\iint_{\Gamma}\!\left(
+u\,\frac{\partial}{\partial n}\frac{1}{r}
+-\frac{1}{r}\frac{\partial u}{\partial n}
+\right)dS.
+\]
+
+由 $\Delta u=0$，左边只剩第一项；而 $\Delta(1/r)$ 只在 $M_0$ 处取非零，
+于是体积分的值只有三种情况：
+\begin{itemize}
+  \item $M_0$ 在 $\Omega$ 外：积分不到这一点，左边为 $0$；
+  \item $M_0$ 在 $\Omega$ 内：体积分等于 $-4\pi u(M_0)$；
+  \item $M_0$ 在边界 $\Gamma$ 上：只包住一半固角，对应 $-2\pi u(M_0)$。
+\end{itemize}
+
+将符号整理（右边整体带一个负号），得到
+\[
+-\iint_{\Gamma}\Bigl[
+  u\,\frac{\partial}{\partial n}\!\left(\frac{1}{r}\right)
+ -\frac{1}{r}\frac{\partial u}{\partial n}
+\Bigr]\,dS
+=
+\begin{cases}
+0, & M_0\text{ 在 }\Omega\text{ 外},\\[0.3em]
+2\pi\,u(M_0), & M_0\text{ 在 }\Gamma\text{ 上},\\[0.3em]
+4\pi\,u(M_0), & M_0\text{ 在 }\Omega\text{ 内},
+\end{cases}
+\]
+这正是教材中的式 (2.7)。
+
+\begin{definition}
+    [三维空间 Laplace 方程的基本解]为
+\[
+G(M,M_0)=\frac{1}{4\pi r},\qquad r=|M-M_0|.
+\]
+
+它满足
+\[
+\Delta G(M) = -\delta(M-M_0).
+\]
+
+将 $G$ 乘以 $4\pi$ 得
+\[
+v(M)=\frac{1}{r}=4\pi\,G(M,M_0),
+\]
+
+因此
+\[
+\Delta\!\left(\frac{1}{r}\right)
+= \Delta\!\bigl(4\pi G\bigr)
+= 4\pi\,\Delta G
+= -4\pi\,\delta(M-M_0).
+\]
+\end{definition}
+\begin{itemize}
+
+\item[\textbf{①}] \textbf{$M_0$ 在 $\Omega$ 外}
+
+积分区域 $\Omega$ 内没有奇点，因此 $\delta$ 不起作用：
+\[
+\int_{\Omega} -4\pi\,u(M_0)\,\delta(M-M_0)\,dV = 0.
+\]
+于是边界积分结果为
+\[
+-\iint_{\Gamma}
+\left[
+u\,\frac{\partial}{\partial n}\!\left(\frac{1}{r}\right)
+-\frac{1}{r}\frac{\partial u}{\partial n}
+\right] dS = 0.
+\]
+
+\item[\textbf{②}] \textbf{$M_0$ 在 $\Gamma$ 上}
+
+为处理奇点，从区域中挖掉一个半径为 $\rho$ 的半球，并令 $\rho\to 0$。
+此时奇点只被“包住一半”，故奇点贡献为
+\[
+\text{贡献} = 2\pi\,u(M_0).
+\]
+因此
+\[
+-\iint_{\Gamma}
+\left[
+u\,\frac{\partial}{\partial n}\!\left(\frac{1}{r}\right)
+-\frac{1}{r}\frac{\partial u}{\partial n}
+\right] dS
+= 2\pi u(M_0).
+\]
+
+\item[\textbf{③}] \textbf{$M_0$ 在 $\Omega$ 内}
+
+此时奇点完全被包含在积分区域中，故
+\[
+\int_{\Omega} -4\pi\,u(M_0)\,\delta(M-M_0)\,dV 
+= -4\pi u(M_0).
+\]
+由 Green 第二恒等式得到边界项为
+\[
+-\iint_{\Gamma}
+\left[
+u\,\frac{\partial}{\partial n}\!\left(\frac{1}{r}\right)
+-\frac{1}{r}\frac{\partial u}{\partial n}
+\right] dS
+= 4\pi u(M_0).
+\]
+
+\end{itemize}
+\begin{itemize}
+
+  \item \textbf{基本解形式不同}  
+  \[
+  \text{3D: } \frac{1}{r}, 
+  \qquad
+  \text{2D: } \frac{1}{z-z_0}.
+  \]
+
+  \item \textbf{奇点方程常数不同}  
+  \[
+  \Delta\!\left(\frac{1}{r}\right) = -4\pi\,\delta,
+  \qquad
+  \bar\partial\!\left(\frac{1}{z}\right)=\pi\,\delta.
+  \]
+
+  \item \textbf{奇点贡献常数不同（区域内）}  
+  \[
+  \text{3D: } 4\pi\,u(M_0),
+  \qquad
+  \text{2D: } 2\pi i\, f(z_0).
+  \]
+
+  \item \textbf{奇点在边界上的贡献不同（半贡献）}  
+  \[
+  \text{3D: } 2\pi\,u(M_0),
+  \qquad
+  \text{2D: } \pi i\,f(z_0).
+  \]
+
+  \item \textbf{几何原因不同}  
+  \[
+  \text{3D 使用球面积 } 4\pi\rho^2,\quad
+  \text{2D 使用圆周长 } 2\pi\rho.
+  \]
+
+  \item \textbf{最终对应的公式不同}  
+  \[
+  \text{3D: boundary integral} = (\text{常数})\cdot u(M_0),
+  \]
+  \[
+  \text{2D: } 
+  \oint \frac{f(z)}{z-z_0}\,dz 
+  = (\text{常数})\cdot f(z_0).
+  \]
+
+\end{itemize}
+\begin{theorem}[平均值公式]
+设函数 $u(M)$ 在某区域 $\Omega$ 内调和，$M_0$ 是 $\Omega$ 中的任一点。
+则对以 $M_0$ 为球心、$a$ 为半径且完全落在区域 $\Omega$ 内部的球面 $\Gamma_a$，成立
+\begin{equation}\label{eq:mean-value}
+u(M_0)
+=
+\frac{1}{4\pi a^{2}}
+\iint_{\Gamma_a} u\,dS.
+\tag{2.13}
+\end{equation}
+\end{theorem}
+\begin{theorem}[调和函数的平均值定理]
+设 $u(x,y)$ 在圆盘 
+\[
+D=\{(x,y): x^2+y^2< R^2\}
+\]
+内调和，$0<r<R$。则对圆心 $O=(0,0)$ 处的值成立
+\begin{equation}\label{eq:mean2D}
+u(0,0)
+=
+\frac{1}{2\pi}
+\int_{0}^{2\pi} u(r,\theta)\,d\theta .
+\end{equation}
+其中 $u(r,\theta)$ 表示 $u$ 在极坐标下、半径为 $r$ 的圆周上的取值。
+\end{theorem}
+
+根据 Green 第二公式有
+\[
+-\iint_{\Gamma}
+\left[
+u\frac{\partial}{\partial n}\left(\frac{1}{r}\right)
+-\frac{1}{r}\frac{\partial u}{\partial n}
+\right]dS
+=
+\begin{cases}
+0, & M_0\notin \overline{\Omega},\\[4pt]
+2\pi u(M_0), & M_0\in \Gamma,\\[4pt]
+4\pi u(M_0), & M_0\in\Omega.
+\end{cases}
+\]
+
+当 $M_0\in\Omega$（情况 3）时得到
+\[
+- \iint_{\Gamma} [\cdots]\, dS = 4\pi u(M_0).
+\]
+
+两边同除以 \(4\pi\)，得表示公式
+\[
+u(M_0)
+= -\frac{1}{4\pi}
+\iint_{\Gamma}
+\left[
+u\,\frac{\partial}{\partial n}\left(\frac{1}{r}\right)
+-
+\frac{1}{r}\frac{\partial u}{\partial n}
+\right]dS.
+\]
+\subsection{格林函数}
+\begin{dxtips}
+   本来是这个 \[
+u(M_0)
+= -\frac{1}{4\pi}
+\iint_{\Gamma}
+\left[
+u\,\frac{\partial}{\partial n}\left(\frac{1}{r}\right)
+-
+\frac{1}{r}\frac{\partial u}{\partial n}
+\right]dS.
+\]
+然后为了消掉du/dn只能想办法让1/r这个位置也就是v在边界上是零然后就构造了G(M,M0),g(M,M0)是特意选出来的在边界上和1/4πr也即是(1/4πv)抵消，然后同时符合调和等等条件使得G完美替换v的位置，然后4π分之一是为了抵消开始式子的系数
+\end{dxtips}
+\begin{definition}[狄利克雷问题的格林函数]
+设 $M_0$ 为区域内的一点，$r_{M_0M}$ 表示点 $M_0$ 与 $M$ 之间的距离。
+定义函数
+\[
+G(M,M_0)=\frac{1}{4\pi r_{M_0M}} - g(M,M_0),
+\]
+称为方程（1.1）狄利克雷问题的格林函数（或称狄利克雷问题的源函数）。
+\end{definition}
+\begin{note}
+    函数 $g(M,M_0)$ 定义为满足以下条件的调和函数：
+
+\begin{itemize}
+  \item 对于 $M\in \Omega$（除 $M=M_0$ 外），有
+  \[
+  \Delta_M g(M,M_0)=0,
+  \]
+  即 $g$ 在 $\Omega$ 内调和；
+  \item 在边界 $\Gamma=\partial\Omega$ 上满足
+  \[
+  g(M,M_0)=\frac{1}{4\pi r_{M_0 M}},
+  \qquad M\in \Gamma;
+  \]
+  \item $g$ 在 $M\to M_0$ 时保持有界。
+\end{itemize}
+
+因此 $g$ 是一个调和的“修正项”，使得
+\[
+G(M,M_0)=\frac{1}{4\pi r_{M_0 M}}-g(M,M_0)
+\]
+在整个边界 $\Gamma$ 上满足
+\[
+G(M,M_0)=0.
+\]
+\end{note}
+\begin{definition}[狄利克雷问题（Dirichlet problem）]
+在某个区域 $\Omega$ 内，求满足如下方程的函数 $u$：
+\[
+\begin{cases}
+\Delta u = 0, & M\in\Omega,\\[4pt]
+u = f, & M\in\Gamma,
+\end{cases}
+\]
+其中 $\Gamma=\partial\Omega$ 是边界，$f$ 为已知边界函数。
+称上述边值问题为区域 $\Omega$ 上的\emph{狄利克雷问题}。
+\end{definition}
+\begin{proof}
+\begin{itemize}
+
+  \item 首先，在区域 $\Omega$ 内对两个足够光滑的函数 $u,v$ 应用 Green 第二恒等式：
+  \[
+    \iint_\Omega (u\Delta v - v\Delta u)\, d\Omega
+    =
+    \int_\Gamma \left( u\frac{\partial v}{\partial n}
+      - v\frac{\partial u}{\partial n}\right)\, dS . 
+  \tag{2.3}
+  \]
+
+  \item 选取
+  \[
+    v(M)=\frac{1}{r}=\frac{1}{|M-M_0|},
+  \]
+  则 $v$ 在 $M\neq M_0$ 时满足 $\Delta v=0$，在 $M=M_0$ 处有
+  \[
+    \Delta\!\left(\frac{1}{4\pi r}\right)=-\delta(M-M_0),
+  \]
+  因而它是 Laplace 方程的基本解。
+
+  \item 将 $v=1/r$ 代入 Green 恒等式，可以把调和函数 $u$ 在点 $M_0$ 的值表示成边界积分（教材公式 (2.6)）：
+  \[
+    u(M_0)
+    = \frac{1}{4\pi}\int_\Gamma
+    \left[
+      u\frac{\partial}{\partial n}\!\left(\frac{1}{r}\right)
+      - \frac{1}{r}\frac{\partial u}{\partial n}
+    \right] dS
+    =
+    \int_\Gamma
+    \left[
+      u\frac{\partial}{\partial n}\!\left(\frac{1}{4\pi r}\right)
+      - \frac{1}{4\pi r}\frac{\partial u}{\partial n}
+    \right] dS .
+  \tag{2.6}
+  \]
+  该公式出现了未知的法向导数 $\partial u/\partial n$。
+
+  \item 为了消去未知的 $\dfrac{\partial u}{\partial n}$ 项，引入辅助函数 $g(M,M_0)$，要求  
+  \begin{itemize}
+    \item 在 $\Omega$ 内调和；
+    \item 在边界 $\Gamma$ 上与基本解 $\dfrac{1}{4\pi r_{MM_0}}$ 的值相同：
+  \[
+    g(M,M_0)\big|_{\Gamma}
+    =\frac{1}{4\pi r_{MM_0}}\Big|_{\Gamma}.
+  \tag{3.1}
+  \]
+  \end{itemize}
+
+  \item 由 Green 第二恒等式 (2.3)，对 $u$ 和 $g$ 可得
+  \[
+    \int_\Gamma\left(g\frac{\partial u}{\partial n} - u\frac{\partial g}{\partial n}\right)dS = 0 .
+  \tag{*}
+  \]
+
+  \item 将等式 \((*)\) 与 (2.6) 相减，得到
+  \[
+    u(M_0)
+    =
+    \int_\Gamma
+    \left[
+      \Bigl(\frac{1}{4\pi r}-g\Bigr)\frac{\partial u}{\partial n}
+      - u\Bigl(\frac{\partial}{\partial n}\!\frac{1}{4\pi r}
+               -\frac{\partial g}{\partial n}\Bigr)
+    \right] dS .
+  \]
+  定义
+  \[
+    G(M,M_0)=\frac{1}{4\pi r_{MM_0}}-g(M,M_0),
+  \]
+  就得到教材公式 (3.2)：
+  \[
+    u(M_0)
+    =
+    \int_\Gamma
+    \left(
+      G\,\frac{\partial u}{\partial n}
+      - u\,\frac{\partial G}{\partial n}
+    \right) dS .
+  \tag{3.2}
+  \]
+
+  \item 由于构造满足  
+  \[
+    G(M,M_0)=0,\qquad M\in\Gamma ,
+  \]
+  上式中第一项 $G\,u_n$ 在边界 $\Gamma$ 上恒为零，因此 (3.2) 化为
+  \[
+    u(M_0)
+    =\int_\Gamma f(M)\,\frac{\partial G(M,M_0)}{\partial n}\, dS .
+  \]
+
+  \item 至此得到狄利克雷问题的积分表示公式。格林函数的作用总结如下：
+  \begin{itemize}
+    \item Green 第二恒等式提供边界积分表达；
+    \item 引入调和函数 $g$ 使得 $G=0$ 于边界；
+    \item 边界条件 $u=f$ 允许将未知项 $\partial u/\partial n$ 完全消去；
+    \item 最终用已知的 $f$ 表示 $u(M_0)$。
+  \end{itemize}
+
+\end{itemize}
+\end{proof}
+
+\begin{theorem}[格林函数的基本性质]
+设 $G(M,M_0)$ 是区域 $\Omega$ 上方程 (1.1) 狄利克雷问题的格林函数，其中
+$M,M_0\in\Omega$，$\Gamma=\partial\Omega$，$r_{M_0M}$ 表示点 $M_0$ 与 $M$ 之间的距离。
+则 $G(M,M_0)$ 具有以下性质：
+
+\begin{enumerate}
+  \item （调和性与奇异性）除去点 $M=M_0$ 外，$G(M,M_0)$ 在区域 $\Omega$ 中处处满足方程 (1.1)，
+        而当 $M\to M_0$ 时，$G(M,M_0)$ 趋于无穷大，其奇异阶与
+        \(\displaystyle \frac{1}{4\pi r_{M_0M}}\) 相同。
+
+  \item （边界条件）在边界 $\Gamma$ 上，格林函数恒等于零，即
+        \[
+        G(M,M_0)=0,\qquad M\in\Gamma .
+        \]
+
+  \item （正性与估计）在区域 $\Omega$ 中成立不等式
+        \[
+        0 < G(M,M_0) < \frac{1}{4\pi r_{M_0M}},\qquad M\in\Omega,\ M\neq M_0 .
+        \]
+
+  \item （对称性）格林函数 $G(M,M_0)$ 在自变量 $M$ 与参数 $M_0$ 之间具有对称性。
+        若 $M_1,M_2$ 为区域中的两点，则
+        \[
+        G(M_1,M_2)=G(M_2,M_1).
+        \]
+
+  \item （法向导数的积分）有
+        \[
+        \iint_{\Gamma} \frac{\partial G(M,M_0)}{\partial n}\, dS_M = -1,
+        \]
+        其中 $\dfrac{\partial}{\partial n}$ 表示对边界外法线方向的导数。
+\end{enumerate}
+\end{theorem}
+\begin{dxtips}
+    \begin{itemize}
+  \item \textbf{调和性（对 $M$）}：固定 $M_0\in\Omega$，则 $g(\cdot,M_0)$ 在 $\Omega$ 内调和，
+  \[
+  \Delta_M g(M,M_0)=0,\qquad M\in\Omega.
+  \]
+
+  \item \textbf{边界取值（补齐狄利克雷条件）}：若
+  \[
+  G(M,M_0)=\frac1{4\pi|M-M_0|}-g(M,M_0),\qquad G|_{\Gamma}=0,
+  \]
+  则
+  \[
+  g(M,M_0)=\frac1{4\pi|M-M_0|},\qquad M\in\Gamma.
+  \]
+
+  \item \textbf{连续与有界（可用极值原理）}：$g(\cdot,M_0)$ 在 $\Omega\cup\Gamma$ 上连续，
+  因而在有界区域上有界，并满足
+  \[
+  \max_{\overline\Omega} g=\max_{\Gamma} g,\qquad 
+  \min_{\overline\Omega} g=\min_{\Gamma} g.
+  \]
+
+  \item \textbf{唯一性}：满足“在 $\Omega$ 内调和且在 $\Gamma$ 上取给定边界值”的函数唯一，
+  因此上述条件唯一确定 $g(\cdot,M_0)$。
+\end{itemize}
+\end{dxtips}
